@@ -3,7 +3,6 @@ import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import HeroIllustration from "@/components/home/HeroIllustration";
 
 export default function Home() {
   return (
@@ -24,46 +23,35 @@ export default function Home() {
 
       {/* Hero */}
       <main className="flex-1 flex items-center px-8">
-        <div className="max-w-5xl mx-auto w-full py-16">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex-1 max-w-xl"
+        <div className="max-w-5xl mx-auto w-full py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <h1
+              className="text-5xl sm:text-6xl font-normal text-foreground mb-6 leading-tight"
+              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
             >
-              <h1
-                className="text-5xl sm:text-6xl font-normal text-foreground mb-6 leading-tight"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                Healthcare in your hands
-              </h1>
-              <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-md">
-                cadu helps compare and contrast options<br />
-                to make healthcare affordable for you
-              </p>
+              Healthcare in your hands
+            </h1>
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-md">
+              cadu helps compare and contrast options<br />
+              to make healthcare affordable for you
+            </p>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <Link to={createPageUrl("Onboarding")}>
-                  <Button className="px-10 py-6 text-base rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-normal">
-                    Get Started
-                  </Button>
-                </Link>
-                <Link to={createPageUrl("Calculators")} className="text-sm text-primary hover:underline flex items-center gap-1">
-                  Financial Calculators →
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1 flex justify-center lg:justify-end"
-            >
-              <HeroIllustration />
-            </motion.div>
-          </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link to={createPageUrl("Onboarding")}>
+                <Button className="px-10 py-6 text-base rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-normal">
+                  Get Started
+                </Button>
+              </Link>
+              <Link to={createPageUrl("Calculators")} className="text-sm text-primary hover:underline flex items-center gap-1">
+                Financial Calculators →
+              </Link>
+            </div>
+          </motion.div>
 
           {/* Trust stats */}
           <motion.div
