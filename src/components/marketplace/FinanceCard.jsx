@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Star, Check, Info, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { base44 } from "@/api/base44Client";
 
 export default function FinanceCard({ option, index, isSelected, onSelect, onCompare, isComparing }) {
   const getMatchColor = (score) => {
