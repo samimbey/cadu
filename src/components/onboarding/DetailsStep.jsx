@@ -64,6 +64,20 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
 
         <div className="space-y-3">
           <Label className="text-base font-medium flex items-center gap-2">
+            <Mail className="w-4 h-4 text-primary" />
+            Email Address
+          </Label>
+          <Input
+            type="email"
+            value={data.email || ""}
+            onChange={(e) => onChange({ email: e.target.value })}
+            placeholder="your@email.com"
+            className="h-14 text-base rounded-xl"
+          />
+        </div>
+
+        <div className="space-y-3">
+          <Label className="text-base font-medium flex items-center gap-2">
             <DollarSign className="w-4 h-4 text-primary" />
             Annual Income (approximate)
           </Label>
