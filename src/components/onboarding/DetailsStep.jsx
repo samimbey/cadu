@@ -20,7 +20,8 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
     onChange({ annual_income: value });
   };
 
-  const canComplete = data.employment_status && data.annual_income;
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const canComplete = data.employment_status && data.annual_income && isValidEmail(data.email || "");
 
   return (
     <motion.div
