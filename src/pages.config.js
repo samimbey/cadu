@@ -49,11 +49,13 @@
  */
 import Onboarding from './pages/Onboarding';
 import Marketplace from './pages/Marketplace';
+import Home from './pages/Home';
 
 
 export const PAGES = {
     "Onboarding": Onboarding,
     "Marketplace": Marketplace,
+    "Home": Home,
 }
 
 export const pagesConfig = {
