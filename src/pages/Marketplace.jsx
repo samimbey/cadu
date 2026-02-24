@@ -304,6 +304,18 @@ export default function Marketplace() {
           return bMax - aMax;
         });
         break;
+      case "funding": {
+        const fundingOrder = { "Instant": 0, "Instant approval": 0, "Same day": 1, "1-3 business days": 2, "2-4 business days": 3 };
+        options.sort((a, b) => (fundingOrder[a.fundingTime] ?? 5) - (fundingOrder[b.fundingTime] ?? 5));
+        break;
+      }
+      case "approval":
+        options.sort((a, b) => {
+          const aHigh = a.features.some(f => /approv/i.test(f)) ? 1 : 0;
+          const bHigh = b.features.some(f => /approv/i.test(f)) ? 1 : 0;
+          return bHigh - aHigh || b.matchScore - a.matchScore;
+        });
+        break;
       default:
         options.sort((a, b) => b.matchScore - a.matchScore);
     }
