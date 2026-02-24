@@ -217,7 +217,7 @@ const financeOptions = [
     applicationTime: "30 seconds",
     fundingTime: "Instant decision",
     features: ["Soft credit check", "Fixed rates", "Quick application", "Wide procedure coverage"],
-    applyUrl: "https://patientfi.com/",
+    applyUrl: "https://search.patientfi.com/",
     procedures: ["cosmetic", "dental", "vision", "fertility", "general_medical", "other"],
     matchScore: 83,
     featured: false,
