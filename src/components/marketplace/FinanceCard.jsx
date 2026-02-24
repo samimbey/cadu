@@ -128,6 +128,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
               size="sm" 
               onClick={() => {
                 base44.analytics.track({ eventName: "apply_now_clicked", properties: { lender: option.name, lender_id: option.id } });
+                base44.entities.Click.create({ lender_name: option.name, lender_id: option.id, apply_url: option.applyUrl });
                 window.open(option.applyUrl, '_blank');
               }}
               className="flex-1 bg-secondary hover:bg-secondary/90"
