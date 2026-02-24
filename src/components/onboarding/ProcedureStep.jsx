@@ -28,10 +28,10 @@ export default function ProcedureStep({ data, onNext, onBack, onChange }) {
       className="space-y-8"
     >
       <div className="text-center space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+        <h2 className="font-serif text-2xl sm:text-3xl font-normal text-foreground">
           What type of procedure?
         </h2>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground font-light">
           Select the category that best fits your needs
         </p>
       </div>
