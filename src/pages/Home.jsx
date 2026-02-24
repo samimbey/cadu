@@ -24,6 +24,7 @@ export default function Home() {
       {/* Hero */}
       <main className="flex-1 flex items-center px-8">
         <div className="max-w-5xl mx-auto w-full py-24">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
