@@ -54,6 +54,20 @@ export default function Home() {
             </div>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex-shrink-0 w-full max-w-sm lg:max-w-md"
+          >
+            <img
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png"
+              alt="Healthcare finance options"
+              className="w-full h-auto"
+            />
+          </motion.div>
+          </div>
+
           {/* Trust stats */}
           <motion.div
             initial={{ opacity: 0 }}
