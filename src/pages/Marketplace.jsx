@@ -300,10 +300,8 @@ export default function Marketplace() {
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-                <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
-                  cadu
-                </span>
+              <Link to={createPageUrl("Home")}>
+                <CaduLogo size="md" />
               </Link>
             </div>
             
@@ -332,7 +330,7 @@ export default function Marketplace() {
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-normal text-foreground mb-2" style={{ fontFamily: "Georgia, serif" }}>
+              <h1 className="font-serif text-2xl sm:text-3xl font-normal text-foreground mb-2">
                 Your Personalized Options
               </h1>
               <div className="flex flex-wrap gap-2">

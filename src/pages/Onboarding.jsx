@@ -4,6 +4,7 @@ import { base44 } from "@/api/base44Client";
 import { createPageUrl } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Shield, DollarSign } from "lucide-react";
+import CaduLogo from "@/components/CaduLogo";
 
 import ProgressSteps from "@/components/onboarding/ProgressSteps";
 import AmountStep from "@/components/onboarding/AmountStep";
@@ -96,11 +97,7 @@ export default function Onboarding() {
       {/* Header */}
       <header className="py-6 px-4">
         <div className="max-w-2xl mx-auto flex items-center justify-center">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
-              cadu
-            </span>
-          </div>
+          <CaduLogo size="md" />
         </div>
       </header>
 
