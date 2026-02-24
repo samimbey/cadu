@@ -70,7 +70,7 @@ const financeOptions = [
     applicationTime: "Minutes",
     fundingTime: "2-4 business days",
     features: ["Joint applications", "No origination fee options", "Rate checking", "Autopay discount"],
-    applyUrl: "https://www.lendingclub.com/personal-loan/medical-financing",
+    applyUrl: "https://www.lendingclub.com/patient-solutions",
     procedures: ["dental", "cosmetic", "vision", "fertility", "bariatric", "general_medical", "other"],
     matchScore: 85,
     featured: false,
