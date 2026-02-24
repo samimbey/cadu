@@ -4,7 +4,7 @@ import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Settings, RefreshCw, Scale, Calculator } from "lucide-react";
+import { Settings, RefreshCw, Scale } from "lucide-react";
 
 import FinanceCard from "@/components/marketplace/FinanceCard";
 import ComparisonModal from "@/components/marketplace/ComparisonModal";
@@ -307,12 +307,9 @@ export default function Marketplace() {
               </Link>
             </div>
             
-            <div className="flex items-center gap-2">
-              <Link to={createPageUrl("Calculators")}>
-                <Button variant="outline" size="sm">
-                  <span className="hidden sm:inline">Calculators</span>
-                  <span className="sm:hidden">Calc</span>
-                </Button>
+            <div className="flex items-center gap-3">
+              <Link to={createPageUrl("Calculators")} className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block">
+                Calculators
               </Link>
               <Link to={createPageUrl("Onboarding")}>
                 <Button variant="outline" size="sm">

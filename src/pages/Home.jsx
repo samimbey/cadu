@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
-import { Shield, Star, Users, Calculator } from "lucide-react";
+import { ArrowRight, Shield, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -9,19 +9,10 @@ export default function Home() {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="border-b border-border px-8 py-5">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
+        <div className="max-w-5xl mx-auto">
           <span className="text-3xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
             cadu
           </span>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to={createPageUrl("Marketplace")} className="hover:text-foreground transition-colors">
-              Marketplace
-            </Link>
-            <Link to={createPageUrl("Calculators")} className="hover:text-foreground transition-colors flex items-center gap-1">
-              <Calculator className="w-4 h-4" />
-              Calculators
-            </Link>
-          </nav>
         </div>
       </header>
 
@@ -45,13 +36,16 @@ export default function Home() {
               to make healthcare affordable for you
             </p>
 
-            <Link to={createPageUrl("Onboarding")}>
-              <Button
-                className="px-10 py-6 text-base rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-normal"
-              >
-                Get Started
-              </Button>
-            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link to={createPageUrl("Onboarding")}>
+                <Button className="px-10 py-6 text-base rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-normal">
+                  Get Started
+                </Button>
+              </Link>
+              <Link to={createPageUrl("Calculators")} className="text-sm text-primary hover:underline flex items-center gap-1">
+                Financial Calculators →
+              </Link>
+            </div>
           </motion.div>
 
           {/* Trust stats */}
