@@ -62,7 +62,7 @@ export default function Home() {
           >
             {[
               { icon: Users, stat: "250,000+", label: "Provider network" },
-              { icon: Star, stat: "8 lenders", label: "Compared for you" },
+              { icon: Star, stat: "10 lenders", label: "Compared for you" },
               { icon: Shield, stat: "No impact", label: "On your credit score" },
             ].map(({ icon: Icon, stat, label }) => (
               <div key={label} className="flex items-center gap-4">
