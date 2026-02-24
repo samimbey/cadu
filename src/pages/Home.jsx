@@ -61,8 +61,8 @@ export default function Home() {
               className="flex-1 flex justify-center lg:justify-end"
             >
               <img
-                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=560&h=480&fit=crop&crop=center"
-                alt="Healthcare finance illustration"
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&h=500&fit=crop&crop=center"
+                alt="Person exploring healthcare finance options"
                 className="w-full max-w-sm lg:max-w-md rounded-3xl object-cover shadow-sm"
                 style={{ aspectRatio: "4/3" }}
               />
