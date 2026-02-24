@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calculator, DollarSign, TrendingUp, Scale } from "lucide-react";
+import { Calculator, DollarSign, TrendingUp, BarChart2, ArrowRight } from "lucide-react";
+
 import LoanPaymentCalc from "@/components/calculators/LoanPaymentCalc";
 import AffordabilityCalc from "@/components/calculators/AffordabilityCalc";
 import APRImpactCalc from "@/components/calculators/APRImpactCalc";
@@ -13,62 +14,69 @@ const tabs = [
     label: "Loan Payment",
     icon: Calculator,
     description: "Estimate your monthly payment",
+    component: LoanPaymentCalc,
   },
   {
     id: "affordability",
     label: "Affordability",
     icon: DollarSign,
-    description: "Find out how much you can borrow",
+    description: "How much can you borrow?",
+    component: AffordabilityCalc,
   },
   {
     id: "apr",
     label: "APR Impact",
-    icon: TrendingUp,
-    description: "See how APR affects total cost",
+    icon: BarChart2,
+    description: "Compare total cost by rate",
+    component: APRImpactCalc,
   },
 ];
 
 export default function Calculators() {
   const [activeTab, setActiveTab] = useState("loan");
 
+  const ActiveComponent = tabs.find((t) => t.id === activeTab)?.component;
+
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b border-border px-6 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link to={createPageUrl("Home")}>
-            <span className="text-2xl font-light tracking-tight text-primary cursor-pointer" style={{ fontFamily: "Georgia, serif" }}>
+            <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
               cadu
             </span>
           </Link>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to={createPageUrl("Marketplace")} className="hover:text-foreground transition-colors">
+          <nav className="flex items-center gap-4">
+            <Link to={createPageUrl("Marketplace")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Marketplace
             </Link>
-            <Link to={createPageUrl("Calculators")} className="text-foreground font-medium">
-              Calculators
+            <Link to={createPageUrl("Onboarding")}>
+              <span className="text-sm text-primary font-medium flex items-center gap-1 hover:underline">
+                Get Started <ArrowRight className="w-3.5 h-3.5" />
+              </span>
             </Link>
           </nav>
         </div>
       </header>
 
-      <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-12">
+      <main className="max-w-5xl mx-auto px-6 py-12">
         {/* Page Title */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-10"
         >
-          <h1 className="text-4xl font-normal text-foreground mb-2" style={{ fontFamily: "Georgia, serif" }}>
+          <h1 className="text-4xl font-normal text-foreground mb-3" style={{ fontFamily: "Georgia, serif" }}>
             Financial Calculators
           </h1>
-          <p className="text-muted-foreground">
-            Understand the real cost of financing before you apply.
+          <p className="text-muted-foreground max-w-xl">
+            Understand the real cost of healthcare financing before you apply. Explore your options with interactive tools.
           </p>
         </motion.div>
 
         {/* Tab Selector */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+        <div className="grid grid-cols-3 gap-3 mb-10">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -76,21 +84,17 @@ export default function Calculators() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-3 p-4 rounded-lg border text-left transition-all ${
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
                   isActive
-                    ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                    : "border-border hover:border-primary/40 hover:bg-secondary/50"
+                    ? "border-primary bg-primary text-primary-foreground shadow-md"
+                    : "border-border hover:border-primary/40 bg-white text-foreground"
                 }`}
               >
-                <Icon className={`w-5 h-5 flex-shrink-0 ${isActive ? "text-primary-foreground" : "text-primary"}`} />
-                <div>
-                  <p className={`font-medium text-sm ${isActive ? "text-primary-foreground" : "text-foreground"}`}>
-                    {tab.label}
-                  </p>
-                  <p className={`text-xs mt-0.5 ${isActive ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                    {tab.description}
-                  </p>
-                </div>
+                <Icon className={`w-5 h-5 mb-2 ${isActive ? "text-primary-foreground" : "text-primary"}`} />
+                <p className={`font-medium text-sm ${isActive ? "" : ""}`}>{tab.label}</p>
+                <p className={`text-xs mt-0.5 ${isActive ? "opacity-75" : "text-muted-foreground"}`}>
+                  {tab.description}
+                </p>
               </button>
             );
           })}
@@ -104,21 +108,31 @@ export default function Calculators() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2 }}
+            className="bg-white border border-border rounded-2xl p-6 sm:p-10 shadow-sm"
           >
-            {activeTab === "loan" && <LoanPaymentCalc />}
-            {activeTab === "affordability" && <AffordabilityCalc />}
-            {activeTab === "apr" && <APRImpactCalc />}
+            {ActiveComponent && <ActiveComponent />}
           </motion.div>
         </AnimatePresence>
-      </main>
 
-      <footer className="border-t border-border px-6 py-5">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-muted-foreground">
-            These calculators are for illustrative purposes only and do not constitute financial advice.
-          </p>
-        </div>
-      </footer>
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 p-6 bg-secondary rounded-xl border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        >
+          <div>
+            <p className="font-medium text-foreground">Ready to see your real options?</p>
+            <p className="text-sm text-muted-foreground">Compare actual lenders matched to your profile — no credit impact.</p>
+          </div>
+          <Link to={createPageUrl("Onboarding")}>
+            <button className="flex-shrink-0 px-6 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors flex items-center gap-2">
+              Find My Options
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </Link>
+        </motion.div>
+      </main>
     </div>
   );
 }

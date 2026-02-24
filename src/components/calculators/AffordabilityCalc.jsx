@@ -1,202 +1,162 @@
 import { useState, useMemo } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
-import { RadialBarChart, RadialBar, ResponsiveContainer, Cell } from "recharts";
 import { motion } from "framer-motion";
-import { CheckCircle, AlertCircle, XCircle, Info } from "lucide-react";
+import { DollarSign, Percent, Calendar, TrendingUp, AlertCircle, CheckCircle } from "lucide-react";
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from "recharts";
 
-function formatCurrency(n) {
-  return "$" + Math.round(n).toLocaleString();
+function formatCurrency(val) {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(val);
 }
 
-const DTI_THRESHOLDS = [
-  { max: 28, label: "Excellent", color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-200", icon: CheckCircle, iconColor: "text-emerald-500" },
-  { max: 36, label: "Good", color: "text-primary", bg: "bg-blue-50 border-blue-200", icon: CheckCircle, iconColor: "text-primary" },
-  { max: 43, label: "Fair", color: "text-amber-600", bg: "bg-amber-50 border-amber-200", icon: AlertCircle, iconColor: "text-amber-500" },
-  { max: 100, label: "High Risk", color: "text-red-600", bg: "bg-red-50 border-red-200", icon: XCircle, iconColor: "text-red-500" },
-];
-
 export default function AffordabilityCalc() {
-  const [annualIncome, setAnnualIncome] = useState(60000);
-  const [monthlyDebts, setMonthlyDebts] = useState(500);
-  const [desiredPayment, setDesiredPayment] = useState(300);
+  const [income, setIncome] = useState(60000);
+  const [maxPayment, setMaxPayment] = useState(300);
   const [rate, setRate] = useState(12);
   const [term, setTerm] = useState(36);
 
   const results = useMemo(() => {
-    const monthlyIncome = annualIncome / 12;
-    const totalMonthlyDebt = monthlyDebts + desiredPayment;
-    const dtiRatio = (totalMonthlyDebt / monthlyIncome) * 100;
-
-    // Max affordable payment = 43% DTI max minus existing debts
-    const maxAffordablePayment = Math.max(0, monthlyIncome * 0.43 - monthlyDebts);
-
-    // Reverse calc: how much can they borrow at desired payment?
     const r = rate / 100 / 12;
-    let maxLoanAmount;
-    if (rate === 0) {
-      maxLoanAmount = desiredPayment * term;
+    const n = term;
+    let maxLoan;
+    if (r === 0) {
+      maxLoan = maxPayment * n;
     } else {
-      maxLoanAmount = desiredPayment * (Math.pow(1 + r, term) - 1) / (r * Math.pow(1 + r, term));
+      maxLoan = maxPayment * (1 - Math.pow(1 + r, -n)) / r;
     }
 
-    // Max loan at max affordable payment
-    let maxBorrowable;
-    if (rate === 0) {
-      maxBorrowable = maxAffordablePayment * term;
-    } else {
-      maxBorrowable = maxAffordablePayment * (Math.pow(1 + r, term) - 1) / (r * Math.pow(1 + r, term));
-    }
+    const monthlyIncome = income / 12;
+    const debtToIncomeRatio = (maxPayment / monthlyIncome) * 100;
 
-    const threshold = DTI_THRESHOLDS.find(t => dtiRatio <= t.max) || DTI_THRESHOLDS[3];
+    const scenarios = [6, 12, 24, 36, 48, 60].map((months) => {
+      let loan;
+      if (r === 0) {
+        loan = maxPayment * months;
+      } else {
+        loan = maxPayment * (1 - Math.pow(1 + r, -months)) / r;
+      }
+      return { term: `${months}mo`, amount: Math.round(loan) };
+    });
 
-    return { monthlyIncome, dtiRatio, maxAffordablePayment, maxLoanAmount, maxBorrowable, threshold };
-  }, [annualIncome, monthlyDebts, desiredPayment, rate, term]);
+    return { maxLoan, debtToIncomeRatio, scenarios, monthlyIncome };
+  }, [income, maxPayment, rate, term]);
 
-  const StatusIcon = results.threshold.icon;
-  const dtiDisplay = Math.min(100, results.dtiRatio).toFixed(1);
+  const dtiColor =
+    results.debtToIncomeRatio <= 20 ? "text-emerald-600" :
+    results.debtToIncomeRatio <= 36 ? "text-amber-500" : "text-red-500";
+
+  const dtiLabel =
+    results.debtToIncomeRatio <= 20 ? "Excellent" :
+    results.debtToIncomeRatio <= 36 ? "Manageable" : "High — reconsider";
+
+  const DtiIcon = results.debtToIncomeRatio <= 36 ? CheckCircle : AlertCircle;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      {/* Inputs */}
-      <div className="space-y-7 bg-white border border-border rounded-xl p-6">
-        <h2 className="text-lg font-medium text-foreground">Your Financial Profile</h2>
-
-        <SliderField
-          label="Annual Income (before tax)"
-          value={annualIncome}
-          onChange={setAnnualIncome}
-          min={10000} max={300000} step={1000}
-          format={(v) => "$" + (v / 1000).toFixed(0) + "k"}
-          display={"$" + annualIncome.toLocaleString()}
-        />
-
-        <SliderField
-          label="Existing Monthly Debt Payments"
-          value={monthlyDebts}
-          onChange={setMonthlyDebts}
-          min={0} max={5000} step={50}
-          format={(v) => "$" + v.toLocaleString()}
-          display={"$" + monthlyDebts.toLocaleString() + "/mo"}
-        />
-
-        <SliderField
-          label="Desired Monthly Payment"
-          value={desiredPayment}
-          onChange={setDesiredPayment}
-          min={50} max={3000} step={25}
-          format={(v) => "$" + v}
-          display={"$" + desiredPayment.toLocaleString() + "/mo"}
-        />
-
-        <SliderField
-          label="Expected APR"
-          value={rate}
-          onChange={setRate}
-          min={0} max={36} step={0.5}
-          format={(v) => v + "%"}
-          display={rate + "%"}
-        />
-
-        <SliderField
-          label="Loan Term"
-          value={term}
-          onChange={setTerm}
-          min={6} max={84} step={6}
-          format={(v) => v + " mo"}
-          display={term + " months"}
-        />
-      </div>
-
-      {/* Results */}
-      <div className="space-y-5">
-        {/* DTI Status */}
-        <motion.div
-          key={results.threshold.label}
-          initial={{ scale: 0.97, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className={`border rounded-xl p-5 ${results.threshold.bg}`}
-        >
-          <div className="flex items-start gap-3">
-            <StatusIcon className={`w-6 h-6 mt-0.5 flex-shrink-0 ${results.threshold.iconColor}`} />
-            <div>
-              <p className={`font-semibold text-lg ${results.threshold.color}`}>
-                Debt-to-Income: {results.threshold.label}
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                Your DTI ratio would be <strong>{dtiDisplay}%</strong> — lenders typically prefer under 43%.
-              </p>
+    <div className="space-y-8">
+      <div className="grid md:grid-cols-2 gap-10">
+        <div className="space-y-7">
+          {/* Annual Income */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <Label className="flex items-center gap-2 text-sm font-medium">
+                <DollarSign className="w-4 h-4 text-primary" /> Annual Income
+              </Label>
+              <span className="text-lg font-semibold text-primary">{formatCurrency(income)}</span>
+            </div>
+            <Slider value={[income]} onValueChange={([v]) => setIncome(v)} min={20000} max={250000} step={1000} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>$20k</span><span>$250k</span>
             </div>
           </div>
-        </motion.div>
 
-        {/* Key Numbers */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="border border-border rounded-xl p-4">
-            <p className="text-xs text-muted-foreground mb-1">Monthly Income</p>
-            <p className="text-2xl font-semibold text-foreground">{formatCurrency(results.monthlyIncome)}</p>
+          {/* Max Monthly Payment */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <Label className="flex items-center gap-2 text-sm font-medium">
+                <TrendingUp className="w-4 h-4 text-primary" /> Max Monthly Payment
+              </Label>
+              <span className="text-lg font-semibold text-primary">{formatCurrency(maxPayment)}</span>
+            </div>
+            <Slider value={[maxPayment]} onValueChange={([v]) => setMaxPayment(v)} min={50} max={2000} step={25} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>$50</span><span>$2,000</span>
+            </div>
           </div>
-          <div className="border border-border rounded-xl p-4">
-            <p className="text-xs text-muted-foreground mb-1">Max Affordable Payment</p>
-            <p className="text-2xl font-semibold text-foreground">{formatCurrency(results.maxAffordablePayment)}</p>
+
+          {/* Interest Rate */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <Label className="flex items-center gap-2 text-sm font-medium">
+                <Percent className="w-4 h-4 text-primary" /> Estimated APR
+              </Label>
+              <span className="text-lg font-semibold text-primary">{rate}%</span>
+            </div>
+            <Slider value={[rate]} onValueChange={([v]) => setRate(v)} min={0} max={36} step={0.5} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>0%</span><span>36%</span>
+            </div>
           </div>
-        </div>
 
-        {/* Loan Amount Estimate */}
-        <div className="bg-primary rounded-xl p-5 text-primary-foreground">
-          <p className="text-sm text-primary-foreground/70 mb-1">You could borrow up to</p>
-          <p className="text-5xl font-light mb-3" style={{ fontFamily: "Georgia, serif" }}>
-            {formatCurrency(results.maxBorrowable)}
-          </p>
-          <p className="text-sm text-primary-foreground/70">
-            At {rate}% APR over {term} months with your desired {formatCurrency(desiredPayment)}/mo payment
-          </p>
-        </div>
-
-        {/* DTI Breakdown Bar */}
-        <div className="border border-border rounded-xl p-4 space-y-3">
-          <p className="text-sm font-medium text-foreground">Income Allocation</p>
-          <div className="space-y-2">
-            {[
-              { label: "Existing debts", value: (monthlyDebts / results.monthlyIncome) * 100, color: "bg-muted-foreground/40" },
-              { label: "New payment", value: (desiredPayment / results.monthlyIncome) * 100, color: "bg-primary" },
-              { label: "Remaining income", value: Math.max(0, 100 - (results.dtiRatio)), color: "bg-emerald-400/40" },
-            ].map((bar) => (
-              <div key={bar.label} className="flex items-center gap-3 text-xs">
-                <span className="w-28 text-muted-foreground">{bar.label}</span>
-                <div className="flex-1 bg-muted rounded-full h-2">
-                  <div
-                    className={`h-2 rounded-full transition-all ${bar.color}`}
-                    style={{ width: `${Math.min(100, bar.value)}%` }}
-                  />
-                </div>
-                <span className="w-10 text-right font-medium">{Math.min(100, bar.value).toFixed(0)}%</span>
-              </div>
-            ))}
+          {/* Term */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <Label className="flex items-center gap-2 text-sm font-medium">
+                <Calendar className="w-4 h-4 text-primary" /> Desired Term
+              </Label>
+              <span className="text-lg font-semibold text-primary">{term} months</span>
+            </div>
+            <Slider value={[term]} onValueChange={([v]) => setTerm(v)} min={6} max={60} step={6} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>6 mo</span><span>60 mo</span>
+            </div>
           </div>
         </div>
 
-        <div className="flex items-start gap-2 text-xs text-muted-foreground">
-          <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
-          <p>Lenders typically look for a DTI below 43%. Some healthcare lenders may have more flexible requirements.</p>
-        </div>
-      </div>
-    </div>
-  );
-}
+        <div className="flex flex-col gap-4">
+          <div className="bg-primary rounded-xl p-6 text-primary-foreground text-center">
+            <p className="text-sm opacity-80 mb-1">You can afford to borrow up to</p>
+            <p className="text-5xl font-light" style={{ fontFamily: "Georgia, serif" }}>
+              {formatCurrency(results.maxLoan)}
+            </p>
+            <p className="text-xs opacity-60 mt-1">at {rate}% APR over {term} months</p>
+          </div>
 
-function SliderField({ label, value, onChange, min, max, step, format, display }) {
-  return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <Label className="text-sm font-medium">{label}</Label>
-        <span className="text-sm font-semibold text-primary">{display}</span>
-      </div>
-      <Slider value={[value]} onValueChange={([v]) => onChange(v)} min={min} max={max} step={step} />
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>{format(min)}</span>
-        <span>{format(max)}</span>
+          <div className={`flex items-center gap-3 p-4 rounded-xl border ${
+            results.debtToIncomeRatio <= 20 ? "bg-emerald-50 border-emerald-200" :
+            results.debtToIncomeRatio <= 36 ? "bg-amber-50 border-amber-200" :
+            "bg-red-50 border-red-200"
+          }`}>
+            <DtiIcon className={`w-5 h-5 flex-shrink-0 ${dtiColor}`} />
+            <div>
+              <p className="text-sm font-medium text-foreground">
+                Debt-to-income: <span className={dtiColor}>{results.debtToIncomeRatio.toFixed(1)}% — {dtiLabel}</span>
+              </p>
+              <p className="text-xs text-muted-foreground">Lenders typically prefer below 36%</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wide">Borrowing power by term</p>
+            <ResponsiveContainer width="100%" height={160}>
+              <BarChart data={results.scenarios} barSize={28}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(220,30%,92%)" />
+                <XAxis dataKey="term" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis hide />
+                <Tooltip formatter={(v) => formatCurrency(v)} cursor={{ fill: "hsl(220,30%,96%)" }} />
+                <Bar dataKey="amount" radius={[4, 4, 0, 0]}>
+                  {results.scenarios.map((_, i) => (
+                    <Cell
+                      key={i}
+                      fill={results.scenarios[i].term === `${term}mo`
+                        ? "hsl(224,56%,42%)"
+                        : "hsl(213,60%,72%)"}
+                    />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
       </div>
     </div>
   );

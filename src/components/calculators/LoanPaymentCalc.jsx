@@ -2,12 +2,12 @@ import { useState, useMemo } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { motion } from "framer-motion";
+import { DollarSign, Percent, Calendar } from "lucide-react";
+import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts";
 
-function formatCurrency(n) {
-  return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+function formatCurrency(val) {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(val);
 }
 
 export default function LoanPaymentCalc() {
@@ -16,164 +16,110 @@ export default function LoanPaymentCalc() {
   const [term, setTerm] = useState(36);
 
   const results = useMemo(() => {
-    if (rate === 0) {
-      const monthly = amount / term;
-      return { monthly, totalPayment: amount, totalInterest: 0 };
-    }
     const r = rate / 100 / 12;
-    const monthly = (amount * r * Math.pow(1 + r, term)) / (Math.pow(1 + r, term) - 1);
-    const totalPayment = monthly * term;
-    const totalInterest = totalPayment - amount;
-    return { monthly, totalPayment, totalInterest };
+    const n = term;
+    if (r === 0) return { monthly: amount / n, total: amount, interest: 0 };
+    const monthly = amount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const total = monthly * n;
+    const interest = total - amount;
+    return { monthly, total, interest };
   }, [amount, rate, term]);
 
-  const amortizationData = useMemo(() => {
-    const r = rate / 100 / 12;
-    let balance = amount;
-    let cumulativeInterest = 0;
-    const data = [];
-    for (let i = 1; i <= term; i++) {
-      const interestPayment = rate === 0 ? 0 : balance * r;
-      const principalPayment = results.monthly - interestPayment;
-      balance = Math.max(0, balance - principalPayment);
-      cumulativeInterest += interestPayment;
-      if (i % Math.ceil(term / 12) === 0 || i === term) {
-        data.push({
-          month: `Mo ${i}`,
-          balance: Math.round(balance),
-          interest: Math.round(cumulativeInterest),
-        });
-      }
-    }
-    return data;
-  }, [amount, rate, term, results.monthly]);
+  const pieData = [
+    { name: "Principal", value: amount },
+    { name: "Interest", value: Math.round(results.interest) },
+  ];
 
-  const principalPct = Math.round((amount / results.totalPayment) * 100);
+  const COLORS = ["hsl(224,56%,42%)", "hsl(213,60%,72%)"];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      {/* Inputs */}
-      <div className="space-y-8 bg-white border border-border rounded-xl p-6">
-        <h2 className="text-lg font-medium text-foreground">Loan Details</h2>
-
-        <SliderField
-          label="Loan Amount"
-          value={amount}
-          onChange={setAmount}
-          min={500} max={100000} step={100}
-          format={(v) => "$" + v.toLocaleString()}
-          inputPrefix="$"
-          onInputChange={(v) => setAmount(Math.min(100000, Math.max(500, parseInt(v) || 500)))}
-        />
-
-        <SliderField
-          label="Annual Interest Rate (APR)"
-          value={rate}
-          onChange={setRate}
-          min={0} max={40} step={0.1}
-          format={(v) => v.toFixed(1) + "%"}
-          inputSuffix="%"
-          onInputChange={(v) => setRate(Math.min(40, Math.max(0, parseFloat(v) || 0)))}
-        />
-
-        <SliderField
-          label="Loan Term (months)"
-          value={term}
-          onChange={setTerm}
-          min={3} max={84} step={1}
-          format={(v) => v + " mo"}
-          onInputChange={(v) => setTerm(Math.min(84, Math.max(3, parseInt(v) || 3)))}
-        />
-      </div>
-
-      {/* Results */}
-      <div className="space-y-6">
-        {/* Monthly Payment Hero */}
-        <motion.div
-          key={results.monthly}
-          initial={{ scale: 0.97, opacity: 0.8 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="bg-primary rounded-xl p-6 text-primary-foreground"
-        >
-          <p className="text-sm text-primary-foreground/70 mb-1">Estimated Monthly Payment</p>
-          <p className="text-5xl font-light" style={{ fontFamily: "Georgia, serif" }}>
-            {formatCurrency(results.monthly)}
-          </p>
-          <div className="flex gap-4 mt-4 text-sm text-primary-foreground/70">
-            <span>{term} months</span>
-            <span>·</span>
-            <span>{rate}% APR</span>
+    <div className="space-y-8">
+      <div className="grid md:grid-cols-2 gap-10">
+        {/* Inputs */}
+        <div className="space-y-7">
+          {/* Loan Amount */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <Label className="flex items-center gap-2 text-sm font-medium">
+                <DollarSign className="w-4 h-4 text-primary" /> Loan Amount
+              </Label>
+              <span className="text-lg font-semibold text-primary">{formatCurrency(amount)}</span>
+            </div>
+            <Slider value={[amount]} onValueChange={([v]) => setAmount(v)} min={500} max={75000} step={500} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>$500</span><span>$75,000</span>
+            </div>
           </div>
-        </motion.div>
 
-        {/* Breakdown */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="border border-border rounded-lg p-4">
-            <p className="text-xs text-muted-foreground mb-1">Total Payment</p>
-            <p className="text-xl font-semibold text-foreground">{formatCurrency(results.totalPayment)}</p>
+          {/* Interest Rate */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <Label className="flex items-center gap-2 text-sm font-medium">
+                <Percent className="w-4 h-4 text-primary" /> Interest Rate (APR)
+              </Label>
+              <span className="text-lg font-semibold text-primary">{rate}%</span>
+            </div>
+            <Slider value={[rate]} onValueChange={([v]) => setRate(v)} min={0} max={36} step={0.5} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>0%</span><span>36%</span>
+            </div>
           </div>
-          <div className="border border-border rounded-lg p-4">
-            <p className="text-xs text-muted-foreground mb-1">Total Interest</p>
-            <p className="text-xl font-semibold text-destructive">{formatCurrency(results.totalInterest)}</p>
+
+          {/* Loan Term */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <Label className="flex items-center gap-2 text-sm font-medium">
+                <Calendar className="w-4 h-4 text-primary" /> Loan Term
+              </Label>
+              <span className="text-lg font-semibold text-primary">{term} months</span>
+            </div>
+            <Slider value={[term]} onValueChange={([v]) => setTerm(v)} min={6} max={84} step={6} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>6 mo</span><span>84 mo</span>
+            </div>
           </div>
         </div>
 
-        {/* Principal vs Interest Bar */}
-        <div className="border border-border rounded-lg p-4">
-          <div className="flex justify-between text-xs text-muted-foreground mb-2">
-            <span>Principal {principalPct}%</span>
-            <span>Interest {100 - principalPct}%</span>
+        {/* Results */}
+        <div className="flex flex-col gap-4">
+          <div className="bg-primary rounded-xl p-6 text-primary-foreground text-center">
+            <p className="text-sm opacity-80 mb-1">Estimated Monthly Payment</p>
+            <p className="text-5xl font-light" style={{ fontFamily: "Georgia, serif" }}>
+              {formatCurrency(results.monthly)}
+            </p>
+            <p className="text-xs opacity-60 mt-1">per month for {term} months</p>
           </div>
-          <div className="flex h-3 rounded-full overflow-hidden">
-            <div className="bg-primary transition-all" style={{ width: `${principalPct}%` }} />
-            <div className="bg-destructive/50 flex-1" />
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-secondary rounded-xl p-4 text-center border border-border">
+              <p className="text-xs text-muted-foreground mb-1">Total Repaid</p>
+              <p className="text-xl font-semibold text-foreground">{formatCurrency(results.total)}</p>
+            </div>
+            <div className="bg-secondary rounded-xl p-4 text-center border border-border">
+              <p className="text-xs text-muted-foreground mb-1">Total Interest</p>
+              <p className="text-xl font-semibold text-foreground">{formatCurrency(results.interest)}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-6">
+            <ResponsiveContainer width="100%" height={140}>
+              <PieChart>
+                <Pie data={pieData} cx="50%" cy="50%" innerRadius={40} outerRadius={60} dataKey="value" paddingAngle={2}>
+                  {pieData.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
+                </Pie>
+                <Tooltip formatter={(v) => formatCurrency(v)} />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="space-y-2 text-sm flex-shrink-0">
+              {pieData.map((d, i) => (
+                <div key={d.name} className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: COLORS[i] }} />
+                  <span className="text-muted-foreground">{d.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
-        {/* Amortization Chart */}
-        <div className="border border-border rounded-lg p-4">
-          <p className="text-xs text-muted-foreground mb-3">Remaining Balance Over Time</p>
-          <ResponsiveContainer width="100%" height={160}>
-            <AreaChart data={amortizationData}>
-              <defs>
-                <linearGradient id="balGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(224,56%,42%)" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="hsl(224,56%,42%)" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(220,30%,93%)" />
-              <XAxis dataKey="month" tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
-              <YAxis tick={{ fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(v) => "$" + (v / 1000).toFixed(0) + "k"} />
-              <Tooltip formatter={(v) => formatCurrency(v)} />
-              <Area type="monotone" dataKey="balance" stroke="hsl(224,56%,42%)" fill="url(#balGrad)" strokeWidth={2} name="Balance" />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SliderField({ label, value, onChange, min, max, step, format, inputPrefix, inputSuffix, onInputChange }) {
-  return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <Label className="text-sm font-medium">{label}</Label>
-        <div className="flex items-center border border-border rounded-md overflow-hidden">
-          {inputPrefix && <span className="px-2 text-sm text-muted-foreground bg-muted">{inputPrefix}</span>}
-          <input
-            type="number"
-            value={value}
-            onChange={(e) => onInputChange(e.target.value)}
-            className="w-24 px-2 py-1 text-sm text-right focus:outline-none focus:ring-1 focus:ring-primary"
-          />
-          {inputSuffix && <span className="px-2 text-sm text-muted-foreground bg-muted">{inputSuffix}</span>}
-        </div>
-      </div>
-      <Slider value={[value]} onValueChange={([v]) => onChange(v)} min={min} max={max} step={step} />
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>{format(min)}</span>
-        <span>{format(max)}</span>
       </div>
     </div>
   );
