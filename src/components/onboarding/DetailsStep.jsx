@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { ArrowLeft, Search, DollarSign, Briefcase } from "lucide-react";
+import { ArrowLeft, Search, DollarSign, Briefcase, Mail } from "lucide-react";
 
 const employmentOptions = [
   { value: "employed_full_time", label: "Employed Full-Time" },
