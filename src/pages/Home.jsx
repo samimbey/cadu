@@ -3,6 +3,7 @@ import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import HeroIllustration from "@/components/home/HeroIllustration";
 
 export default function Home() {
   return (
