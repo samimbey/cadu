@@ -9,10 +9,15 @@ export default function Home() {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="border-b border-border px-8 py-5">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto flex items-center justify-between">
           <span className="text-3xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
             cadu
           </span>
+          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
+            <Link to={createPageUrl("Marketplace")} className="hover:text-foreground transition-colors">Marketplace</Link>
+            <Link to={createPageUrl("Calculators")} className="hover:text-foreground transition-colors">Calculators</Link>
+            <Link to={createPageUrl("About")} className="hover:text-foreground transition-colors">About</Link>
+          </nav>
         </div>
       </header>
 
