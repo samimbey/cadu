@@ -9,6 +9,7 @@ import { Settings, RefreshCw, Scale } from "lucide-react";
 import FinanceCard from "@/components/marketplace/FinanceCard";
 import ComparisonModal from "@/components/marketplace/ComparisonModal";
 import FilterBar from "@/components/marketplace/FilterBar";
+import NavMenu from "@/components/marketplace/NavMenu";
 
 // Healthcare finance options data
 const financeOptions = [
