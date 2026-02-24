@@ -49,19 +49,19 @@
  */
 import About from './pages/About';
 import Calculators from './pages/Calculators';
+import Home from './pages/Home';
 import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
-import Home from './pages/Home';
 
 
 export const PAGES = {
     "About": About,
     "Calculators": Calculators,
+    "Home": Home,
     "Marketplace": Marketplace,
     "Onboarding": Onboarding,
     "Privacy": Privacy,
-    "Home": Home,
 }
 
 export const pagesConfig = {

@@ -91,7 +91,7 @@ const financeOptions = [
     applicationTime: "Minutes",
     fundingTime: "Instant decision",
     features: ["High credit limits", "Multiple promo options", "Provider partnership", "Recurring charges"],
-    applyUrl: "https://www.alphaeon.com/patients/",
+    applyUrl: "https://goalphaeon.com/",
     procedures: ["cosmetic", "dental", "vision", "dermatology"],
     matchScore: 82,
     featured: true,
