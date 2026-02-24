@@ -162,7 +162,10 @@ export default function About() {
 
       <footer className="border-t border-border px-6 py-5 mt-8">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-muted-foreground">© 2026 Cadu · Healthcare Finance Marketplace</p>
+          <div className="flex gap-4 items-center">
+            <p className="text-xs text-muted-foreground">© 2026 Cadu · Healthcare Finance Marketplace</p>
+            <Link to={createPageUrl("Privacy")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link>
+          </div>
         </div>
       </footer>
     </div>
