@@ -4,7 +4,7 @@ import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Heart, Settings, RefreshCw, Scale, ArrowLeft } from "lucide-react";
+import { Settings, RefreshCw, Scale } from "lucide-react";
 
 import FinanceCard from "@/components/marketplace/FinanceCard";
 import ComparisonModal from "@/components/marketplace/ComparisonModal";
@@ -296,15 +296,14 @@ export default function Marketplace() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-lg border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Link to={createPageUrl("Onboarding")} className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-foreground hidden sm:block">HealthFi</span>
+              <Link to={createPageUrl("Home")} className="flex items-center gap-2">
+                <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
+                  cadu
+                </span>
               </Link>
             </div>
             
@@ -326,11 +325,11 @@ export default function Marketplace() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-2xl p-6 mb-8"
+          className="bg-secondary rounded-xl p-6 mb-8 border border-border"
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+              <h1 className="text-2xl sm:text-3xl font-normal text-foreground mb-2" style={{ fontFamily: "Georgia, serif" }}>
                 Your Personalized Options
               </h1>
               <div className="flex flex-wrap gap-2">

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { createPageUrl } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Heart, Shield, DollarSign } from "lucide-react";
+import { Shield, DollarSign } from "lucide-react";
 
 import ProgressSteps from "@/components/onboarding/ProgressSteps";
 import AmountStep from "@/components/onboarding/AmountStep";
@@ -92,15 +92,14 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="py-6 px-4">
         <div className="max-w-2xl mx-auto flex items-center justify-center">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <Heart className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-foreground">HealthFi</span>
+            <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
+              cadu
+            </span>
           </div>
         </div>
       </header>
