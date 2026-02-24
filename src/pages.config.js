@@ -50,12 +50,14 @@
 import Onboarding from './pages/Onboarding';
 import Marketplace from './pages/Marketplace';
 import Home from './pages/Home';
+import Calculators from './pages/Calculators';
 
 
 export const PAGES = {
     "Onboarding": Onboarding,
     "Marketplace": Marketplace,
     "Home": Home,
+    "Calculators": Calculators,
 }
 
 export const pagesConfig = {
