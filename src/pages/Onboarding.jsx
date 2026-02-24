@@ -21,6 +21,7 @@ export default function Onboarding() {
     procedure_type: "",
     employment_status: "",
     annual_income: null,
+    email: "",
   });
 
   const updateFormData = (updates) => {
