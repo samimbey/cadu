@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Star, Users } from "lucide-react";
+import { Shield, Star, Users, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CaduLogo from "@/components/CaduLogo";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="border-b border-border px-8 py-5">
-        <div className="max-w-5xl mx-auto">
-          <span className="text-3xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
-            cadu
-          </span>
+        <div className="max-w-5xl mx-auto flex items-center justify-between">
+          <CaduLogo size="lg" />
+          <nav className="flex items-center gap-6 text-sm font-light text-muted-foreground">
+            <Link to={createPageUrl("Marketplace")} className="hover:text-foreground transition-colors">
+              Marketplace
+            </Link>
+            <Link to={createPageUrl("Calculators")} className="hover:text-foreground transition-colors flex items-center gap-1">
+              <Calculator className="w-4 h-4" />
+              Calculators
+            </Link>
+          </nav>
         </div>
       </header>
 
@@ -25,24 +33,23 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h1
-              className="text-5xl sm:text-6xl font-normal text-foreground mb-6 leading-tight"
-              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-            >
+            {/* Headline — Libre Baskerville per brand guidelines */}
+            <h1 className="font-serif text-5xl sm:text-6xl font-normal text-foreground mb-6 leading-tight">
               Healthcare in your hands
             </h1>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-md">
+            {/* Subhead — Inter Light */}
+            <p className="text-lg font-light text-muted-foreground mb-10 leading-relaxed max-w-md">
               cadu helps compare and contrast options<br />
               to make healthcare affordable for you
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-5">
               <Link to={createPageUrl("Onboarding")}>
-                <Button className="px-10 py-6 text-base rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-normal">
+                <Button className="px-10 py-6 text-base rounded-lg bg-cadu-blue hover:bg-cadu-blue/90 text-white font-normal tracking-wide">
                   Get Started
                 </Button>
               </Link>
-              <Link to={createPageUrl("Calculators")} className="text-sm text-primary hover:underline flex items-center gap-1">
+              <Link to={createPageUrl("Calculators")} className="text-sm text-cadu-blue hover:underline font-normal">
                 Financial Calculators →
               </Link>
             </div>
@@ -61,10 +68,10 @@ export default function Home() {
               { icon: Shield, stat: "No impact", label: "On your credit score" },
             ].map(({ icon: Icon, stat, label }) => (
               <div key={label} className="flex items-center gap-4">
-                <Icon className="w-5 h-5 text-primary flex-shrink-0" />
+                <Icon className="w-5 h-5 text-cadu-green flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-foreground">{stat}</p>
-                  <p className="text-sm text-muted-foreground">{label}</p>
+                  <p className="font-medium text-foreground">{stat}</p>
+                  <p className="text-sm font-light text-muted-foreground">{label}</p>
                 </div>
               </div>
             ))}
@@ -74,8 +81,8 @@ export default function Home() {
 
       <footer className="border-t border-border px-8 py-5">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-muted-foreground">
-            © 2026 Cadu · Short for Caduceus · Healthcare Finance Marketplace
+          <p className="text-xs font-light text-muted-foreground">
+            © 2026 Cadu · Healthcare Finance Marketplace
           </p>
         </div>
       </footer>
