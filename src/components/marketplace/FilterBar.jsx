@@ -76,7 +76,9 @@ export default function FilterBar({ filters, onFilterChange, onReset }) {
             <SelectItem value="match">Best Match</SelectItem>
             <SelectItem value="apr">Lowest APR</SelectItem>
             <SelectItem value="rating">Highest Rated</SelectItem>
-            <SelectItem value="amount">Loan Amount</SelectItem>
+            <SelectItem value="amount">Highest Loan Amount</SelectItem>
+            <SelectItem value="funding">Fastest Funding</SelectItem>
+            <SelectItem value="approval">Highest Approval Rate</SelectItem>
           </SelectContent>
         </Select>
 
