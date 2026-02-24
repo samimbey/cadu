@@ -52,6 +52,7 @@ import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Home from './pages/Home';
 import About from './pages/About';
+import Privacy from './pages/Privacy';
 
 
 export const PAGES = {
@@ -60,6 +61,7 @@ export const PAGES = {
     "Onboarding": Onboarding,
     "Home": Home,
     "About": About,
+    "Privacy": Privacy,
 }
 
 export const pagesConfig = {
