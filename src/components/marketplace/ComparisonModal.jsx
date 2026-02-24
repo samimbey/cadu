@@ -70,6 +70,21 @@ export default function ComparisonModal({ isOpen, onClose, options }) {
                   </td>
                 ))}
               </tr>
+              <tr className="border-b bg-muted/30">
+                <td className="py-4 px-2 text-sm font-medium">User Reviews</td>
+                {options.map((option) => (
+                  <td key={option.id} className="text-center py-4 px-2">
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="flex items-center gap-1">
+                        {[1,2,3,4,5].map(i => (
+                          <Star key={i} className={cn("w-3.5 h-3.5", i <= Math.round(option.rating) ? "text-amber-400 fill-amber-400" : "text-muted-foreground")} />
+                        ))}
+                      </div>
+                      <span className="text-xs text-muted-foreground">{option.rating} · {option.reviews.toLocaleString()} reviews</span>
+                    </div>
+                  </td>
+                ))}
+              </tr>
               {comparisonFields.map((field) => (
                 <tr key={field.key} className="border-b hover:bg-muted/20">
                   <td className="py-4 px-2 text-sm font-medium text-muted-foreground">
