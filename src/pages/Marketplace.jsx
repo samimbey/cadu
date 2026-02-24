@@ -362,17 +362,7 @@ export default function Marketplace() {
               </Link>
             </div>
             
-            <div className="flex items-center gap-3">
-              <Link to={createPageUrl("Calculators")} className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block">
-                Calculators
-              </Link>
-              <Link to={createPageUrl("Onboarding")}>
-                <Button variant="outline" size="sm">
-                  <Settings className="w-4 h-4 mr-1" />
-                  <span className="hidden sm:inline">Update Preferences</span>
-                </Button>
-              </Link>
-            </div>
+            <NavMenu />
           </div>
         </div>
       </header>
