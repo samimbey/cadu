@@ -33,7 +33,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-xl bg-cadu-light flex items-center justify-center p-2">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center p-2">
                 <img 
                   src={option.logo} 
                   alt={option.name}

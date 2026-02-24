@@ -30,10 +30,10 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
       className="space-y-8"
     >
       <div className="text-center space-y-2">
-        <h2 className="font-serif text-2xl sm:text-3xl font-normal text-foreground">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
           Almost there!
         </h2>
-        <p className="text-muted-foreground font-light">
+        <p className="text-muted-foreground">
           A few more details to personalize your options
         </p>
       </div>

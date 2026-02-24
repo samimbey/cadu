@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, DollarSign, TrendingUp, BarChart2, ArrowRight } from "lucide-react";
-import CaduLogo from "@/components/CaduLogo";
 
 import LoanPaymentCalc from "@/components/calculators/LoanPaymentCalc";
 import AffordabilityCalc from "@/components/calculators/AffordabilityCalc";
@@ -44,7 +43,9 @@ export default function Calculators() {
       <header className="border-b border-border px-6 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link to={createPageUrl("Home")}>
-            <CaduLogo size="md" />
+            <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
+              cadu
+            </span>
           </Link>
           <nav className="flex items-center gap-4">
             <Link to={createPageUrl("Marketplace")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -66,7 +67,7 @@ export default function Calculators() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-10"
         >
-          <h1 className="font-serif text-4xl font-normal text-foreground mb-3">
+          <h1 className="text-4xl font-normal text-foreground mb-3" style={{ fontFamily: "Georgia, serif" }}>
             Financial Calculators
           </h1>
           <p className="text-muted-foreground max-w-xl">
