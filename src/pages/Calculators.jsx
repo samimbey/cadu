@@ -48,16 +48,7 @@ export default function Calculators() {
               cadu
             </span>
           </Link>
-          <nav className="flex items-center gap-4">
-            <Link to={createPageUrl("Marketplace")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Marketplace
-            </Link>
-            <Link to={createPageUrl("Onboarding")}>
-              <span className="text-sm text-primary font-medium flex items-center gap-1 hover:underline">
-                Get Started <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </Link>
-          </nav>
+          <NavMenu />
         </div>
       </header>
 

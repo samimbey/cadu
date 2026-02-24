@@ -42,11 +42,7 @@ export default function About() {
               cadu
             </span>
           </Link>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to={createPageUrl("Marketplace")} className="hover:text-foreground transition-colors">Marketplace</Link>
-            <Link to={createPageUrl("Calculators")} className="hover:text-foreground transition-colors">Calculators</Link>
-            <Link to={createPageUrl("About")} className="text-foreground font-medium">About</Link>
-          </nav>
+          <NavMenu />
         </div>
       </header>
 
