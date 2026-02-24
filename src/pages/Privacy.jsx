@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
+import NavMenu from "@/components/marketplace/NavMenu";
 
 const sections = [
   {

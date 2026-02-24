@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, DollarSign, TrendingUp, BarChart2, ArrowRight } from "lucide-react";
+import NavMenu from "@/components/marketplace/NavMenu";
 
 import LoanPaymentCalc from "@/components/calculators/LoanPaymentCalc";
 import AffordabilityCalc from "@/components/calculators/AffordabilityCalc";
