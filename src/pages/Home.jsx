@@ -61,12 +61,7 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="flex-1 flex justify-center lg:justify-end"
             >
-              <img
-                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&h=500&fit=crop&crop=center"
-                alt="Person exploring healthcare finance options"
-                className="w-full max-w-sm lg:max-w-md rounded-3xl object-cover shadow-sm"
-                style={{ aspectRatio: "4/3" }}
-              />
+              <HeroIllustration />
             </motion.div>
           </div>
 
