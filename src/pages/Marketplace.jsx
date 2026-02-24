@@ -133,7 +133,7 @@ const financeOptions = [
     applicationTime: "Minutes",
     fundingTime: "Instant",
     features: ["No credit check", "0% interest", "Flexible payments", "Hospital partnerships"],
-    applyUrl: "https://www.accessonemedcard.com/",
+    applyUrl: "https://accessonepay.com/patients/",
     procedures: ["general_medical", "dental", "vision", "other"],
     matchScore: 92,
     featured: false,
