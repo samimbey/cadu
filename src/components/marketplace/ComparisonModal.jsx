@@ -9,8 +9,8 @@ export default function ComparisonModal({ isOpen, onClose, options }) {
 
   const comparisonFields = [
     { key: "aprRange", label: "APR Range" },
-    { key: "minCredit", label: "Min. Credit Score" },
     { key: "loanRange", label: "Loan Amount" },
+    { key: "minCredit", label: "Min. Credit" },
     { key: "promoOffer", label: "Promo Offer" },
     { key: "repaymentTerms", label: "Repayment Terms" },
     { key: "applicationTime", label: "Application Time" },
