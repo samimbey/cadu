@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Settings, RefreshCw, Scale } from "lucide-react";
 
+import { Helmet } from "react-helmet-async";
 import FinanceCard from "@/components/marketplace/FinanceCard";
 import ComparisonModal from "@/components/marketplace/ComparisonModal";
 import FilterBar from "@/components/marketplace/FilterBar";

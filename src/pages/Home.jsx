@@ -3,6 +3,7 @@ import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { Shield, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Helmet } from "react-helmet-async";
 
 export default function Home() {
   return (
