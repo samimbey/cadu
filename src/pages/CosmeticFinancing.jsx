@@ -36,6 +36,24 @@ export default function CosmeticFinancing() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(({ q, a }) => ({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": { "@type": "Answer", "text": a }
+          }))
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "Cadu — Cosmetic Surgery Financing",
+          "url": "https://cadu.health/cosmetic-financing",
+          "description": "Compare cosmetic surgery financing options. Find low-rate loans and payment plans for rhinoplasty, breast augmentation, liposuction, and more.",
+          "serviceType": "Cosmetic Surgery Financing",
+          "areaServed": "US"
+        })}</script>
         <title>Cosmetic Surgery Financing — Compare Payment Plans | Cadu</title>
         <meta name="description" content="Compare cosmetic surgery financing and payment plans. Find 0% APR loans for rhinoplasty, breast augmentation, liposuction, and more. Bad credit options available." />
       </Helmet>
