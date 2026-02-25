@@ -22,6 +22,7 @@ const procedureLinks = [
 
 export default function NavMenu() {
   const [open, setOpen] = useState(false);
+  const [proceduresOpen, setProceduresOpen] = useState(false);
 
   return (
     <>
