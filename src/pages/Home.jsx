@@ -8,6 +8,10 @@ import { Helmet } from "react-helmet-async";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      <Helmet>
+        <title>Cadu — Healthcare Finance Marketplace</title>
+        <meta name="description" content="Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers for dental, cosmetic, vision, and more." />
+      </Helmet>
       {/* Header */}
       <header className="border-b border-border px-8 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">

@@ -351,6 +351,10 @@ export default function Marketplace() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Healthcare Financing Options — Cadu Marketplace</title>
+        <meta name="description" content="Browse and compare personalized healthcare financing options. Find medical loans, payment plans, and 0% APR offers matched to your credit score and procedure." />
+      </Helmet>
       {/* Header */}
       <header className="sticky top-0 z-10 bg-white border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-4">
