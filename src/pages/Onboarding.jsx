@@ -4,6 +4,7 @@ import { base44 } from "@/api/base44Client";
 import { createPageUrl } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Shield, DollarSign } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 import ProgressSteps from "@/components/onboarding/ProgressSteps";
 import AmountStep from "@/components/onboarding/AmountStep";

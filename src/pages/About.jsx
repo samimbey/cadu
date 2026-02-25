@@ -3,6 +3,7 @@ import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import NavMenu from "@/components/marketplace/NavMenu";
+import { Helmet } from "react-helmet-async";
 
 const stats = [
   {
