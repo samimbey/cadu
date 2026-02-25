@@ -11,6 +11,28 @@ export default function Home() {
       <Helmet>
         <title>Cadu — Healthcare Finance Marketplace</title>
         <meta name="description" content="Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers for dental, cosmetic, vision, and more." />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Cadu",
+          "url": "https://cadu.health",
+          "description": "Healthcare Finance Marketplace — compare medical loans and payment plans from top lenders.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://cadu.health/marketplace",
+            "query-input": "required name=search_term_string"
+          }
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "Cadu",
+          "url": "https://cadu.health",
+          "description": "Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers.",
+          "serviceType": "Healthcare Financing Marketplace",
+          "areaServed": "US",
+          "audience": { "@type": "Audience", "audienceType": "Patients seeking healthcare financing" }
+        })}</script>
       </Helmet>
       {/* Header */}
       <header className="border-b border-border px-8 py-5">
