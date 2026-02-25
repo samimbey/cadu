@@ -9,7 +9,7 @@ const procedureOptions = [
   { value: "vision", label: "Vision/LASIK", icon: Eye, color: "bg-violet-100 text-violet-600" },
   { value: "fertility", label: "Fertility", icon: Baby, color: "bg-rose-100 text-rose-600" },
   { value: "bariatric", label: "Weight Loss", icon: Scale, color: "bg-emerald-100 text-emerald-600" },
-  { value: "veterinary", label: "Veterinary", icon: Heart, color: "bg-amber-100 text-amber-600" },
+  { value: "cardiology", label: "Cardiology", icon: Heart, color: "bg-amber-100 text-amber-600" },
   { value: "hearing", label: "Hearing", icon: Ear, color: "bg-indigo-100 text-indigo-600" },
   { value: "general_medical", label: "General Medical", icon: Stethoscope, color: "bg-teal-100 text-teal-600" },
   { value: "other", label: "Other", icon: MoreHorizontal, color: "bg-slate-100 text-slate-600" },
