@@ -16,7 +16,6 @@ const procedureLinks = [
   { label: "Dental Financing", page: "DentalFinancing" },
   { label: "Cosmetic Surgery", page: "CosmeticFinancing" },
   { label: "Vision & LASIK", page: "VisionFinancing" },
-  { label: "Veterinary Care", page: "VeterinaryFinancing" },
   { label: "Fertility & IVF", page: "FertilityFinancing" },
 ];
 

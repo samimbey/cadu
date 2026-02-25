@@ -55,7 +55,6 @@ import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import DentalFinancing from './pages/DentalFinancing';
 import CosmeticFinancing from './pages/CosmeticFinancing';
-import VeterinaryFinancing from './pages/VeterinaryFinancing';
 import VisionFinancing from './pages/VisionFinancing';
 import FertilityFinancing from './pages/FertilityFinancing';
 import __Layout from './Layout.jsx';
@@ -70,7 +69,6 @@ export const PAGES = {
     "Privacy": Privacy,
     "DentalFinancing": DentalFinancing,
     "CosmeticFinancing": CosmeticFinancing,
-    "VeterinaryFinancing": VeterinaryFinancing,
     "VisionFinancing": VisionFinancing,
     "FertilityFinancing": FertilityFinancing,
 }
