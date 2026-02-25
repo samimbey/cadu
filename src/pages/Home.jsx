@@ -87,6 +87,7 @@ export default function Home() {
                 { label: "Cosmetic Surgery", page: "CosmeticFinancing" },
                 { label: "Vision & LASIK", page: "VisionFinancing" },
                 { label: "Fertility & IVF", page: "FertilityFinancing" },
+                { label: "General Surgery", page: "GeneralSurgeryFinancing" },
               ].map(({ label, page }) => (
                 <Link
                   key={page}
