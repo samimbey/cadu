@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft, Smile, Sparkles, Eye, Baby, Scale, Heart, Ear, Stethoscope, MoreHorizontal } from "lucide-react";
+import { ArrowRight, ArrowLeft, Smile, Sparkles, Eye, Baby, Scale, Ear, Stethoscope, MoreHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const procedureOptions = [
