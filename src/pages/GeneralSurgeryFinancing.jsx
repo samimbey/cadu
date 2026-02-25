@@ -43,6 +43,16 @@ export default function GeneralSurgeryFinancing() {
         <title>General Surgery Financing — Compare Payment Plans | Cadu</title>
         <meta name="description" content="Compare financing options for general surgery. Find low-rate medical loans and payment plans for hernia repair, joint replacement, spine surgery, and more." />
         <meta name="keywords" content="general surgery financing, surgery payment plans, medical loans for surgery, hernia repair financing, joint replacement financing" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cadu.health/general-surgery-financing" />
+        <meta property="og:title" content="General Surgery Financing — Compare Payment Plans | Cadu" />
+        <meta property="og:description" content="Compare financing options for general surgery. Find low-rate medical loans and payment plans for hernia repair, joint replacement, spine surgery, and more." />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
+        <meta property="og:site_name" content="Cadu" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="General Surgery Financing — Compare Payment Plans | Cadu" />
+        <meta name="twitter:description" content="Compare financing for general surgery. Find low-rate medical loans for hernia repair, joint replacement, spine surgery, and more." />
+        <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
