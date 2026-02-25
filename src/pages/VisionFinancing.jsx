@@ -36,6 +36,16 @@ export default function VisionFinancing() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cadu.health/vision-financing" />
+        <meta property="og:title" content="Vision & LASIK Financing — Compare Eye Care Payment Plans | Cadu" />
+        <meta property="og:description" content="Compare LASIK financing and vision care payment plans. Find 0% APR options for laser eye surgery, cataract surgery, glasses, and contacts." />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
+        <meta property="og:site_name" content="Cadu" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vision & LASIK Financing — Compare Eye Care Payment Plans | Cadu" />
+        <meta name="twitter:description" content="Compare vision care financing. Find 0% APR plans for LASIK, glasses, and eye surgery." />
+        <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",

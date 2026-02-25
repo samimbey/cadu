@@ -36,6 +36,16 @@ export default function FertilityFinancing() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cadu.health/fertility-financing" />
+        <meta property="og:title" content="Fertility Financing & IVF Loans — Compare Payment Plans | Cadu" />
+        <meta property="og:description" content="Compare fertility financing options and IVF loans. Find personal loans up to $50,000 for IVF, IUI, egg freezing, and other fertility treatments." />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
+        <meta property="og:site_name" content="Cadu" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Fertility Financing & IVF Loans — Compare Payment Plans | Cadu" />
+        <meta name="twitter:description" content="Compare IVF and fertility financing. Find low-rate loans for IVF, egg freezing, and surrogacy." />
+        <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
