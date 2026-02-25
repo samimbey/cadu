@@ -73,6 +73,32 @@ export default function Home() {
             </motion.div>
           </div>
 
+          {/* Browse by Procedure */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mt-16"
+          >
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">Browse by procedure</p>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: "Dental Financing", page: "DentalFinancing" },
+                { label: "Cosmetic Surgery", page: "CosmeticFinancing" },
+                { label: "Vision & LASIK", page: "VisionFinancing" },
+                { label: "Fertility & IVF", page: "FertilityFinancing" },
+              ].map(({ label, page }) => (
+                <Link
+                  key={page}
+                  to={createPageUrl(page)}
+                  className="px-4 py-2 rounded-full border border-border text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Trust stats */}
           <motion.div
             initial={{ opacity: 0 }}
