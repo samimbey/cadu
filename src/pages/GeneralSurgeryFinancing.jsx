@@ -43,6 +43,24 @@ export default function GeneralSurgeryFinancing() {
         <title>General Surgery Financing — Compare Payment Plans | Cadu</title>
         <meta name="description" content="Compare financing options for general surgery. Find low-rate medical loans and payment plans for hernia repair, joint replacement, spine surgery, and more." />
         <meta name="keywords" content="general surgery financing, surgery payment plans, medical loans for surgery, hernia repair financing, joint replacement financing" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(({ q, a }) => ({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": { "@type": "Answer", "text": a }
+          }))
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "Cadu — General Surgery Financing",
+          "url": "https://cadu.health/general-surgery-financing",
+          "description": "Compare financing options for general surgery. Find low-rate medical loans and payment plans for hernia repair, joint replacement, spine surgery, and more.",
+          "serviceType": "General Surgery Financing",
+          "areaServed": "US"
+        })}</script>
       </Helmet>
 
       <header className="sticky top-0 z-10 bg-white border-b border-border">
