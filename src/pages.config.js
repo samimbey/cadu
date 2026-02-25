@@ -57,6 +57,7 @@ import DentalFinancing from './pages/DentalFinancing';
 import CosmeticFinancing from './pages/CosmeticFinancing';
 import VisionFinancing from './pages/VisionFinancing';
 import FertilityFinancing from './pages/FertilityFinancing';
+import GeneralSurgeryFinancing from './pages/GeneralSurgeryFinancing';
 import __Layout from './Layout.jsx';
 
 
@@ -71,6 +72,7 @@ export const PAGES = {
     "CosmeticFinancing": CosmeticFinancing,
     "VisionFinancing": VisionFinancing,
     "FertilityFinancing": FertilityFinancing,
+    "GeneralSurgeryFinancing": GeneralSurgeryFinancing,
 }
 
 export const pagesConfig = {
