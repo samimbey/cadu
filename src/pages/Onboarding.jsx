@@ -95,6 +95,10 @@ export default function Onboarding() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Find Healthcare Financing — Cadu</title>
+        <meta name="description" content="Answer a few quick questions to get personalized healthcare financing options matched to your credit profile and procedure type. No impact on your credit score." />
+      </Helmet>
       {/* Header */}
       <header className="py-6 px-4">
         <div className="max-w-2xl mx-auto flex items-center justify-center">

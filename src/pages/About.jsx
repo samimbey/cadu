@@ -35,6 +35,10 @@ const stats = [
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>About Cadu — Healthcare Finance Marketplace</title>
+        <meta name="description" content="Learn about Cadu's mission to make healthcare affordable. We help patients compare medical financing options so you can focus on getting better, not worrying about bills." />
+      </Helmet>
       {/* Header */}
       <header className="border-b border-border px-6 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">

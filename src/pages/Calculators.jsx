@@ -41,6 +41,10 @@ export default function Calculators() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Healthcare Finance Calculators — Cadu</title>
+        <meta name="description" content="Use free healthcare finance calculators to estimate monthly payments, check affordability, and compare APR impact before applying for a medical loan." />
+      </Helmet>
       {/* Header */}
       <header className="border-b border-border px-6 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
