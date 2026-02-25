@@ -354,6 +354,16 @@ export default function Marketplace() {
       <Helmet>
         <title>Healthcare Financing Options — Cadu Marketplace</title>
         <meta name="description" content="Browse and compare personalized healthcare financing options. Find medical loans, payment plans, and 0% APR offers matched to your credit score and procedure." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cadu.health/marketplace" />
+        <meta property="og:title" content="Healthcare Financing Options — Cadu Marketplace" />
+        <meta property="og:description" content="Browse and compare personalized healthcare financing options. Find medical loans, payment plans, and 0% APR offers matched to your credit score and procedure." />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
+        <meta property="og:site_name" content="Cadu" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Healthcare Financing Options — Cadu Marketplace" />
+        <meta name="twitter:description" content="Compare personalized healthcare financing from top lenders. Find medical loans and 0% APR offers." />
+        <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
       </Helmet>
       {/* Header */}
       <header className="sticky top-0 z-10 bg-white border-b border-border">

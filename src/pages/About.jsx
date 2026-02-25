@@ -38,6 +38,16 @@ export default function About() {
       <Helmet>
         <title>About Cadu — Healthcare Finance Marketplace</title>
         <meta name="description" content="Learn about Cadu's mission to make healthcare affordable. We help patients compare medical financing options so you can focus on getting better, not worrying about bills." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cadu.health/about" />
+        <meta property="og:title" content="About Cadu — Healthcare Finance Marketplace" />
+        <meta property="og:description" content="Learn about Cadu's mission to make healthcare affordable. We help patients compare medical financing options so you can focus on getting better, not worrying about bills." />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
+        <meta property="og:site_name" content="Cadu" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Cadu — Healthcare Finance Marketplace" />
+        <meta name="twitter:description" content="Learn about Cadu's mission to make healthcare affordable for everyone." />
+        <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
       </Helmet>
       {/* Header */}
       <header className="border-b border-border px-6 py-5">

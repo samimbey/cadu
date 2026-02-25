@@ -11,6 +11,18 @@ export default function Home() {
       <Helmet>
         <title>Cadu — Healthcare Finance Marketplace</title>
         <meta name="description" content="Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers for dental, cosmetic, vision, and more." />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cadu.health" />
+        <meta property="og:title" content="Cadu — Healthcare Finance Marketplace" />
+        <meta property="og:description" content="Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers for dental, cosmetic, vision, and more." />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
+        <meta property="og:site_name" content="Cadu" />
+        {/* Twitter / X */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cadu — Healthcare Finance Marketplace" />
+        <meta name="twitter:description" content="Compare healthcare financing options from top lenders. Find medical loans, payment plans, and 0% APR offers." />
+        <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
