@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, LayoutGrid, Calculator, Info, Lock, Settings } from "lucide-react";
+import { Menu, X, LayoutGrid, Calculator, Info, Lock, Settings, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
@@ -10,6 +10,14 @@ const navItems = [
   { label: "About", page: "About", icon: Info },
   { label: "Privacy", page: "Privacy", icon: Lock },
   { label: "Update Preferences", page: "Onboarding", icon: Settings },
+];
+
+const procedureLinks = [
+  { label: "Dental Financing", page: "DentalFinancing" },
+  { label: "Cosmetic Surgery", page: "CosmeticFinancing" },
+  { label: "Vision & LASIK", page: "VisionFinancing" },
+  { label: "Veterinary Care", page: "VeterinaryFinancing" },
+  { label: "Fertility & IVF", page: "FertilityFinancing" },
 ];
 
 export default function NavMenu() {
