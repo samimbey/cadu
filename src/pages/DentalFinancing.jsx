@@ -36,6 +36,24 @@ export default function DentalFinancing() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(({ q, a }) => ({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": { "@type": "Answer", "text": a }
+          }))
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "Cadu — Dental Financing",
+          "url": "https://cadu.health/dental-financing",
+          "description": "Compare dental financing options and payment plans from top lenders. Find 0% APR offers for crowns, implants, braces, and more.",
+          "serviceType": "Dental Financing",
+          "areaServed": "US"
+        })}</script>
         <title>Dental Financing — Compare Payment Plans & Loans | Cadu</title>
         <meta name="description" content="Compare dental financing options including 0% APR payment plans, bad credit dental loans, and instant approval options. Find the best dental payment plan for implants, braces, crowns & more." />
       </Helmet>
