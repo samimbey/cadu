@@ -48,6 +48,14 @@ export default function CosmeticFinancing() {
         <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cadu.health" },
+            { "@type": "ListItem", "position": 2, "name": "Cosmetic Surgery Financing", "item": "https://cadu.health/cosmetic-financing" }
+          ]
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "FAQPage",
           "mainEntity": faqs.map(({ q, a }) => ({
             "@type": "Question",

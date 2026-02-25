@@ -49,30 +49,30 @@
  */
 import About from './pages/About';
 import Calculators from './pages/Calculators';
+import CosmeticFinancing from './pages/CosmeticFinancing';
+import DentalFinancing from './pages/DentalFinancing';
+import FertilityFinancing from './pages/FertilityFinancing';
+import GeneralSurgeryFinancing from './pages/GeneralSurgeryFinancing';
 import Home from './pages/Home';
 import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
-import DentalFinancing from './pages/DentalFinancing';
-import CosmeticFinancing from './pages/CosmeticFinancing';
 import VisionFinancing from './pages/VisionFinancing';
-import FertilityFinancing from './pages/FertilityFinancing';
-import GeneralSurgeryFinancing from './pages/GeneralSurgeryFinancing';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "About": About,
     "Calculators": Calculators,
+    "CosmeticFinancing": CosmeticFinancing,
+    "DentalFinancing": DentalFinancing,
+    "FertilityFinancing": FertilityFinancing,
+    "GeneralSurgeryFinancing": GeneralSurgeryFinancing,
     "Home": Home,
     "Marketplace": Marketplace,
     "Onboarding": Onboarding,
     "Privacy": Privacy,
-    "DentalFinancing": DentalFinancing,
-    "CosmeticFinancing": CosmeticFinancing,
     "VisionFinancing": VisionFinancing,
-    "FertilityFinancing": FertilityFinancing,
-    "GeneralSurgeryFinancing": GeneralSurgeryFinancing,
 }
 
 export const pagesConfig = {
