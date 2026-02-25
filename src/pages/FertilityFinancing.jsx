@@ -36,6 +36,24 @@ export default function FertilityFinancing() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(({ q, a }) => ({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": { "@type": "Answer", "text": a }
+          }))
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "Cadu — Fertility & IVF Financing",
+          "url": "https://cadu.health/fertility-financing",
+          "description": "Compare IVF and fertility treatment financing. Find low-rate loans and payment plans for IVF, egg freezing, surrogacy, and more.",
+          "serviceType": "Fertility Financing",
+          "areaServed": "US"
+        })}</script>
         <title>Fertility Financing & IVF Loans — Compare Payment Plans | Cadu</title>
         <meta name="description" content="Compare fertility financing options and IVF loans. Find personal loans up to $50,000 for IVF, IUI, egg freezing, and other fertility treatments. Check rates without affecting your credit." />
       </Helmet>
