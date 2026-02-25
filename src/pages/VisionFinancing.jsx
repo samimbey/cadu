@@ -36,6 +36,24 @@ export default function VisionFinancing() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(({ q, a }) => ({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": { "@type": "Answer", "text": a }
+          }))
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "Cadu — Vision & LASIK Financing",
+          "url": "https://cadu.health/vision-financing",
+          "description": "Compare vision care financing options. Find 0% APR plans and low-rate loans for LASIK, glasses, contacts, and eye surgery.",
+          "serviceType": "Vision Care Financing",
+          "areaServed": "US"
+        })}</script>
         <title>Vision & LASIK Financing — Compare Eye Care Payment Plans | Cadu</title>
         <meta name="description" content="Compare LASIK financing and vision care payment plans. Find 0% APR options for laser eye surgery, cataract surgery, glasses, and contacts. Apply with no credit impact." />
       </Helmet>
