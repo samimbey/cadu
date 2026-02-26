@@ -528,12 +528,16 @@ export default function Marketplace() {
           {processedOptions.map((option, index) => (
             <FinanceCard
               key={option.id}
-              option={option}
+              option={{
+                ...option,
+                matchScore: isOnboarded ? option.matchScore : null,
+              }}
               index={index}
               isSelected={false}
               onSelect={() => {}}
               onCompare={toggleCompare}
               isComparing={compareList.some(o => o.id === option.id)}
+              hideMatchScore={!isOnboarded}
             />
           ))}
         </div>
