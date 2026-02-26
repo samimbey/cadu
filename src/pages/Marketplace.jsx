@@ -263,6 +263,20 @@ export default function Marketplace() {
 
   const [compareList, setCompareList] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
+  const [dismissBanner, setDismissBanner] = useState(false);
+
+  // Check if user has completed onboarding
+  const { data: userProfile } = useQuery({
+    queryKey: ['userProfile'],
+    queryFn: async () => {
+      const user = await base44.auth.me();
+      if (!user?.email) return null;
+      const profiles = await base44.entities.UserProfile.filter({ email: user.email });
+      return profiles[0] || null;
+    },
+  });
+
+  const isOnboarded = userProfile?.onboarding_completed;
 
   // Calculate match scores based on user profile
   const calculateMatchScore = (option) => {
