@@ -127,9 +127,9 @@ export default function Onboarding() {
       <div className="flex-1 flex flex-col min-h-screen bg-white">
         {/* Mobile header */}
         <header className="lg:hidden py-6 px-4 flex justify-center">
-          <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
+          <Link to={createPageUrl("Home")} className="text-2xl font-light tracking-tight text-primary hover:opacity-70 transition-opacity" style={{ fontFamily: "Georgia, serif" }}>
             cadu
-          </span>
+          </Link>
         </header>
 
         {/* Desktop top spacing */}
