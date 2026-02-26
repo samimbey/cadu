@@ -62,9 +62,11 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
                 </div>
               </div>
             </div>
-            <Badge className={cn("font-semibold border", getMatchColor(option.matchScore))}>
-              {option.matchScore}% Match
-            </Badge>
+            {!hideMatchScore && option.matchScore && (
+              <Badge className={cn("font-semibold border", getMatchColor(option.matchScore))}>
+                {option.matchScore}% Match
+              </Badge>
+            )}
           </div>
 
           <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
