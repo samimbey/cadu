@@ -54,9 +54,9 @@ export default function Home() {
             cadu
           </span>
           <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to={createPageUrl("Marketplace")} className="hover:text-foreground transition-colors">Marketplace</Link>
             <Link to={createPageUrl("Calculators")} className="hover:text-foreground transition-colors">Calculators</Link>
             <Link to={createPageUrl("About")} className="hover:text-foreground transition-colors">About</Link>
+            <Link to={createPageUrl("Privacy")} className="hover:text-foreground transition-colors">Privacy</Link>
           </nav>
         </div>
       </header>
