@@ -75,7 +75,7 @@ export default function Home() {
                 Healthcare in your hands
               </h1>
               <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-md">
-                cadu helps compare and contrast options<br />
+                Cadu helps compare and contrast options<br />
                 to make healthcare affordable for you
               </p>
 

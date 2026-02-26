@@ -49,6 +49,7 @@
  */
 import About from './pages/About';
 import Calculators from './pages/Calculators';
+import ContactUs from './pages/ContactUs';
 import CosmeticFinancing from './pages/CosmeticFinancing';
 import DentalFinancing from './pages/DentalFinancing';
 import FertilityFinancing from './pages/FertilityFinancing';
@@ -58,13 +59,13 @@ import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import VisionFinancing from './pages/VisionFinancing';
-import ContactUs from './pages/ContactUs';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "About": About,
     "Calculators": Calculators,
+    "ContactUs": ContactUs,
     "CosmeticFinancing": CosmeticFinancing,
     "DentalFinancing": DentalFinancing,
     "FertilityFinancing": FertilityFinancing,
@@ -74,7 +75,6 @@ export const PAGES = {
     "Onboarding": Onboarding,
     "Privacy": Privacy,
     "VisionFinancing": VisionFinancing,
-    "ContactUs": ContactUs,
 }
 
 export const pagesConfig = {
