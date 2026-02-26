@@ -1,15 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, LayoutGrid, Calculator, Info, Lock, Settings, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, LayoutGrid, Home, Info, Lock, Settings, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navItems = [
+const marketplaceNavItems = [
   { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
-  { label: "Calculators", page: "Calculators", icon: Calculator },
   { label: "About", page: "About", icon: Info },
   { label: "Privacy", page: "Privacy", icon: Lock },
   { label: "Update Preferences", page: "Onboarding", icon: Settings },
+];
+
+const defaultNavItems = [
+  { label: "Home", page: "Home", icon: Home },
+  { label: "About", page: "About", icon: Info },
+  { label: "Privacy", page: "Privacy", icon: Lock },
+  { label: "Get Started", page: "Onboarding", icon: Settings },
 ];
 
 const procedureLinks = [
