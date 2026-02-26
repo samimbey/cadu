@@ -50,7 +50,7 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-border px-8 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <span className="text-3xl tracking-wide" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600, color: "#2E4FA3", letterSpacing: "2px" }}>
+          <span className="text-3xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
             cadu
           </span>
           <nav className="flex items-center gap-6 text-sm text-muted-foreground">
@@ -72,8 +72,8 @@ export default function Home() {
               className="max-w-2xl"
             >
               <h1
-                className="text-5xl sm:text-6xl text-foreground mb-6 leading-tight"
-                style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600 }}
+                className="text-5xl sm:text-6xl font-normal text-foreground mb-6 leading-tight"
+                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
                 Healthcare in your hands
               </h1>
@@ -162,7 +162,7 @@ export default function Home() {
       <footer className="border-t border-border px-8 py-5">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs text-muted-foreground">
-            © 2026 Cadu · Healthcare Finance Marketplace
+            © 2026 Cadu · Short for Caduceus · Healthcare Finance Marketplace
           </p>
         </div>
       </footer>

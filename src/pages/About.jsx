@@ -53,7 +53,7 @@ export default function About() {
       <header className="border-b border-border px-6 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link to={createPageUrl("Home")}>
-            <span className="text-2xl tracking-wide cursor-pointer" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600, color: "#2E4FA3", letterSpacing: "2px" }}>
+            <span className="text-2xl font-light tracking-tight text-primary cursor-pointer" style={{ fontFamily: "Georgia, serif" }}>
               cadu
             </span>
           </Link>
