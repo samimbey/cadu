@@ -249,12 +249,9 @@ const financeOptions = [
 
 export default function Marketplace() {
   const urlParams = new URLSearchParams(window.location.search);
-  const amount = parseInt(urlParams.get("amount"));
-  const credit = urlParams.get("credit");
-  const procedure = urlParams.get("procedure");
-  
-  // Check if user has completed onboarding
-  const isOnboarded = amount && credit && procedure;
+  const amount = parseInt(urlParams.get("amount")) || 5000;
+  const credit = urlParams.get("credit") || "good";
+  const procedure = urlParams.get("procedure") || "general_medical";
 
   const [filters, setFilters] = useState({
     sortBy: "match",
@@ -267,8 +264,6 @@ export default function Marketplace() {
 
   // Calculate match scores based on user profile
   const calculateMatchScore = (option) => {
-    if (!isOnboarded) return null; // No match scores if not onboarded
-    
     let score = option.matchScore;
     
     // Adjust based on credit score
