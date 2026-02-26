@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
+import { base44 } from "@/api/base44Client";
 import { Menu, X, LayoutGrid, Home, Info, Lock, Settings, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -29,7 +30,39 @@ const procedureLinks = [
 export default function NavMenu({ isMarketplace = false }) {
   const [open, setOpen] = useState(false);
   const [proceduresOpen, setProceduresOpen] = useState(false);
-  const navItems = isMarketplace ? marketplaceNavItems : defaultNavItems;
+  const [userProfile, setUserProfile] = useState(null);
+
+  useEffect(() => {
+    const loadUserProfile = async () => {
+      try {
+        const profiles = await base44.entities.UserProfile.list();
+        if (profiles.length > 0) {
+          setUserProfile(profiles[0]);
+        }
+      } catch (error) {
+        console.error("Error loading user profile:", error);
+      }
+    };
+
+    loadUserProfile();
+  }, []);
+
+  const getNavItems = () => {
+    if (isMarketplace) return marketplaceNavItems;
+    
+    const items = [...defaultNavItems];
+    if (userProfile?.onboarding_completed) {
+      items.splice(1, 0, {
+        label: "Your Personalized Options",
+        page: "Marketplace",
+        params: `?amount=${userProfile.desired_amount}&credit=${userProfile.credit_score_range}&procedure=${userProfile.procedure_type}`,
+        icon: LayoutGrid,
+      });
+    }
+    return items;
+  };
+
+  const navItems = getNavItems();
 
   return (
     <>
@@ -72,10 +105,10 @@ export default function NavMenu({ isMarketplace = false }) {
               </div>
 
               <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-                {navItems.map(({ label, page, icon: Icon }) => (
+                {navItems.map(({ label, page, params, icon: Icon }) => (
                   <Link
-                    key={page}
-                    to={createPageUrl(page)}
+                    key={page + (params || "")}
+                    to={params ? createPageUrl(page) + params : createPageUrl(page)}
                     onClick={() => setOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-foreground hover:bg-secondary transition-colors"
                   >
