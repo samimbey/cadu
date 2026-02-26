@@ -17,7 +17,7 @@ const financeOptions = [
   {
     id: "carecredit",
     name: "CareCredit",
-    logo: "https://logo.clearbit.com/carecredit.com",
+    logo: "https://logo.clearbit.com/carecredit.com?size=120",
     description: "The leading healthcare credit card for medical expenses, accepted at over 250,000 providers nationwide.",
     aprRange: "0% - 26.99%",
     minCredit: "good",
@@ -38,7 +38,7 @@ const financeOptions = [
   {
     id: "prosper",
     name: "Prosper Healthcare Lending",
-    logo: "https://www.prosper.com/wp-content/uploads/2026/02/money-hero.svg",
+    logo: "https://logo.clearbit.com/prosper.com?size=120",
     description: "Personal loans specifically designed for healthcare procedures with competitive rates and flexible terms.",
     aprRange: "6.99% - 35.99%",
     minCredit: "fair",
@@ -59,7 +59,7 @@ const financeOptions = [
   {
     id: "lendingclub",
     name: "LendingClub",
-    logo: "https://www.lendingclub.com/images/lc-logo.svg",
+    logo: "https://logo.clearbit.com/lendingclub.com?size=120",
     description: "America's largest online lending marketplace offering personal loans for medical expenses.",
     aprRange: "8.98% - 35.99%",
     minCredit: "fair",
@@ -101,7 +101,7 @@ const financeOptions = [
   {
     id: "greensky",
     name: "GreenSky",
-    logo: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=100&h=100&fit=crop",
+    logo: "https://logo.clearbit.com/greensky.com?size=120",
     description: "Flexible payment plans for healthcare with quick approval and convenient mobile access.",
     aprRange: "0% - 26.99%",
     minCredit: "good",
@@ -122,7 +122,7 @@ const financeOptions = [
   {
     id: "accessone",
     name: "AccessOne",
-    logo: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=100&h=100&fit=crop",
+    logo: "https://logo.clearbit.com/accessonepay.com?size=120",
     description: "Patient-friendly payment plans with no credit check required and flexible terms.",
     aprRange: "0%",
     minCredit: "poor",
@@ -143,7 +143,7 @@ const financeOptions = [
   {
     id: "scratchpay",
     name: "Scratchpay",
-    logo: "https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=100&h=100&fit=crop",
+    logo: "https://scratchpay.com/images/logo.svg",
     description: "Simple, transparent financing for veterinary and healthcare costs with no hidden fees.",
     aprRange: "0% - 24.99%",
     minCredit: "fair",
@@ -164,7 +164,7 @@ const financeOptions = [
   {
     id: "sunbit",
     name: "Sunbit",
-    logo: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=100&h=100&fit=crop",
+    logo: "https://logo.clearbit.com/sunbit.com?size=120",
     description: "Buy now, pay later technology for healthcare with high approval rates.",
     aprRange: "0% - 35.99%",
     minCredit: "poor",
@@ -206,7 +206,7 @@ const financeOptions = [
   {
     id: "payzen",
     name: "PayZen",
-    logo: "https://payzen.com/wp-content/uploads/2024/01/payzen-logo.svg",
+    logo: "https://payzen.com/wp-content/uploads/2022/08/payzen-logo.svg",
     description: "AI-powered patient financing with personalized, interest-free payment plans tailored to each patient's ability to pay. #1 ranked in Patient Financing Services by KLAS Research.",
     aprRange: "0%",
     minCredit: "poor",
@@ -227,7 +227,7 @@ const financeOptions = [
   {
     id: "patientfi",
     name: "PatientFi",
-    logo: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=100&h=40&fit=crop",
+    logo: "https://logo.clearbit.com/patientfi.com?size=120",
     description: "The friendly way to pay for healthcare — quick approvals, soft credit checks, and flexible financing for a wide range of procedures.",
     aprRange: "6.99% - 32.99%",
     minCredit: "good",
