@@ -247,7 +247,7 @@ export default function Privacy() {
 
       <footer className="border-t border-border px-6 py-5 mt-8">
         <div className="max-w-5xl mx-auto flex flex-wrap gap-4 items-center justify-between">
-          <p className="text-xs text-muted-foreground">© 2026 Cadu · Healthcare Finance Marketplace</p>
+          <p className="text-xs text-muted-foreground">© 2026 Cadu, LLC · Healthcare Finance Marketplace</p>
           <Link to={createPageUrl("About")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
             About Us
           </Link>
