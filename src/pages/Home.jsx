@@ -28,11 +28,11 @@ export default function Home() {
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "Cadu",
-          "url": "https://cadu.health",
+          "url": "https://cadunow.com",
           "description": "Healthcare Finance Marketplace — compare medical loans and payment plans from top lenders.",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://cadu.health/marketplace",
+            "target": "https://cadunow.com/marketplace",
             "query-input": "required name=search_term_string"
           }
         })}</script>
