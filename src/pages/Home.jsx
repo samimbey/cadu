@@ -105,6 +105,15 @@ export default function Home() {
             </motion.div>
           </div>
 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="mt-8 mb-6"
+          >
+            <p className="text-sm text-muted-foreground italic">see what Cadu can do for you</p>
+          </motion.div>
+
           {/* Browse by Procedure */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
