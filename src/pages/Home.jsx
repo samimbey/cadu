@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Helmet>
+        <meta name="google-site-verification" content="fzrmIhnwgll1w_aaio5lIKoyUgMNn7zHKFZzWIQnjME" />
         <title>Cadu — Healthcare Finance Marketplace</title>
         <meta name="description" content="Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers for dental, cosmetic, vision, and more." />
         {/* Open Graph */}
