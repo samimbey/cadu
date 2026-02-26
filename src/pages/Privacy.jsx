@@ -243,12 +243,6 @@ export default function Privacy() {
             </div>
           </div>
         </div>
-
-        <div className="mt-16 pt-8 border-t border-border text-xs text-muted-foreground">
-          <p>
-            <strong>Important Disclaimer:</strong> This Privacy Policy has been prepared as a general template. Please have an attorney review this policy before publishing to ensure it complies with all applicable laws and regulations in your jurisdiction and accurately reflects your specific business practices.
-          </p>
-        </div>
       </main>
 
       <footer className="border-t border-border px-6 py-5 mt-8">
