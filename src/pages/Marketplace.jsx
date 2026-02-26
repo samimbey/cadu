@@ -17,7 +17,7 @@ const financeOptions = [
   {
     id: "carecredit",
     name: "CareCredit",
-    logo: "https://www.carecredit.com/sites/cc/image/cc_main_logo_tab.png",
+    logo: "https://logo.clearbit.com/carecredit.com",
     description: "The leading healthcare credit card for medical expenses, accepted at over 250,000 providers nationwide.",
     aprRange: "0% - 26.99%",
     minCredit: "good",
