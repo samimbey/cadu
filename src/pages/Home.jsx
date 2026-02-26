@@ -54,9 +54,12 @@ export default function Home() {
           <span className="text-3xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
             cadu
           </span>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to={createPageUrl("About")} className="hover:text-foreground transition-colors">About</Link>
-          </nav>
+          <div className="flex items-center gap-6">
+            <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
+              <Link to={createPageUrl("About")} className="hover:text-foreground transition-colors">About</Link>
+            </nav>
+            <NavMenu isMarketplace={false} />
+          </div>
         </div>
       </header>
 
