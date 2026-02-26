@@ -10,6 +10,7 @@ const marketplaceNavItems = [
   { label: "About", page: "About", icon: Info },
   { label: "Contact Us", page: "ContactUs", icon: Info },
   { label: "Privacy", page: "Privacy", icon: Lock },
+  { label: "Terms of Service", page: "TermsOfService", icon: Lock },
   { label: "Update Preferences", page: "Onboarding", icon: Settings },
 ];
 
@@ -28,16 +29,6 @@ const procedureLinks = [
   { label: "Vision & LASIK", page: "VisionFinancing" },
   { label: "Fertility & IVF", page: "FertilityFinancing" },
   { label: "General Surgery", page: "GeneralSurgeryFinancing" },
-];
-
-const marketplaceNavItems = [
-  { label: "Home", page: "Home", icon: Home },
-  { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
-  { label: "About", page: "About", icon: Info },
-  { label: "Contact Us", page: "ContactUs", icon: Info },
-  { label: "Privacy", page: "Privacy", icon: Lock },
-  { label: "Terms of Service", page: "TermsOfService", icon: Lock },
-  { label: "Update Preferences", page: "Onboarding", icon: Settings },
 ];
 
 export default function NavMenu({ isMarketplace = false }) {
