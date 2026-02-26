@@ -289,9 +289,6 @@ export default function TermsOfService() {
             <p className="text-muted-foreground leading-relaxed">
               You waive any right to participate in a class action lawsuit or class-wide arbitration.
             </p>
-            <p className="text-xs text-muted-foreground italic">
-              (Note: Please confirm this section with an attorney before finalizing.)
-            </p>
           </div>
 
           {/* Section 17 */}
