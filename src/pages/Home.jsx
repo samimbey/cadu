@@ -50,7 +50,7 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-border px-8 py-5">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <span className="text-3xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
+          <span className="text-3xl tracking-wide" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600, color: "#2E4FA3", letterSpacing: "2px" }}>
             cadu
           </span>
           <nav className="flex items-center gap-6 text-sm text-muted-foreground">
