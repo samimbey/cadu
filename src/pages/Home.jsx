@@ -40,7 +40,7 @@ export default function Home() {
           "@context": "https://schema.org",
           "@type": "FinancialService",
           "name": "Cadu",
-          "url": "https://cadu.health",
+          "url": "https://cadunow.com",
           "description": "Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers.",
           "serviceType": "Healthcare Financing Marketplace",
           "areaServed": "US",
