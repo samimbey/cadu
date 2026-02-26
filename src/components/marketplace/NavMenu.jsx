@@ -5,6 +5,7 @@ import { Menu, X, LayoutGrid, Home, Info, Lock, Settings, ChevronDown, ChevronUp
 import { motion, AnimatePresence } from "framer-motion";
 
 const marketplaceNavItems = [
+  { label: "Home", page: "Home", icon: Home },
   { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
   { label: "About", page: "About", icon: Info },
   { label: "Privacy", page: "Privacy", icon: Lock },
