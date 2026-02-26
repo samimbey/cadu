@@ -72,8 +72,8 @@ export default function Home() {
               className="max-w-2xl"
             >
               <h1
-                className="text-5xl sm:text-6xl font-normal text-foreground mb-6 leading-tight"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                className="text-5xl sm:text-6xl text-foreground mb-6 leading-tight"
+                style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600 }}
               >
                 Healthcare in your hands
               </h1>
