@@ -267,6 +267,8 @@ export default function Marketplace() {
 
   // Calculate match scores based on user profile
   const calculateMatchScore = (option) => {
+    if (!isOnboarded) return null; // No match scores if not onboarded
+    
     let score = option.matchScore;
     
     // Adjust based on credit score
