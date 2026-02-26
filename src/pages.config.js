@@ -47,32 +47,32 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
+import About from './pages/About';
+import Calculators from './pages/Calculators';
 import CosmeticFinancing from './pages/CosmeticFinancing';
 import DentalFinancing from './pages/DentalFinancing';
 import FertilityFinancing from './pages/FertilityFinancing';
 import GeneralSurgeryFinancing from './pages/GeneralSurgeryFinancing';
+import Home from './pages/Home';
+import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import VisionFinancing from './pages/VisionFinancing';
-import About from './pages/About';
-import Calculators from './pages/Calculators';
 import Marketplace from './pages/Marketplace';
-import Onboarding from './pages/Onboarding';
-import Home from './pages/Home';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
+    "About": About,
+    "Calculators": Calculators,
     "CosmeticFinancing": CosmeticFinancing,
     "DentalFinancing": DentalFinancing,
     "FertilityFinancing": FertilityFinancing,
     "GeneralSurgeryFinancing": GeneralSurgeryFinancing,
+    "Home": Home,
+    "Onboarding": Onboarding,
     "Privacy": Privacy,
     "VisionFinancing": VisionFinancing,
-    "About": About,
-    "Calculators": Calculators,
     "Marketplace": Marketplace,
-    "Onboarding": Onboarding,
-    "Home": Home,
 }
 
 export const pagesConfig = {

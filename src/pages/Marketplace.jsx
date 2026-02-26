@@ -4,7 +4,9 @@ import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Settings, RefreshCw, Scale } from "lucide-react";
+import { Settings, RefreshCw, Scale, X } from "lucide-react";
+import { base44 } from "@/api/base44Client";
+import { useQuery } from "@tanstack/react-query";
 
 import { Helmet } from "react-helmet-async";
 import FinanceCard from "@/components/marketplace/FinanceCard";
