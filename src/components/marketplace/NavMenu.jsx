@@ -8,6 +8,7 @@ const marketplaceNavItems = [
   { label: "Home", page: "Home", icon: Home },
   { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
   { label: "About", page: "About", icon: Info },
+  { label: "Contact Us", page: "ContactUs", icon: Info },
   { label: "Privacy", page: "Privacy", icon: Lock },
   { label: "Update Preferences", page: "Onboarding", icon: Settings },
 ];
@@ -16,6 +17,7 @@ const defaultNavItems = [
   { label: "Home", page: "Home", icon: Home },
   { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
   { label: "About", page: "About", icon: Info },
+  { label: "Contact Us", page: "ContactUs", icon: Info },
   { label: "Privacy", page: "Privacy", icon: Lock },
   { label: "Get Started", page: "Onboarding", icon: Settings },
 ];
