@@ -80,7 +80,7 @@ const financeOptions = [
   {
     id: "alphaeon",
     name: "Alphaeon Credit",
-    logo: "https://images.unsplash.com/photo-1559526324-593bc073d938?w=100&h=100&fit=crop",
+    logo: "https://logo.clearbit.com/goalphaeon.com?size=120",
     description: "Premium financing for elective healthcare including cosmetic surgery, dermatology, and dental.",
     aprRange: "0% - 29.99%",
     minCredit: "good",
