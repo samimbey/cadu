@@ -398,7 +398,7 @@ export default function Marketplace() {
               </Link>
             </div>
             
-            <NavMenu />
+            <NavMenu isMarketplace={true} />
           </div>
         </div>
       </header>
