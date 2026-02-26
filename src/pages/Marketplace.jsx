@@ -392,7 +392,7 @@ export default function Marketplace() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-                <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
+                <span className="text-2xl tracking-wide" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600, color: "#2E4FA3", letterSpacing: "2px" }}>
                   cadu
                 </span>
               </Link>

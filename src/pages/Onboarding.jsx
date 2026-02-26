@@ -86,7 +86,7 @@ export default function Onboarding() {
         </div>
 
         <div className="relative z-10">
-          <span className="text-3xl font-light tracking-tight text-white" style={{ fontFamily: "Georgia, serif" }}>
+          <span className="text-3xl tracking-wide" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600, color: "white", letterSpacing: "2px" }}>
             cadu
           </span>
         </div>
@@ -126,7 +126,7 @@ export default function Onboarding() {
       <div className="flex-1 flex flex-col min-h-screen bg-white">
         {/* Mobile header */}
         <header className="lg:hidden py-6 px-4 flex justify-center">
-          <span className="text-2xl font-light tracking-tight text-primary" style={{ fontFamily: "Georgia, serif" }}>
+          <span className="text-2xl tracking-wide" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600, color: "#2E4FA3", letterSpacing: "2px" }}>
             cadu
           </span>
         </header>
