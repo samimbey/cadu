@@ -13,6 +13,7 @@ const marketplaceNavItems = [
 
 const defaultNavItems = [
   { label: "Home", page: "Home", icon: Home },
+  { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
   { label: "About", page: "About", icon: Info },
   { label: "Privacy", page: "Privacy", icon: Lock },
   { label: "Get Started", page: "Onboarding", icon: Settings },
