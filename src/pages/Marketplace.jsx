@@ -206,7 +206,7 @@ const financeOptions = [
   {
     id: "payzen",
     name: "PayZen",
-    logo: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/11fdb6601_Screenshot2026-02-25at103020PM.png",
+    logo: "https://payzen.com/wp-content/uploads/2024/01/payzen-logo.svg",
     description: "AI-powered patient financing with personalized, interest-free payment plans tailored to each patient's ability to pay. #1 ranked in Patient Financing Services by KLAS Research.",
     aprRange: "0%",
     minCredit: "poor",

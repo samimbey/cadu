@@ -54,10 +54,10 @@ import DentalFinancing from './pages/DentalFinancing';
 import FertilityFinancing from './pages/FertilityFinancing';
 import GeneralSurgeryFinancing from './pages/GeneralSurgeryFinancing';
 import Home from './pages/Home';
+import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import VisionFinancing from './pages/VisionFinancing';
-import Marketplace from './pages/Marketplace';
 import __Layout from './Layout.jsx';
 
 
@@ -69,10 +69,10 @@ export const PAGES = {
     "FertilityFinancing": FertilityFinancing,
     "GeneralSurgeryFinancing": GeneralSurgeryFinancing,
     "Home": Home,
+    "Marketplace": Marketplace,
     "Onboarding": Onboarding,
     "Privacy": Privacy,
     "VisionFinancing": VisionFinancing,
-    "Marketplace": Marketplace,
 }
 
 export const pagesConfig = {
