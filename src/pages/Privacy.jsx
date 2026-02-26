@@ -2,91 +2,6 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import NavMenu from "@/components/marketplace/NavMenu";
 
-const sections = [
-  {
-    title: "Information We Collect",
-    content: null,
-    subsections: [
-      {
-        label: "Identifying Information",
-        text: "We collect information that could identify you such as your name, telephone number, mobile number, and email address. We may also collect this type of information from you about others, such as co-borrowers.",
-      },
-      {
-        label: "Other Information",
-        text: "We also collect information such as demographic data, data about your online activity, and other information that is not used to identify you.",
-      },
-    ],
-  },
-  {
-    title: "How We Collect Information",
-    content: null,
-    subsections: [
-      {
-        label: "Information provided by you",
-        text: "We collect information from you when you enter it or otherwise provide it in connection with an inquiry into our Services. This information could be provided via an online form, over the phone, or via other means in which you interact with our Services.",
-      },
-      {
-        label: "Information from third parties",
-        text: "Information is collected from credit bureaus, lead generators and other partners who may have data on your financial profile, home, or other demographic information.",
-      },
-      {
-        label: "Information from cookies and other tracking technologies",
-        text: "We use cookies, web beacons, and similar technologies to record your preferences, track the use of our Site and collect information. This information may include internet protocol (IP) addresses, browser type, internet service provider (ISP), referring/exit pages, operating system, date/time stamp, and/or clickstream data. You may choose to set your web browser to refuse cookies, or to alert you when cookies are being sent.",
-      },
-    ],
-  },
-  {
-    title: "How We Use Information",
-    content: "We may use collected information to:",
-    list: [
-      "Deliver the products and services you requested",
-      "Improve customer service",
-      "Improve our Site",
-      "Personalize your user experience",
-      "Communicate with you about products or services that may be of interest to you",
-      "Manage our business",
-    ],
-  },
-  {
-    title: "Who Do We Share Your Information With?",
-    content: null,
-    subsections: [
-      {
-        label: "Cadu Affiliates",
-        text: "We may share information about you or provided by you with the Cadu affiliates.",
-      },
-      {
-        label: "Network Partners",
-        text: "When you submit an inquiry or use another Service provided through the Website, you direct Cadu to share information about you or provided by you with lenders and other third parties in our network. Please note: The Network Partners that interact with you may retain or use your information whether or not you use their services. You should contact these Network Partners directly concerning their privacy and information sharing practices.",
-      },
-      {
-        label: "Cadu Service Providers",
-        text: "We may share information with Service Providers that perform certain services on our behalf including, but not limited to, credit bureaus, marketing partners, or entities providing business analysis and/or website or product support.",
-      },
-      {
-        label: "Other Situations",
-        text: "We may also disclose information in response to a subpoena or court order; to establish or exercise our legal rights; to defend against legal claims; when we believe disclosure is appropriate to prevent illegal activity; in connection with a corporate transaction such as a merger or sale; or to comply with state and/or federal licensing requirements.",
-      },
-    ],
-  },
-  {
-    title: "How We Protect Your Information",
-    content: "We maintain physical, electronic, and procedural measures designed to safeguard your information from unauthorized access and disclosure. No system can be completely secure. Therefore, although we take steps to secure your information, we cannot guarantee that your information, searches, or other communications will always remain secure.",
-  },
-  {
-    title: "Changes to this Privacy Policy",
-    content: "Cadu has the discretion to update this privacy policy at any time. When we do, we will revise the date at the top of this page. We encourage you to frequently check this page for any changes to stay informed about how we are helping to protect the information we collect.",
-  },
-  {
-    title: "Visiting our Websites From Outside the United States",
-    content: "The Site is designed to provide services in the United States and is governed by the laws of the United States. We make no representation that the Site is governed by or operated in accordance with the laws of any other nation.",
-  },
-  {
-    title: "Compliance with Children's Online Privacy Protection Rule",
-    content: "This Website and App are not intended for individuals under 18 years of age, and we do not knowingly collect personal information from individuals under 18. If we learn we have collected or received personal information from a person under 18 without verification of parental consent, we will delete the information.",
-  },
-];
-
 export default function Privacy() {
   return (
     <div className="min-h-screen bg-white">
@@ -104,42 +19,235 @@ export default function Privacy() {
 
       <main className="max-w-3xl mx-auto px-6 py-16">
         <div className="mb-12">
-          <p className="text-sm text-muted-foreground mb-2">Last Updated: November 23, 2020</p>
+          <p className="text-sm text-muted-foreground mb-2">Last Updated: February 26, 2026</p>
           <h1 className="text-4xl font-normal text-foreground mb-6" style={{ fontFamily: "Georgia, serif" }}>
             Privacy Policy
           </h1>
           <p className="text-muted-foreground leading-relaxed">
-            Cadu is committed to maintaining your confidence and trust as it relates to the privacy and usage of your information.
-            Please read below and learn how we collect, protect, share, and use your information as part of our technology platform and all of our services.
+            Cadu ("Cadu," "we," "us," or "our") operates a financial services marketplace that connects consumers with third-party lenders and financial service providers. We are committed to protecting your privacy and maintaining transparency regarding how we collect, use, disclose, and safeguard your information.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mt-4">
+            This Privacy Policy describes how we handle information collected through our website, www.cadunow.com (the "Site"), and related services.
           </p>
         </div>
 
         <div className="space-y-10">
-          {sections.map((section, i) => (
-            <div key={i} className="border-t border-border pt-8">
-              <h2 className="text-lg font-semibold text-foreground mb-4">{section.title}</h2>
-              {section.content && (
-                <p className="text-muted-foreground leading-relaxed mb-4">{section.content}</p>
-              )}
-              {section.list && (
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                  {section.list.map((item, j) => (
-                    <li key={j}>{item}</li>
-                  ))}
+          {/* Section 1 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">1. Important Notice About Our Role</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Cadu is not a lender, creditor, financial institution, or loan broker. We do not make credit decisions and do not process loan applications directly.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              When you submit information through our Site, you are requesting to be matched with third-party lenders or financial providers in our network. Your information is shared with those partners so they may contact you and process your inquiry.
+            </p>
+          </div>
+
+          {/* Section 2 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">2. Information We Collect</h2>
+            
+            <div className="space-y-6">
+              <div>
+                <p className="font-medium text-foreground mb-3">A. Personal Information You Provide</p>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  We may collect the following categories of personal information:
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground mb-3">
+                  <li>Full name</li>
+                  <li>Email address</li>
+                  <li>Telephone number (including mobile number)</li>
+                  <li>State of residence</li>
+                  <li>Information about the type of financing you are seeking</li>
+                  <li>Information about co-borrowers (if provided)</li>
                 </ul>
-              )}
-              {section.subsections && (
-                <div className="space-y-4">
-                  {section.subsections.map((sub, j) => (
-                    <div key={j}>
-                      <p className="font-medium text-foreground text-sm mb-1">{sub.label}</p>
-                      <p className="text-muted-foreground leading-relaxed text-sm">{sub.text}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  We collect this information when you submit a form on our Site, request to be matched with lenders, or communicate with us via email or phone.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-medium text-foreground mb-3">B. Automatically Collected Information</p>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  When you visit our Site, we may automatically collect:
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground mb-3">
+                  <li>IP address</li>
+                  <li>Browser type and device information</li>
+                  <li>Operating system</li>
+                  <li>Referring URLs</li>
+                  <li>Pages viewed and time spent on pages</li>
+                  <li>Date and time of access</li>
+                  <li>Clickstream data</li>
+                </ul>
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  This information is collected through cookies, pixels, web beacons, and similar tracking technologies.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-medium text-foreground mb-3">C. Information From Third Parties</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  We may receive information from marketing partners, advertising platforms, analytics providers, and business partners. In some cases, our lender partners may provide feedback regarding whether a submitted lead resulted in a transaction.
+                </p>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Section 3 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">3. How We Use Your Information</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              We use collected information to:
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+              <li>Match you with third-party lenders or financial service providers</li>
+              <li>Facilitate your inquiry and redirect you to partner sites</li>
+              <li>Improve our Site and user experience</li>
+              <li>Analyze performance and optimize marketing campaigns</li>
+              <li>Respond to inquiries and customer support requests</li>
+              <li>Comply with legal and regulatory requirements</li>
+              <li>Detect and prevent fraud or misuse</li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              We may also use information for internal analytics and business operations.
+            </p>
+          </div>
+
+          {/* Section 4 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">4. How We Share Information</h2>
+            
+            <div className="space-y-6">
+              <div>
+                <p className="font-medium text-foreground mb-3">A. Network Partners (Lenders and Financial Providers)</p>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  When you submit an inquiry through our Site, you direct us to share your information with one or more third-party lenders or financial service providers. These partners may:
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  <li>Contact you directly</li>
+                  <li>Retain your information</li>
+                  <li>Use your information according to their own privacy policies</li>
+                </ul>
+                <p className="text-muted-foreground leading-relaxed mt-3 text-sm">
+                  We encourage you to review the privacy policy of any lender you engage with.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-medium text-foreground mb-3">B. Service Providers</p>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  We may share information with vendors who provide services such as website hosting, data storage, analytics, marketing services, and business intelligence tools. These providers are contractually obligated to safeguard your information.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-medium text-foreground mb-3">C. Legal and Business Transfers</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  We may disclose information to comply with applicable law, subpoena, or legal process; to enforce our terms or protect our rights; in connection with a merger, acquisition, asset sale, or restructuring; or to prevent fraud or illegal activity.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 5 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">5. Cookies and Tracking Technologies</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              We use cookies and similar technologies to analyze Site traffic, improve functionality, measure marketing effectiveness, and store user preferences.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              You may disable cookies through your browser settings. However, some features of the Site may not function properly if cookies are disabled.
+            </p>
+          </div>
+
+          {/* Section 6 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">6. Data Retention</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              We retain personal information for as long as reasonably necessary to fulfill the purposes described in this Policy, comply with legal obligations, resolve disputes, or enforce agreements.
+            </p>
+          </div>
+
+          {/* Section 7 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">7. Your Privacy Rights (U.S. Residents)</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Depending on your state of residence (including California, Virginia, Colorado, Texas, and others), you may have rights including:
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-muted-foreground mb-4">
+              <li>The right to know what personal information we collect</li>
+              <li>The right to request deletion</li>
+              <li>The right to request correction</li>
+              <li>The right to opt out of the sale or sharing of personal information</li>
+              <li>The right to limit the use of sensitive personal information</li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed text-sm">
+              To exercise your rights, please contact us at privacy@cadunow.com. We will verify your request as required by law.
+            </p>
+          </div>
+
+          {/* Section 8 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">8. "Sale" or "Sharing" of Information</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Because Cadu operates a marketplace that connects consumers with lenders, sharing your information with third-party financial providers in exchange for compensation may be considered a "sale" or "sharing" under certain state privacy laws.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-sm">
+              You may opt out of such sharing by contacting us at privacy@cadunow.com.
+            </p>
+          </div>
+
+          {/* Section 9 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">9. Data Security</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              We implement reasonable physical, technical, and administrative safeguards designed to protect your personal information. However, no system can guarantee complete security.
+            </p>
+          </div>
+
+          {/* Section 10 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">10. Children's Privacy</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Our Site is not directed to individuals under 18 years of age. We do not knowingly collect personal information from anyone under 18. If we become aware that such information has been collected, we will delete it promptly.
+            </p>
+          </div>
+
+          {/* Section 11 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">11. International Users</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Our services are intended for individuals located in the United States. If you access our Site from outside the U.S., you understand that your information will be transferred to and processed in the United States.
+            </p>
+          </div>
+
+          {/* Section 12 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">12. Changes to This Privacy Policy</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              We may update this Privacy Policy periodically. When we do, we will revise the "Last Updated" date at the top of this page. Continued use of the Site after changes constitutes acceptance of the updated Policy.
+            </p>
+          </div>
+
+          {/* Section 13 */}
+          <div className="border-t border-border pt-8">
+            <h2 className="text-lg font-semibold text-foreground mb-4">13. Contact Us</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              If you have questions regarding this Privacy Policy, please contact:
+            </p>
+            <div className="mt-4 text-muted-foreground text-sm space-y-1">
+              <p><strong>Cadu</strong></p>
+              <p>Email: <a href="mailto:privacy@cadunow.com" className="text-primary hover:underline">privacy@cadunow.com</a></p>
+              <p>Website: <a href="https://www.cadunow.com" className="text-primary hover:underline">www.cadunow.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-border text-xs text-muted-foreground">
+          <p>
+            <strong>Important Disclaimer:</strong> This Privacy Policy has been prepared as a general template. Please have an attorney review this policy before publishing to ensure it complies with all applicable laws and regulations in your jurisdiction and accurately reflects your specific business practices.
+          </p>
         </div>
       </main>
 
