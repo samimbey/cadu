@@ -38,7 +38,7 @@ const financeOptions = [
   {
     id: "prosper",
     name: "Prosper Healthcare Lending",
-    logo: "https://www.prosper.com/images/prosper-logo.svg",
+    logo: "https://www.prosper.com/wp-content/uploads/2026/02/money-hero.svg",
     description: "Personal loans specifically designed for healthcare procedures with competitive rates and flexible terms.",
     aprRange: "6.99% - 35.99%",
     minCredit: "fair",
