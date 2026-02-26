@@ -14,7 +14,7 @@ export default function Home() {
         <meta name="description" content="Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers for dental, cosmetic, vision, and more." />
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://cadu.health" />
+        <meta property="og:url" content="https://cadunow.com" />
         <meta property="og:title" content="Cadu — Healthcare Finance Marketplace" />
         <meta property="og:description" content="Compare healthcare financing options from top lenders. Find the best medical loans, payment plans, and 0% APR offers for dental, cosmetic, vision, and more." />
         <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
