@@ -117,7 +117,11 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
         <Button 
           onClick={onComplete} 
           disabled={!canComplete || isLoading}
-          className="flex-1 py-6 text-lg font-semibold rounded-xl bg-secondary hover:bg-secondary/90 shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30 transition-all"
+          className={`flex-1 py-6 text-lg font-semibold rounded-xl transition-all ${
+            canComplete 
+              ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40" 
+              : "bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30"
+          }`}
         >
           {isLoading ? (
             <>
