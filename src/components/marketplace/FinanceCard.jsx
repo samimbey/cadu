@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { base44 } from "@/api/base44Client";
 
-export default function FinanceCard({ option, index, isSelected, onSelect, onCompare, isComparing }) {
+export default function FinanceCard({ option, index, isSelected, onSelect, onCompare, isComparing, hideMatchScore }) {
   const getMatchColor = (score) => {
     if (score >= 90) return "bg-emerald-100 text-emerald-700 border-emerald-200";
     if (score >= 75) return "bg-blue-100 text-blue-700 border-blue-200";
