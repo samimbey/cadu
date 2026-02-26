@@ -157,10 +157,16 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-border px-8 py-5">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-muted-foreground">
-            © 2026 Cadu · Healthcare Finance Marketplace
-          </p>
+        <div className="max-w-5xl mx-auto flex flex-wrap gap-4 items-center justify-between text-xs text-muted-foreground">
+          <p>© 2026 Cadu, LLC · Healthcare Finance Marketplace</p>
+          <div className="flex gap-4">
+            <Link to={createPageUrl("Privacy")} className="hover:text-foreground transition-colors">
+              Privacy
+            </Link>
+            <Link to={createPageUrl("TermsOfService")} className="hover:text-foreground transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </footer>
     </div>

@@ -59,6 +59,7 @@ import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import VisionFinancing from './pages/VisionFinancing';
+import TermsOfService from './pages/TermsOfService';
 import __Layout from './Layout.jsx';
 
 
@@ -75,6 +76,7 @@ export const PAGES = {
     "Onboarding": Onboarding,
     "Privacy": Privacy,
     "VisionFinancing": VisionFinancing,
+    "TermsOfService": TermsOfService,
 }
 
 export const pagesConfig = {
