@@ -26,9 +26,10 @@ const procedureLinks = [
   { label: "General Surgery", page: "GeneralSurgeryFinancing" },
 ];
 
-export default function NavMenu() {
+export default function NavMenu({ isMarketplace = false }) {
   const [open, setOpen] = useState(false);
   const [proceduresOpen, setProceduresOpen] = useState(false);
+  const navItems = isMarketplace ? marketplaceNavItems : defaultNavItems;
 
   return (
     <>
