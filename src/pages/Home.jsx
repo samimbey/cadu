@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Shield, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
+import NavMenu from "@/components/marketplace/NavMenu";
 
 export default function Home() {
   return (
