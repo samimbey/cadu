@@ -249,9 +249,12 @@ const financeOptions = [
 
 export default function Marketplace() {
   const urlParams = new URLSearchParams(window.location.search);
-  const amount = parseInt(urlParams.get("amount")) || 5000;
-  const credit = urlParams.get("credit") || "good";
-  const procedure = urlParams.get("procedure") || "general_medical";
+  const amount = parseInt(urlParams.get("amount"));
+  const credit = urlParams.get("credit");
+  const procedure = urlParams.get("procedure");
+  
+  // Check if user has completed onboarding
+  const isOnboarded = amount && credit && procedure;
 
   const [filters, setFilters] = useState({
     sortBy: "match",
