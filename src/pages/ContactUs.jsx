@@ -131,10 +131,8 @@ export default function ContactUs() {
                 <SelectValue placeholder="Please Select" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="sales">Connect with Sales Team</SelectItem>
                 <SelectItem value="partnership">Strategic Partnership Interest</SelectItem>
                 <SelectItem value="support">Support</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>
           </div>
