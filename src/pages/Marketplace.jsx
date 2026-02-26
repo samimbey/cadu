@@ -421,6 +421,32 @@ export default function Marketplace() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
+        {/* Soft Gate Banner */}
+        {!isOnboarded && !dismissBanner && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="bg-primary/10 border border-primary/20 rounded-xl p-4 mb-6 flex items-center justify-between"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium text-foreground">
+                💡 Personalize your results — takes 2 minutes
+              </span>
+              <Link to={createPageUrl("Onboarding")} className="text-sm font-semibold text-primary hover:underline">
+                Tell us more
+              </Link>
+            </div>
+            <button
+              onClick={() => setDismissBanner(true)}
+              className="p-1 hover:bg-primary/10 rounded-lg transition-colors"
+              aria-label="Dismiss"
+            >
+              <X className="w-4 h-4 text-muted-foreground" />
+            </button>
+          </motion.div>
+        )}
+
         {/* Summary Banner */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
