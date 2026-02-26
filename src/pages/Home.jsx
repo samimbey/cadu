@@ -53,7 +53,7 @@ export default function Home() {
           <span className="text-3xl tracking-wide" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif", fontWeight: 600, color: "#2E4FA3", letterSpacing: "2px" }}>
             cadu
           </span>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground" style={{ fontFamily: "'Proxima Nova', Helvetica, Arial, sans-serif" }}>
+          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link to={createPageUrl("Marketplace")} className="hover:text-foreground transition-colors">Marketplace</Link>
             <Link to={createPageUrl("Calculators")} className="hover:text-foreground transition-colors">Calculators</Link>
             <Link to={createPageUrl("About")} className="hover:text-foreground transition-colors">About</Link>
