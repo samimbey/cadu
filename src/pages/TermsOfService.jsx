@@ -5,7 +5,7 @@ import NavMenu from "@/components/marketplace/NavMenu";
 
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="bg-white flex flex-col">
       <Helmet>
         <title>Terms of Service — Cadu</title>
         <meta name="description" content="Read Cadu's Terms of Service governing the use of our healthcare finance marketplace." />
@@ -306,19 +306,7 @@ export default function TermsOfService() {
         </div>
       </main>
 
-      <footer className="border-t border-border px-8 py-5 mt-8">
-        <div className="max-w-3xl mx-auto flex flex-wrap gap-4 items-center justify-between text-xs text-muted-foreground">
-          <p>© 2026 Cadu, LLC · Healthcare Finance Marketplace</p>
-          <div className="flex gap-4">
-            <Link to={createPageUrl("Privacy")} className="hover:text-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link to={createPageUrl("TermsOfService")} className="hover:text-foreground transition-colors">
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 }

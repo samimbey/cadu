@@ -8,7 +8,7 @@ import NavMenu from "@/components/marketplace/NavMenu";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="bg-white flex flex-col">
       <Helmet>
         <meta name="google-site-verification" content="jwqga7txdvW8UANkw0P-VpZJA7tBfBMuYWOhBG13fiI" />
         <title>Cadu — Healthcare Finance Marketplace</title>
@@ -156,19 +156,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="border-t border-border px-8 py-5">
-        <div className="max-w-5xl mx-auto flex flex-wrap gap-4 items-center justify-between text-xs text-muted-foreground">
-          <p>© 2026 Cadu, LLC · Healthcare Finance Marketplace</p>
-          <div className="flex gap-4">
-            <Link to={createPageUrl("Privacy")} className="hover:text-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link to={createPageUrl("TermsOfService")} className="hover:text-foreground transition-colors">
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 }

@@ -1,9 +1,15 @@
 import { HelmetProvider } from "react-helmet-async";
+import Footer from "@/components/Footer";
 
-export default function Layout({ children }) {
+export default function Layout({ children, currentPageName }) {
   return (
     <HelmetProvider>
-      {children}
+      <div className="min-h-screen flex flex-col">
+        <div className="flex-1">
+          {children}
+        </div>
+        <Footer />
+      </div>
     </HelmetProvider>
   );
 }
