@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
+import { Resend } from 'npm:resend@3.0.0';
 
 Deno.serve(async (req) => {
   try {
@@ -20,14 +21,6 @@ Deno.serve(async (req) => {
         recipientEmail = 'support@cadunow.com';
         subject = 'Support Request';
         break;
-      case 'sales':
-        recipientEmail = 'partnerships@cadunow.com';
-        subject = 'Sales Inquiry';
-        break;
-      case 'other':
-        recipientEmail = 'partnerships@cadunow.com';
-        subject = 'General Inquiry';
-        break;
       default:
         return Response.json({ error: 'Invalid inquiry type' }, { status: 400 });
     }
@@ -48,13 +41,20 @@ Message:
 ${message || 'No message provided'}
     `.trim();
 
-    // Send email using the SendEmail integration
-    await base44.integrations.Core.SendEmail({
+    // Initialize Resend with API key
+    const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+
+    // Send email using Resend
+    const result = await resend.emails.send({
+      from: 'Cadu <noreply@cadunow.com>',
       to: recipientEmail,
       subject: subject,
-      body: emailBody,
-      from_name: 'Cadu Contact Form',
+      text: emailBody,
     });
+
+    if (result.error) {
+      throw new Error(result.error.message);
+    }
 
     return Response.json({ success: true });
   } catch (error) {
