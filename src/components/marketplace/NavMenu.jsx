@@ -9,7 +9,6 @@ const marketplaceNavItems = [
   { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
   { label: "About Us", page: "About", icon: Info },
   { label: "Contact Us", page: "ContactUs", icon: Mail },
-  { label: "Terms of Service", page: "TermsOfService", icon: Lock },
   { label: "Update Preferences", page: "Onboarding", icon: Settings },
 ];
 
