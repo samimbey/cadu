@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, LayoutGrid, Home, Info, Lock, Settings, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, LayoutGrid, Home, Info, Lock, Settings, ChevronDown, ChevronUp, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const marketplaceNavItems = [
