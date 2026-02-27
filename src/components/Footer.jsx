@@ -14,6 +14,9 @@ export default function Footer() {
           <Link to={createPageUrl("TermsOfService")} className="hover:text-foreground transition-colors">
             Terms of Service
           </Link>
+          <Link to={createPageUrl("AffiliateDisclosure")} className="hover:text-foreground transition-colors">
+            Affiliate Disclosure
+          </Link>
         </div>
       </div>
     </footer>
