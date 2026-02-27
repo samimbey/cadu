@@ -60,6 +60,7 @@ import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import TermsOfService from './pages/TermsOfService';
 import VisionFinancing from './pages/VisionFinancing';
+import AffiliateDisclosure from './pages/AffiliateDisclosure';
 import __Layout from './Layout.jsx';
 
 
@@ -77,6 +78,7 @@ export const PAGES = {
     "Privacy": Privacy,
     "TermsOfService": TermsOfService,
     "VisionFinancing": VisionFinancing,
+    "AffiliateDisclosure": AffiliateDisclosure,
 }
 
 export const pagesConfig = {

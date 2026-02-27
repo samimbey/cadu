@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
+
 export default function Footer() {
   return (
     <footer className="border-t border-border px-8 py-5">
