@@ -140,7 +140,7 @@ export default function Home() {
             className="mt-24 pt-12 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-10"
           >
             {[
-              { icon: Users, stat: "250,000+", label: "Provider network" },
+              { icon: Users, stat: "Free to use", label: "Always free to compare" },
               { icon: Star, stat: "Top lenders", label: "Compared for you" },
               { icon: Shield, stat: "No impact", label: "On your credit score" },
             ].map(({ icon: Icon, stat, label }) => (
