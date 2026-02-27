@@ -48,6 +48,7 @@
  * The mainPage value must match a key in the PAGES object exactly.
  */
 import About from './pages/About';
+import AffiliateDisclosure from './pages/AffiliateDisclosure';
 import Calculators from './pages/Calculators';
 import ContactUs from './pages/ContactUs';
 import CosmeticFinancing from './pages/CosmeticFinancing';
@@ -60,12 +61,12 @@ import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import TermsOfService from './pages/TermsOfService';
 import VisionFinancing from './pages/VisionFinancing';
-import AffiliateDisclosure from './pages/AffiliateDisclosure';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "About": About,
+    "AffiliateDisclosure": AffiliateDisclosure,
     "Calculators": Calculators,
     "ContactUs": ContactUs,
     "CosmeticFinancing": CosmeticFinancing,
@@ -78,7 +79,6 @@ export const PAGES = {
     "Privacy": Privacy,
     "TermsOfService": TermsOfService,
     "VisionFinancing": VisionFinancing,
-    "AffiliateDisclosure": AffiliateDisclosure,
 }
 
 export const pagesConfig = {
