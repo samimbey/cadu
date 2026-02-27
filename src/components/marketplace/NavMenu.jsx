@@ -7,8 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const marketplaceNavItems = [
   { label: "Home", page: "Home", icon: Home },
   { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
-  { label: "About", page: "About", icon: Info },
-  { label: "Contact Us", page: "ContactUs", icon: Info },
+  { label: "About Us", page: "About", icon: Info },
+  { label: "Contact Us", page: "ContactUs", icon: Mail },
   { label: "Terms of Service", page: "TermsOfService", icon: Lock },
   { label: "Update Preferences", page: "Onboarding", icon: Settings },
 ];
@@ -16,8 +16,8 @@ const marketplaceNavItems = [
 const defaultNavItems = [
   { label: "Home", page: "Home", icon: Home },
   { label: "Marketplace", page: "Marketplace", icon: LayoutGrid },
-  { label: "About", page: "About", icon: Info },
-  { label: "Contact Us", page: "ContactUs", icon: Info },
+  { label: "About Us", page: "About", icon: Info },
+  { label: "Contact Us", page: "ContactUs", icon: Mail },
   { label: "Get Started", page: "Onboarding", icon: Settings },
 ];
 
