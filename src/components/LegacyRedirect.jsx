@@ -8,7 +8,6 @@ const REDIRECTS = {
   "/FertilityFinancing": "/fertility-financing",
   "/GeneralSurgeryFinancing": "/general-surgery-financing",
   "/MedicalFinancing": "/medical-financing",
-  "/DentalImplantFinancing": "/dental-implant-financing",
   "/CarecreditAlternatives": "/carecredit-alternatives",
   "/CantAffordMedicalBill": "/cant-afford-medical-bill",
 };

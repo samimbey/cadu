@@ -30,7 +30,6 @@ const procedureLinks = [
 
 const resourceLinks = [
   { label: "Medical Financing", page: "medical-financing" },
-  { label: "Dental Implant Financing", page: "dental-implant-financing" },
   { label: "CareCredit Alternatives", page: "carecredit-alternatives" },
   { label: "Can't Afford My Bill", page: "cant-afford-medical-bill" },
 ];
