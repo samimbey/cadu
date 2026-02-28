@@ -115,11 +115,11 @@ export default function Home() {
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">Browse by procedure</p>
             <div className="flex flex-wrap gap-3">
               {[
-                { label: "Dental Financing", page: "DentalFinancing" },
-                { label: "Cosmetic Surgery", page: "CosmeticFinancing" },
-                { label: "Vision & LASIK", page: "VisionFinancing" },
-                { label: "Fertility & IVF", page: "FertilityFinancing" },
-                { label: "General Surgery", page: "GeneralSurgeryFinancing" },
+                { label: "Dental Financing", page: "dental-financing" },
+                { label: "Cosmetic Surgery", page: "cosmetic-financing" },
+                { label: "Vision & LASIK", page: "vision-financing" },
+                { label: "Fertility & IVF", page: "fertility-financing" },
+                { label: "General Surgery", page: "general-surgery-financing" },
               ].map(({ label, page }) => (
                 <Link
                   key={page}
