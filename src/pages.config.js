@@ -51,20 +51,11 @@ import About from './pages/About';
 import AffiliateDisclosure from './pages/AffiliateDisclosure';
 import Calculators from './pages/Calculators';
 import ContactUs from './pages/ContactUs';
-import CosmeticFinancing from './pages/CosmeticFinancing';
-import DentalFinancing from './pages/DentalFinancing';
-import FertilityFinancing from './pages/FertilityFinancing';
-import GeneralSurgeryFinancing from './pages/GeneralSurgeryFinancing';
 import Home from './pages/Home';
 import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import TermsOfService from './pages/TermsOfService';
-import VisionFinancing from './pages/VisionFinancing';
-import MedicalFinancing from './pages/MedicalFinancing';
-import CarecreditAlternatives from './pages/CarecreditAlternatives';
-import DentalImplantFinancing from './pages/DentalImplantFinancing';
-import CantAffordMedicalBill from './pages/CantAffordMedicalBill';
 import dentalFinancing from './pages/dental-financing';
 import cosmeticFinancing from './pages/cosmetic-financing';
 import visionFinancing from './pages/vision-financing';
@@ -82,20 +73,11 @@ export const PAGES = {
     "AffiliateDisclosure": AffiliateDisclosure,
     "Calculators": Calculators,
     "ContactUs": ContactUs,
-    "CosmeticFinancing": CosmeticFinancing,
-    "DentalFinancing": DentalFinancing,
-    "FertilityFinancing": FertilityFinancing,
-    "GeneralSurgeryFinancing": GeneralSurgeryFinancing,
     "Home": Home,
     "Marketplace": Marketplace,
     "Onboarding": Onboarding,
     "Privacy": Privacy,
     "TermsOfService": TermsOfService,
-    "VisionFinancing": VisionFinancing,
-    "MedicalFinancing": MedicalFinancing,
-    "CarecreditAlternatives": CarecreditAlternatives,
-    "DentalImplantFinancing": DentalImplantFinancing,
-    "CantAffordMedicalBill": CantAffordMedicalBill,
     "dental-financing": dentalFinancing,
     "cosmetic-financing": cosmeticFinancing,
     "vision-financing": visionFinancing,
