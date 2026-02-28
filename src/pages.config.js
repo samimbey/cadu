@@ -62,6 +62,9 @@ import Privacy from './pages/Privacy';
 import TermsOfService from './pages/TermsOfService';
 import VisionFinancing from './pages/VisionFinancing';
 import MedicalFinancing from './pages/MedicalFinancing';
+import CarecreditAlternatives from './pages/CarecreditAlternatives';
+import DentalImplantFinancing from './pages/DentalImplantFinancing';
+import CantAffordMedicalBill from './pages/CantAffordMedicalBill';
 import __Layout from './Layout.jsx';
 
 
@@ -81,6 +84,9 @@ export const PAGES = {
     "TermsOfService": TermsOfService,
     "VisionFinancing": VisionFinancing,
     "MedicalFinancing": MedicalFinancing,
+    "CarecreditAlternatives": CarecreditAlternatives,
+    "DentalImplantFinancing": DentalImplantFinancing,
+    "CantAffordMedicalBill": CantAffordMedicalBill,
 }
 
 export const pagesConfig = {
