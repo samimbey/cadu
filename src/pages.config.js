@@ -59,15 +59,16 @@ import TermsOfService from './pages/TermsOfService';
 import cantAffordMedicalBill from './pages/cant-afford-medical-bill';
 import carecreditAlternatives from './pages/carecredit-alternatives';
 import cosmeticFinancing from './pages/cosmetic-financing';
+import creditForMedicalBills from './pages/credit-for-medical-bills';
 import dentalFinancing from './pages/dental-financing';
+import emergencyMedicalFinancing from './pages/emergency-medical-financing';
 import fertilityFinancing from './pages/fertility-financing';
 import generalSurgeryFinancing from './pages/general-surgery-financing';
 import medicalFinancing from './pages/medical-financing';
-import visionFinancing from './pages/vision-financing';
-import plasticSurgeryFinancing from './pages/plastic-surgery-financing';
 import orthodonticFinancing from './pages/orthodontic-financing';
-import emergencyMedicalFinancing from './pages/emergency-medical-financing';
-import creditForMedicalBills from './pages/credit-for-medical-bills';
+import plasticSurgeryFinancing from './pages/plastic-surgery-financing';
+import visionFinancing from './pages/vision-financing';
+import frontdesk from './pages/frontdesk';
 import __Layout from './Layout.jsx';
 
 
@@ -84,15 +85,16 @@ export const PAGES = {
     "cant-afford-medical-bill": cantAffordMedicalBill,
     "carecredit-alternatives": carecreditAlternatives,
     "cosmetic-financing": cosmeticFinancing,
+    "credit-for-medical-bills": creditForMedicalBills,
     "dental-financing": dentalFinancing,
+    "emergency-medical-financing": emergencyMedicalFinancing,
     "fertility-financing": fertilityFinancing,
     "general-surgery-financing": generalSurgeryFinancing,
     "medical-financing": medicalFinancing,
-    "vision-financing": visionFinancing,
-    "plastic-surgery-financing": plasticSurgeryFinancing,
     "orthodontic-financing": orthodonticFinancing,
-    "emergency-medical-financing": emergencyMedicalFinancing,
-    "credit-for-medical-bills": creditForMedicalBills,
+    "plastic-surgery-financing": plasticSurgeryFinancing,
+    "vision-financing": visionFinancing,
+    "frontdesk": frontdesk,
 }
 
 export const pagesConfig = {
