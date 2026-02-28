@@ -6,11 +6,15 @@ const allPages = [
   { label: "Dental Financing", page: "dental-financing" },
   { label: "Medical Financing", page: "medical-financing" },
   { label: "Cosmetic Surgery Financing", page: "cosmetic-financing" },
+  { label: "Plastic Surgery Financing", page: "plastic-surgery-financing" },
+  { label: "Orthodontic Financing", page: "orthodontic-financing" },
   { label: "Vision & LASIK Financing", page: "vision-financing" },
   { label: "Fertility & IVF Financing", page: "fertility-financing" },
   { label: "General Surgery Financing", page: "general-surgery-financing" },
   { label: "CareCredit Alternatives", page: "carecredit-alternatives" },
   { label: "Can't Afford a Medical Bill?", page: "cant-afford-medical-bill" },
+  { label: "Emergency Medical Financing", page: "emergency-medical-financing" },
+  { label: "Credit for Medical Bills", page: "credit-for-medical-bills" },
 ];
 
 export default function RelatedPages({ currentPage }) {

@@ -23,6 +23,8 @@ const defaultNavItems = [
 const procedureLinks = [
   { label: "Dental Financing", page: "dental-financing" },
   { label: "Cosmetic Surgery", page: "cosmetic-financing" },
+  { label: "Plastic Surgery", page: "plastic-surgery-financing" },
+  { label: "Orthodontic Financing", page: "orthodontic-financing" },
   { label: "Vision & LASIK", page: "vision-financing" },
   { label: "Fertility & IVF", page: "fertility-financing" },
   { label: "General Surgery", page: "general-surgery-financing" },
@@ -32,6 +34,8 @@ const resourceLinks = [
   { label: "Medical Financing", page: "medical-financing" },
   { label: "CareCredit Alternatives", page: "carecredit-alternatives" },
   { label: "Can't Afford My Bill", page: "cant-afford-medical-bill" },
+  { label: "Emergency Medical Financing", page: "emergency-medical-financing" },
+  { label: "Credit for Medical Bills", page: "credit-for-medical-bills" },
 ];
 
 export default function NavMenu({ isMarketplace = false }) {
