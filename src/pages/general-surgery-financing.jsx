@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { CheckCircle, Clock, CreditCard, DollarSign } from "lucide-react";
 import NavMenu from "@/components/marketplace/NavMenu";
+import RelatedPages from "@/components/RelatedPages";
 
 const faqs = [
   {

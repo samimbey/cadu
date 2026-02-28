@@ -56,14 +56,14 @@ import Marketplace from './pages/Marketplace';
 import Onboarding from './pages/Onboarding';
 import Privacy from './pages/Privacy';
 import TermsOfService from './pages/TermsOfService';
-import dentalFinancing from './pages/dental-financing';
+import cantAffordMedicalBill from './pages/cant-afford-medical-bill';
+import carecreditAlternatives from './pages/carecredit-alternatives';
 import cosmeticFinancing from './pages/cosmetic-financing';
-import visionFinancing from './pages/vision-financing';
+import dentalFinancing from './pages/dental-financing';
 import fertilityFinancing from './pages/fertility-financing';
 import generalSurgeryFinancing from './pages/general-surgery-financing';
 import medicalFinancing from './pages/medical-financing';
-import carecreditAlternatives from './pages/carecredit-alternatives';
-import cantAffordMedicalBill from './pages/cant-afford-medical-bill';
+import visionFinancing from './pages/vision-financing';
 import __Layout from './Layout.jsx';
 
 
@@ -77,14 +77,14 @@ export const PAGES = {
     "Onboarding": Onboarding,
     "Privacy": Privacy,
     "TermsOfService": TermsOfService,
-    "dental-financing": dentalFinancing,
+    "cant-afford-medical-bill": cantAffordMedicalBill,
+    "carecredit-alternatives": carecreditAlternatives,
     "cosmetic-financing": cosmeticFinancing,
-    "vision-financing": visionFinancing,
+    "dental-financing": dentalFinancing,
     "fertility-financing": fertilityFinancing,
     "general-surgery-financing": generalSurgeryFinancing,
     "medical-financing": medicalFinancing,
-    "carecredit-alternatives": carecreditAlternatives,
-    "cant-afford-medical-bill": cantAffordMedicalBill,
+    "vision-financing": visionFinancing,
 }
 
 export const pagesConfig = {

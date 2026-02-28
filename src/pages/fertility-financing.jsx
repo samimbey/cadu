@@ -5,6 +5,7 @@ import { CheckCircle, ArrowRight, Star, Shield, DollarSign, Clock } from "lucide
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
 import NavMenu from "@/components/marketplace/NavMenu";
+import RelatedPages from "@/components/RelatedPages";
 
 const faqs = [
   {

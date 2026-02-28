@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
 import NavMenu from "@/components/marketplace/NavMenu";
+import RelatedPages from "@/components/RelatedPages";
 import { useState } from "react";
 
 const faqs = [
