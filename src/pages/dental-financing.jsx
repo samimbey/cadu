@@ -155,6 +155,7 @@ export default function DentalFinancing() {
           </div>
         </motion.section>
 
+        <RelatedPages currentPage="dental-financing" />
       </main>
     </div>
   );

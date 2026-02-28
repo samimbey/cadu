@@ -274,6 +274,7 @@ export default function MedicalFinancing() {
           </p>
         </div>
 
+        <RelatedPages currentPage="medical-financing" />
       </main>
     </div>
   );

@@ -155,6 +155,7 @@ export default function CosmeticFinancing() {
           </div>
         </motion.section>
 
+        <RelatedPages currentPage="cosmetic-financing" />
       </main>
     </div>
   );

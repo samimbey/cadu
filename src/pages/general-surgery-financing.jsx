@@ -157,6 +157,7 @@ export default function GeneralSurgeryFinancing() {
             <Button size="lg" className="px-10">Get Started — It's Free</Button>
           </Link>
         </motion.div>
+        <RelatedPages currentPage="general-surgery-financing" />
       </main>
     </div>
   );

@@ -155,6 +155,7 @@ export default function FertilityFinancing() {
           </div>
         </motion.section>
 
+        <RelatedPages currentPage="fertility-financing" />
       </main>
     </div>
   );

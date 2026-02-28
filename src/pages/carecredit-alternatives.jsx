@@ -165,6 +165,7 @@ export default function CarecreditAlternatives() {
           Cadu is a comparison platform and does not provide loans directly. We may receive compensation from partner lenders when users apply through our site. All financing terms are provided by the lender. CareCredit is a registered trademark of Synchrony Bank. Cadu is not affiliated with CareCredit or Synchrony Bank.
         </p>
 
+        <RelatedPages currentPage="carecredit-alternatives" />
       </main>
     </div>
   );
