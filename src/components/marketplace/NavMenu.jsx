@@ -26,6 +26,10 @@ const procedureLinks = [
   { label: "Vision & LASIK", page: "VisionFinancing" },
   { label: "Fertility & IVF", page: "FertilityFinancing" },
   { label: "General Surgery", page: "GeneralSurgeryFinancing" },
+  { label: "Medical Financing", page: "MedicalFinancing" },
+  { label: "Dental Implants", page: "DentalImplantFinancing" },
+  { label: "CareCredit Alternatives", page: "CarecreditAlternatives" },
+  { label: "Can't Afford My Bill?", page: "CantAffordMedicalBill" },
 ];
 
 export default function NavMenu({ isMarketplace = false }) {
