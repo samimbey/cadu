@@ -158,11 +158,6 @@ export default function GeneralSurgeryFinancing() {
         </motion.div>
       </main>
 
-      <footer className="border-t border-border px-8 py-5 mt-12">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xs text-muted-foreground">© 2026 Cadu · Healthcare Finance Marketplace</p>
-        </div>
-      </footer>
     </div>
   );
 }

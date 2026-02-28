@@ -156,11 +156,6 @@ export default function VisionFinancing() {
 
       </main>
 
-      <footer className="border-t border-border px-6 py-5">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-muted-foreground">© 2026 Cadu · Healthcare Finance Marketplace</p>
-        </div>
-      </footer>
     </div>
   );
 }
