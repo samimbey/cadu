@@ -7,6 +7,7 @@ export default function Layout({ children, currentPageName }) {
   return (
     <HelmetProvider>
       <ScrollToTop />
+      <LegacyRedirect />
       <div className="min-h-screen flex flex-col">
         <div className="flex-1">
           {children}
