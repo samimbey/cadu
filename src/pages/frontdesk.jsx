@@ -88,6 +88,15 @@ export default function Frontdesk() {
             </div>
           </div>
 
+          <div className="flex justify-center mb-6">
+            <Link
+              to={createPageUrl("Onboarding")}
+              className="px-8 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors text-sm"
+            >
+              Get Started
+            </Link>
+          </div>
+
           <p className="text-center text-xs text-muted-foreground max-w-sm mx-auto">Cadu is a comparison platform that helps you explore financing options. We do not issue loans directly.</p>
         </div>
       </div>
