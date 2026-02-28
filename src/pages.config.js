@@ -64,6 +64,10 @@ import fertilityFinancing from './pages/fertility-financing';
 import generalSurgeryFinancing from './pages/general-surgery-financing';
 import medicalFinancing from './pages/medical-financing';
 import visionFinancing from './pages/vision-financing';
+import plasticSurgeryFinancing from './pages/plastic-surgery-financing';
+import orthodonticFinancing from './pages/orthodontic-financing';
+import emergencyMedicalFinancing from './pages/emergency-medical-financing';
+import creditForMedicalBills from './pages/credit-for-medical-bills';
 import __Layout from './Layout.jsx';
 
 
@@ -85,6 +89,10 @@ export const PAGES = {
     "general-surgery-financing": generalSurgeryFinancing,
     "medical-financing": medicalFinancing,
     "vision-financing": visionFinancing,
+    "plastic-surgery-financing": plasticSurgeryFinancing,
+    "orthodontic-financing": orthodonticFinancing,
+    "emergency-medical-financing": emergencyMedicalFinancing,
+    "credit-for-medical-bills": creditForMedicalBills,
 }
 
 export const pagesConfig = {
