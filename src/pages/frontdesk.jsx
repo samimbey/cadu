@@ -64,7 +64,7 @@ export default function Frontdesk() {
             <div className="bg-white rounded-2xl p-6 border border-border shadow-sm">
               <h2 className="font-semibold text-foreground mb-3">How It Works</h2>
               <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                Select a category below to compare medical financing options available to you.
+                Simply browse and compare medical financing options available to you.
               </p>
               <ul className="space-y-2">
                 {trustItems.map(item => (
@@ -88,7 +88,7 @@ export default function Frontdesk() {
             </div>
           </div>
 
-          <p className="text-center text-xs text-muted-foreground">Takes less than 3 minutes · cadunow.com</p>
+          <p className="text-center text-xs text-muted-foreground max-w-sm mx-auto">Cadu is a comparison platform that helps you explore financing options. We do not issue loans directly.</p>
         </div>
       </div>
     </div>
