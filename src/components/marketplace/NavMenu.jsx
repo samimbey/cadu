@@ -94,7 +94,7 @@ export default function NavMenu({ isMarketplace = false }) {
                   </Link>
                 ))}
 
-                {/* Procedure sub-links */}
+                {/* By Procedure sub-links */}
                 <div className="pt-2 border-t border-border mt-2">
                   <button
                     onClick={() => setProceduresOpen(p => !p)}
@@ -106,6 +106,31 @@ export default function NavMenu({ isMarketplace = false }) {
                   {proceduresOpen && (
                     <div className="mt-1 space-y-0.5 pl-3">
                       {procedureLinks.map(({ label, page }) => (
+                        <Link
+                          key={page}
+                          to={createPageUrl(page)}
+                          onClick={() => setOpen(false)}
+                          className="block px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                        >
+                          {label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Resources sub-links */}
+                <div className="pt-2 border-t border-border mt-2">
+                  <button
+                    onClick={() => setResourcesOpen(p => !p)}
+                    className="flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors"
+                  >
+                    <span>Resources</span>
+                    {resourcesOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </button>
+                  {resourcesOpen && (
+                    <div className="mt-1 space-y-0.5 pl-3">
+                      {resourceLinks.map(({ label, page }) => (
                         <Link
                           key={page}
                           to={createPageUrl(page)}
