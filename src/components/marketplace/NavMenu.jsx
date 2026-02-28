@@ -21,18 +21,18 @@ const defaultNavItems = [
 ];
 
 const procedureLinks = [
-  { label: "Dental Financing", page: "DentalFinancing" },
-  { label: "Cosmetic Surgery", page: "CosmeticFinancing" },
-  { label: "Vision & LASIK", page: "VisionFinancing" },
-  { label: "Fertility & IVF", page: "FertilityFinancing" },
-  { label: "General Surgery", page: "GeneralSurgeryFinancing" },
+  { label: "Dental Financing", page: "dental-financing" },
+  { label: "Cosmetic Surgery", page: "cosmetic-financing" },
+  { label: "Vision & LASIK", page: "vision-financing" },
+  { label: "Fertility & IVF", page: "fertility-financing" },
+  { label: "General Surgery", page: "general-surgery-financing" },
 ];
 
 const resourceLinks = [
-  { label: "Medical Financing", page: "MedicalFinancing" },
-  { label: "Dental Implant Financing", page: "DentalImplantFinancing" },
-  { label: "CareCredit Alternatives", page: "CarecreditAlternatives" },
-  { label: "Can't Afford My Bill", page: "CantAffordMedicalBill" },
+  { label: "Medical Financing", page: "medical-financing" },
+  { label: "Dental Implant Financing", page: "dental-implant-financing" },
+  { label: "CareCredit Alternatives", page: "carecredit-alternatives" },
+  { label: "Can't Afford My Bill", page: "cant-afford-medical-bill" },
 ];
 
 export default function NavMenu({ isMarketplace = false }) {
