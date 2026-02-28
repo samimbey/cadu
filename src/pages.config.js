@@ -63,7 +63,6 @@ import fertilityFinancing from './pages/fertility-financing';
 import generalSurgeryFinancing from './pages/general-surgery-financing';
 import medicalFinancing from './pages/medical-financing';
 import carecreditAlternatives from './pages/carecredit-alternatives';
-import dentalImplantFinancing from './pages/dental-implant-financing';
 import cantAffordMedicalBill from './pages/cant-afford-medical-bill';
 import __Layout from './Layout.jsx';
 
@@ -85,7 +84,6 @@ export const PAGES = {
     "general-surgery-financing": generalSurgeryFinancing,
     "medical-financing": medicalFinancing,
     "carecredit-alternatives": carecreditAlternatives,
-    "dental-implant-financing": dentalImplantFinancing,
     "cant-afford-medical-bill": cantAffordMedicalBill,
 }
 
