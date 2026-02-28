@@ -38,6 +38,7 @@ const resourceLinks = [
 export default function NavMenu({ isMarketplace = false }) {
   const [open, setOpen] = useState(false);
   const [proceduresOpen, setProceduresOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const navItems = isMarketplace ? marketplaceNavItems : defaultNavItems;
 
   return (
