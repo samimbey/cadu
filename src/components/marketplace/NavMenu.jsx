@@ -32,7 +32,7 @@ const resourceLinks = [
   { label: "Medical Financing", page: "MedicalFinancing" },
   { label: "Dental Implant Financing", page: "DentalImplantFinancing" },
   { label: "CareCredit Alternatives", page: "CarecreditAlternatives" },
-  { label: "Can't Afford My Bill?", page: "CantAffordMedicalBill" },
+  { label: "Can't Afford My Bill", page: "CantAffordMedicalBill" },
 ];
 
 export default function NavMenu({ isMarketplace = false }) {
