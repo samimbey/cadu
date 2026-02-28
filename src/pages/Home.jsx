@@ -142,7 +142,7 @@ export default function Home() {
             {[
               { icon: Users, stat: "Free to use", label: "No credit card needed" },
               { icon: Star, stat: "Top lenders", label: "Compared for you" },
-              { icon: Shield, stat: "No impact", label: "On your credit score" },
+              { icon: Shield, stat: "No impact", label: "Your score stays safe" },
             ].map(({ icon: Icon, stat, label }) => (
               <div key={label} className="flex items-center gap-4">
                 <Icon className="w-5 h-5 text-primary flex-shrink-0" />
