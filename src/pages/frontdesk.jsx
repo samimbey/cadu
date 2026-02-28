@@ -29,7 +29,7 @@ export default function Frontdesk() {
       {/* Header bar */}
       <div className="bg-primary px-6 py-4">
         <span className="text-2xl font-light tracking-tight text-white" style={{ fontFamily: "Georgia, serif" }}>cadu</span>
-        <p className="text-white/70 text-xs mt-0.5">A Healthcare Finance Marketplace</p>
+
       </div>
 
       <div className="flex-1 flex flex-col items-center px-6 py-12">
