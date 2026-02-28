@@ -1,81 +1,51 @@
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight, DollarSign } from "lucide-react";
+import { ArrowRight, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
 import NavMenu from "@/components/marketplace/NavMenu";
+import { useState } from "react";
 
 const faqs = [
-  {
-    q: "How much do dental implants cost?",
-    a: "A single dental implant can cost between $3,000 and $6,000 or more depending on the provider, location, and whether additional work such as bone grafting is needed.",
-  },
-  {
-    q: "Can I finance dental implants with bad credit?",
-    a: "Some lenders offer financing for a wide range of credit profiles. Options may have higher rates, but financing can still be available.",
-  },
-  {
-    q: "Does dental insurance cover implants?",
-    a: "Most dental insurance plans do not fully cover implants. Some may cover a portion of the cost. Financing can help cover what insurance does not pay.",
-  },
-  {
-    q: "How long does it take to get approved?",
-    a: "Many financing providers offer instant or same-day decisions. Funding timelines vary by lender.",
-  },
-  {
-    q: "Does Cadu provide loans?",
-    a: "No. Cadu is a comparison platform that helps you explore financing options. We do not issue loans directly.",
-  },
+  { q: "How much do dental implants cost?", a: "A single dental implant typically costs between $3,000 and $6,000 depending on your location, provider, and whether bone grafting or other procedures are needed. Full-mouth restorations can cost significantly more." },
+  { q: "Does insurance cover dental implants?", a: "Most dental insurance plans do not fully cover implants, as they are often considered cosmetic or elective. Some plans may cover a portion of the procedure. It is best to check with your insurer." },
+  { q: "Can I finance dental implants with bad credit?", a: "Some lenders work with a range of credit profiles. Approval and terms vary, and not all applicants will qualify for all options." },
+  { q: "What is the typical repayment period for dental implant financing?", a: "Repayment terms vary by lender and loan type, but terms of 12 to 60 months are common. Longer terms reduce monthly payments but may increase total interest paid." },
+  { q: "Does Cadu provide dental financing directly?", a: "No. Cadu is a comparison platform. We help you explore financing options but do not issue loans or financing directly." },
 ];
 
-const financingOptions = [
-  {
-    title: "Medical Credit Programs",
-    desc: "Financing options designed for healthcare, including dental procedures.",
-    pros: ["Fast approval", "Designed for dental costs", "Promotional 0% APR plans available"],
-    cons: ["Watch for deferred interest", "Approval depends on credit"],
-  },
-  {
-    title: "Dental Office Payment Plans",
-    desc: "Some dentists offer in-house payment plans for implant procedures.",
-    pros: ["No third-party lender", "May have low or no interest"],
-    cons: ["Not available at all offices", "Short repayment periods"],
-  },
-  {
-    title: "Personal Loans",
-    desc: "A personal loan can cover the full cost of dental implant treatment.",
-    pros: ["Fixed monthly payments", "Can cover full implant cost", "Longer repayment terms"],
-    cons: ["Credit check required", "Interest rates vary"],
-  },
-  {
-    title: "Installment Financing",
-    desc: "Some providers offer installment plans specifically for dental procedures.",
-    pros: ["Predictable payments", "Quick application", "True 0% options available"],
-    cons: ["Not available everywhere", "May have fees"],
-  },
+const comparisonOptions = [
+  { option: "Medical/dental financing lender", bestFor: "Implants, full restorations", terms: "Monthly payments" },
+  { option: "Personal loan", bestFor: "Larger treatment costs", terms: "Fixed payments" },
+  { option: "Dental office payment plan", bestFor: "Single implants", terms: "Short-term" },
+  { option: "Installment financing", bestFor: "Planned procedures", terms: "Flexible terms" },
 ];
+
+function FAQ({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border border-border rounded-xl p-6 cursor-pointer" onClick={() => setOpen(o => !o)}>
+      <div className="flex items-center justify-between gap-4">
+        <p className="font-semibold text-foreground">{q}</p>
+        {open ? <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" /> : <ChevronDown className="w-4 h-4 text-muted-foreground flex-shrink-0" />}
+      </div>
+      {open && <p className="text-muted-foreground text-sm leading-relaxed mt-3">{a}</p>}
+    </div>
+  );
+}
 
 export default function DentalImplantFinancing() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Dental Implant Financing | Compare Payment Plans & Loans | Cadu</title>
-        <meta name="description" content="Compare dental implant financing options, payment plans, and lenders. Find affordable monthly payment options for single implants, full arch, and All-on-4 procedures." />
+        <title>Dental Implant Financing | Compare Payment Plans for Implants | Cadu</title>
+        <meta name="description" content="Compare dental implant financing options and payment plans. Find ways to afford single implants, full-mouth restorations, and All-on-4 procedures." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://cadu.health/dental-implant-financing" />
-        <meta property="og:title" content="Dental Implant Financing | Compare Payment Plans & Loans | Cadu" />
-        <meta property="og:description" content="Compare dental implant financing options and payment plans. Find affordable monthly payments for single implants, full arch, and All-on-4 procedures." />
+        <meta property="og:title" content="Dental Implant Financing | Compare Payment Plans for Implants | Cadu" />
+        <meta property="og:description" content="Compare dental implant financing options and payment plans. Find ways to afford single implants, full-mouth restorations, and All-on-4 procedures." />
         <meta property="og:site_name" content="Cadu" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cadu.health" },
-            { "@type": "ListItem", "position": 2, "name": "Dental Financing", "item": "https://cadu.health/dental-financing" },
-            { "@type": "ListItem", "position": 3, "name": "Dental Implant Financing", "item": "https://cadu.health/dental-implant-financing" }
-          ]
-        })}</script>
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -96,130 +66,157 @@ export default function DentalImplantFinancing() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6">
+      <main className="max-w-3xl mx-auto px-6 py-16">
 
-        {/* Hero */}
-        <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="py-20 max-w-3xl">
-          <h1 className="text-5xl font-normal text-foreground mb-6 leading-tight" style={{ fontFamily: "Georgia, serif" }}>
+        {/* H1 + Intro */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="text-4xl font-normal text-foreground mb-6 leading-tight" style={{ fontFamily: "Georgia, serif" }}>
             Dental Implant Financing
           </h1>
-          <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
-            Dental implants are one of the most effective long-term solutions for missing teeth, but they can be expensive. Many patients need financing to make implants affordable through monthly payments.
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Dental implants are one of the most effective ways to replace missing teeth, but they are also one of the more expensive dental procedures. A single implant can cost several thousand dollars, and full-mouth restorations can cost significantly more. Most insurance plans provide limited or no coverage for implants.
           </p>
-          <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-            Cadu helps you compare dental implant financing options so you can find a plan that fits your budget and timeline.
+          <p className="text-muted-foreground leading-relaxed mb-10">
+            Cadu helps you compare dental implant financing options so you can find a payment plan that works for your budget and get the treatment you need.
           </p>
           <Link to={createPageUrl("Onboarding") + "?procedure=dental"}>
-            <Button className="px-10 py-6 text-base rounded-lg">
+            <Button className="px-8 py-5 text-base">
               Check Available Options <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
-        </motion.section>
+        </motion.div>
 
-        {/* Cost Overview */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="py-16 border-t border-border">
-          <h2 className="text-3xl font-normal text-foreground mb-6" style={{ fontFamily: "Georgia, serif" }}>What Do Dental Implants Cost?</h2>
-          <p className="text-muted-foreground mb-6 leading-relaxed max-w-3xl">
-            Dental implant costs vary significantly based on the type of procedure, the number of implants, your location, and the provider. Below are general cost ranges.
+        {/* What it Covers */}
+        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="mt-16 pt-12 border-t border-border">
+          <h2 className="text-2xl font-normal text-foreground mb-4" style={{ fontFamily: "Georgia, serif" }}>What Dental Implant Financing Can Cover</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Financing can be used to cover the full cost of dental implant treatment, which may include:
           </p>
-          <div className="grid sm:grid-cols-3 gap-4 mb-6">
+          <ul className="space-y-2 mb-4">
             {[
-              { label: "Single Tooth Implant", range: "$3,000 – $6,000+" },
-              { label: "Multiple Implants", range: "$6,000 – $30,000+" },
-              { label: "Full Arch (All-on-4)", range: "$20,000 – $50,000+" },
-            ].map(({ label, range }) => (
-              <div key={label} className="border border-border rounded-xl p-5 text-center">
-                <DollarSign className="w-6 h-6 text-primary mx-auto mb-3" />
-                <p className="font-semibold text-foreground text-sm mb-1">{label}</p>
-                <p className="text-muted-foreground text-sm">{range}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-muted-foreground leading-relaxed max-w-3xl text-sm">
-            Most dental insurance plans do not fully cover implants. Financing can help cover the gap between what insurance pays and the total cost of treatment.
-          </p>
-        </motion.section>
-
-        {/* Financing Options */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="py-16 border-t border-border">
-          <h2 className="text-3xl font-normal text-foreground mb-4" style={{ fontFamily: "Georgia, serif" }}>Dental Implant Financing Options</h2>
-          <p className="text-muted-foreground mb-10 leading-relaxed max-w-3xl">
-            There are several ways to finance dental implants. The right option depends on the cost, your credit, and the repayment terms you need.
-          </p>
-          <div className="space-y-6">
-            {financingOptions.map(({ title, desc, pros, cons }) => (
-              <div key={title} className="border border-border rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{desc}</p>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">Pros</p>
-                    <ul className="space-y-1">
-                      {pros.map(p => <li key={p} className="text-sm text-muted-foreground flex items-start gap-2"><span className="text-primary mt-0.5">+</span>{p}</li>)}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">Cons</p>
-                    <ul className="space-y-1">
-                      {cons.map(c => <li key={c} className="text-sm text-muted-foreground flex items-start gap-2"><span className="text-muted-foreground mt-0.5">−</span>{c}</li>)}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* What to Look For */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="py-16 border-t border-border">
-          <h2 className="text-3xl font-normal text-foreground mb-6" style={{ fontFamily: "Georgia, serif" }}>What to Look for in a Financing Plan</h2>
-          <p className="text-muted-foreground mb-4 leading-relaxed">When comparing financing plans for dental implants, consider:</p>
-          <ul className="space-y-2 mb-6 max-w-2xl">
-            {[
-              "Whether the plan has true 0% APR or deferred interest",
-              "Monthly payment amount relative to your budget",
-              "Total repayment period",
-              "Whether the lender is accepted at your dental provider",
-              "Approval requirements and credit impact",
+              "Single tooth implants",
+              "Multiple implants",
+              "All-on-4 and full-arch restorations",
+              "Implant-supported dentures",
+              "Bone grafting procedures",
+              "Sinus lifts",
+              "Abutments and crowns",
+              "Pre- and post-procedure care",
             ].map(item => (
-              <li key={item} className="flex items-center gap-3 text-muted-foreground">
-                <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                {item}
+              <li key={item} className="flex items-start gap-3">
+                <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">{item}</span>
               </li>
             ))}
           </ul>
+          <p className="text-muted-foreground leading-relaxed">
+            The right financing option depends on the total cost of your treatment plan and your credit profile.
+          </p>
+        </motion.section>
+
+        {/* Types of Financing */}
+        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="mt-16 pt-12 border-t border-border">
+          <h2 className="text-2xl font-normal text-foreground mb-4" style={{ fontFamily: "Georgia, serif" }}>Types of Dental Implant Financing</h2>
+
+          {[
+            {
+              title: "Dental or Medical Financing Programs",
+              desc: "Specialized lenders that focus on healthcare expenses.",
+              pros: ["Designed for dental costs", "May accept a range of credit profiles", "Quick application process"],
+              cons: ["Interest rates vary by lender and credit", "Not all providers accept all programs"],
+            },
+            {
+              title: "Personal Loans",
+              desc: "General-purpose loans that can be used for dental treatment.",
+              pros: ["Fixed interest rate and monthly payment", "Can cover large treatment costs", "Longer repayment periods available"],
+              cons: ["Requires a credit check", "Approval and rates depend on credit history"],
+            },
+            {
+              title: "Dental Office Payment Plans",
+              desc: "In-house plans offered directly by the dental practice.",
+              pros: ["No third-party lender needed", "May be interest-free"],
+              cons: ["Not offered by all practices", "Often have shorter repayment terms"],
+            },
+            {
+              title: "Installment Financing",
+              desc: "Fixed monthly payments spread over a set term.",
+              pros: ["Predictable payments", "No collateral required"],
+              cons: ["May have fees or interest", "Not available for all procedures"],
+            },
+          ].map(({ title, desc, pros, cons }) => (
+            <div key={title} className="mb-6 border border-border rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
+              <p className="text-muted-foreground text-sm mb-4">{desc}</p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm font-medium text-foreground mb-2">Pros</p>
+                  <ul className="space-y-1">
+                    {pros.map(p => <li key={p} className="text-sm text-muted-foreground flex items-start gap-2"><CheckCircle className="w-3.5 h-3.5 text-green-600 flex-shrink-0 mt-0.5" />{p}</li>)}
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground mb-2">Cons</p>
+                  <ul className="space-y-1">
+                    {cons.map(c => <li key={c} className="text-sm text-muted-foreground flex items-start gap-2"><span className="text-red-400 flex-shrink-0 mt-0.5">✕</span>{c}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.section>
+
+        {/* Comparison Table */}
+        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mt-16 pt-12 border-t border-border">
+          <h2 className="text-2xl font-normal text-foreground mb-4" style={{ fontFamily: "Georgia, serif" }}>Compare Dental Implant Financing Options</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-border rounded-xl overflow-hidden">
+              <thead className="bg-secondary">
+                <tr>
+                  <th className="text-left px-4 py-3 text-foreground font-semibold">Option</th>
+                  <th className="text-left px-4 py-3 text-foreground font-semibold">Best For</th>
+                  <th className="text-left px-4 py-3 text-foreground font-semibold">Typical Terms</th>
+                  <th className="text-left px-4 py-3 text-foreground font-semibold">Apply</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonOptions.map((row, i) => (
+                  <tr key={row.option} className={i % 2 === 0 ? "bg-white" : "bg-muted/30"}>
+                    <td className="px-4 py-3 text-foreground">{row.option}</td>
+                    <td className="px-4 py-3 text-muted-foreground">{row.bestFor}</td>
+                    <td className="px-4 py-3 text-muted-foreground">{row.terms}</td>
+                    <td className="px-4 py-3">
+                      <Link to={createPageUrl("Onboarding") + "?procedure=dental"} className="text-primary hover:underline font-medium">Check Options</Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </motion.section>
 
         {/* FAQ */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="py-16 border-t border-border">
-          <h2 className="text-3xl font-normal text-foreground mb-10" style={{ fontFamily: "Georgia, serif" }}>Frequently Asked Questions</h2>
-          <div className="space-y-6 max-w-3xl">
-            {faqs.map(({ q, a }) => (
-              <div key={q} className="border border-border rounded-xl p-6">
-                <p className="font-semibold text-foreground mb-2">{q}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">{a}</p>
-              </div>
-            ))}
+        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }} className="mt-16 pt-12 border-t border-border">
+          <h2 className="text-2xl font-normal text-foreground mb-8" style={{ fontFamily: "Georgia, serif" }}>Frequently Asked Questions</h2>
+          <div className="space-y-3">
+            {faqs.map(faq => <FAQ key={faq.q} {...faq} />)}
           </div>
         </motion.section>
 
         {/* CTA */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="py-16 border-t border-border">
+        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-16 pt-12 border-t border-border">
           <div className="bg-secondary rounded-2xl p-10 text-center">
-            <h2 className="text-3xl font-normal text-foreground mb-4" style={{ fontFamily: "Georgia, serif" }}>Find Dental Implant Financing</h2>
-            <p className="text-muted-foreground mb-8 max-w-md mx-auto">Compare lenders and payment plans to find the best option for your dental implant procedure.</p>
+            <h2 className="text-2xl font-normal text-foreground mb-3" style={{ fontFamily: "Georgia, serif" }}>Explore Dental Implant Financing</h2>
+            <p className="text-muted-foreground mb-8 max-w-md mx-auto">Compare payment plans and lenders to find the best option for your dental treatment.</p>
             <Link to={createPageUrl("Onboarding") + "?procedure=dental"}>
-              <Button className="px-10 py-6 text-base">Check Available Options</Button>
+              <Button className="px-10 py-5 text-base">Check Available Options <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </Link>
           </div>
         </motion.section>
 
         {/* Disclaimer */}
-        <div className="py-8 border-t border-border">
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Cadu is a comparison platform and does not provide loans directly. We may receive compensation from partner lenders when users apply through our site. All financing terms are provided by the lender. Cost estimates are general ranges and may vary by provider and location.
-          </p>
-        </div>
+        <p className="text-xs text-muted-foreground mt-12 pb-8 leading-relaxed">
+          Cadu is a comparison platform and does not provide loans directly. We may receive compensation from partner lenders when users apply through our site. All financing terms are provided by the lender.
+        </p>
 
       </main>
     </div>
