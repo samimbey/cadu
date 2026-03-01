@@ -118,24 +118,6 @@ export default function GeneralSurgeryFinancing() {
           ))}
         </motion.div>
 
-        {/* Covered Procedures */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-16">
-          <h2 className="text-2xl font-normal text-foreground mb-6" style={{ fontFamily: "Georgia, serif" }}>Commonly Financed Surgeries</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              "Hernia repair", "Gallbladder removal", "Appendectomy",
-              "Joint replacement (hip/knee)", "Spine & back surgery", "Rotator cuff repair",
-              "Weight loss (bariatric) surgery", "Thyroid & parathyroid surgery",
-              "Colon & colorectal surgery", "Carpal tunnel release",
-            ].map((proc) => (
-              <div key={proc} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                {proc}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* FAQ */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mb-16">
           <h2 className="text-2xl font-normal text-foreground mb-6" style={{ fontFamily: "Georgia, serif" }}>Frequently Asked Questions</h2>

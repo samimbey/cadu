@@ -122,30 +122,6 @@ export default function PlasticSurgeryFinancing() {
           </div>
         </motion.section>
 
-        {/* Procedures */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="py-16 border-t border-border">
-          <h2 className="text-2xl font-normal text-foreground mb-6" style={{ fontFamily: "Georgia, serif" }}>Procedures we cover</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              "Breast reconstruction (post-mastectomy)",
-              "Mommy makeover",
-              "Body contouring",
-              "Rhinoplasty (nose job)",
-              "Facelift & neck lift",
-              "Tummy tuck (abdominoplasty)",
-              "Burn scar revision",
-              "Cleft palate repair",
-              "Skin cancer reconstruction",
-              "Gender-affirming surgery",
-            ].map(proc => (
-              <div key={proc} className="flex items-center gap-3 p-4 border border-border rounded-lg">
-                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-foreground">{proc}</span>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
         {/* FAQ */}
         <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="py-16 border-t border-border">
           <h2 className="text-2xl font-normal text-foreground mb-10" style={{ fontFamily: "Georgia, serif" }}>Frequently asked questions</h2>
