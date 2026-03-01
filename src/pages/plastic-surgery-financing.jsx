@@ -170,6 +170,7 @@ export default function PlasticSurgeryFinancing() {
           </div>
         </motion.section>
 
+        <p className="text-xs text-muted-foreground py-8 border-t border-border">Cadu is a comparison platform that helps you explore financing options. We do not issue loans directly.</p>
         <RelatedPages currentPage="plastic-surgery-financing" />
       </main>
     </div>

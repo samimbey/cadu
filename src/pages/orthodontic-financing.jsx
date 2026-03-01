@@ -122,28 +122,6 @@ export default function OrthodonticFinancing() {
           </div>
         </motion.section>
 
-        {/* Procedures */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="py-16 border-t border-border">
-          <h2 className="text-2xl font-normal text-foreground mb-6" style={{ fontFamily: "Georgia, serif" }}>Orthodontic treatments we cover</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              "Traditional metal braces",
-              "Clear ceramic braces",
-              "Invisalign clear aligners",
-              "Lingual (behind-the-tooth) braces",
-              "Retainers & post-treatment",
-              "Palate expanders",
-              "Jaw surgery (orthognathic)",
-              "Adult orthodontic treatment",
-            ].map(proc => (
-              <div key={proc} className="flex items-center gap-3 p-4 border border-border rounded-lg">
-                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-foreground">{proc}</span>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
         {/* FAQ */}
         <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="py-16 border-t border-border">
           <h2 className="text-2xl font-normal text-foreground mb-10" style={{ fontFamily: "Georgia, serif" }}>Frequently asked questions</h2>
@@ -168,6 +146,7 @@ export default function OrthodonticFinancing() {
           </div>
         </motion.section>
 
+        <p className="text-xs text-muted-foreground py-8 border-t border-border">Cadu is a comparison platform that helps you explore financing options. We do not issue loans directly.</p>
         <RelatedPages currentPage="orthodontic-financing" />
       </main>
     </div>

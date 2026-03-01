@@ -157,6 +157,7 @@ export default function GeneralSurgeryFinancing() {
             <Button size="lg" className="px-10">Get Started — It's Free</Button>
           </Link>
         </motion.div>
+        <p className="text-xs text-muted-foreground py-8 border-t border-border">Cadu is a comparison platform that helps you explore financing options. We do not issue loans directly.</p>
         <RelatedPages currentPage="general-surgery-financing" />
       </main>
     </div>
