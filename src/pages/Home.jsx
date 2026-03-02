@@ -72,7 +72,7 @@ export default function Home() {
                 className="text-5xl sm:text-6xl font-normal text-foreground mb-6 leading-tight"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
-                Healthcare in your hands
+                Financial Clarity for Every Medical Decision
               </h1>
               <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-md">
                 Cadu helps you compare financing options for healthcare costs — all in one place.
