@@ -1,5 +1,8 @@
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
+
 Deno.serve(async (req) => {
   try {
+    const base44 = createClientFromRequest(req);
     const body = await req.json();
     const { inquiryType, firstName, lastName, email, phone, jobTitle, company, message } = body;
 
@@ -15,6 +18,18 @@ Deno.serve(async (req) => {
     } else {
       return Response.json({ error: 'Invalid inquiry type' }, { status: 400 });
     }
+
+    // Save submission to database
+    await base44.asServiceRole.entities.ContactSubmission.create({
+      inquiry_type: inquiryType,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone || '',
+      job_title: jobTitle || '',
+      company: company || '',
+      message: message || '',
+    });
 
     const emailBody = `New Contact Form Submission
 
