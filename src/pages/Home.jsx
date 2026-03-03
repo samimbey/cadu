@@ -116,6 +116,8 @@ export default function Home() {
               {[
                 { label: "Dental Financing", page: "dental-financing" },
                 { label: "Cosmetic Surgery", page: "cosmetic-financing" },
+                { label: "Plastic Surgery", page: "plastic-surgery-financing" },
+                { label: "Orthodontic Financing", page: "orthodontic-financing" },
                 { label: "Vision & LASIK", page: "vision-financing" },
                 { label: "Fertility & IVF", page: "fertility-financing" },
                 { label: "General Surgery", page: "general-surgery-financing" },
