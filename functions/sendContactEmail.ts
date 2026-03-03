@@ -1,7 +1,3 @@
-import { Resend } from 'npm:resend@3.0.0';
-
-const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
-
 Deno.serve(async (req) => {
   try {
     const body = await req.json();
@@ -20,8 +16,7 @@ Deno.serve(async (req) => {
       return Response.json({ error: 'Invalid inquiry type' }, { status: 400 });
     }
 
-    const emailBody = `
-New Contact Form Submission
+    const emailBody = `New Contact Form Submission
 
 From: ${firstName} ${lastName}
 Email: ${email}
@@ -32,18 +27,26 @@ Company: ${company || 'Not provided'}
 Inquiry Type: ${inquiryType === 'partnership' ? 'Strategic Partnership Interest' : 'Support'}
 
 Message:
-${message || 'No message provided'}
-    `.trim();
+${message || 'No message provided'}`;
 
-    const result = await resend.emails.send({
-      from: 'Cadu <noreply@cadunow.com>',
-      to: recipientEmail,
-      subject: subject,
-      text: emailBody,
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Cadu <noreply@cadunow.com>',
+        to: recipientEmail,
+        subject: subject,
+        text: emailBody,
+      }),
     });
 
-    if (result.error) {
-      throw new Error(result.error.message);
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || 'Failed to send email');
     }
 
     return Response.json({ success: true });
