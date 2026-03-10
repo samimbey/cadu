@@ -34,15 +34,10 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center p-2">
-                <img 
-                  src={option.logo} 
-                  alt={option.name}
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    e.target.src = `https://ui-avatars.com/api/?name=${option.name}&background=0ea5e9&color=fff&size=56`;
-                  }}
-                />
+              <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-primary-foreground font-bold text-lg">
+                  {option.name.split(" ").map(w => w[0]).slice(0, 2).join("")}
+                </span>
               </div>
               <div>
                 <h3 className="font-bold text-lg text-foreground">{option.name}</h3>
