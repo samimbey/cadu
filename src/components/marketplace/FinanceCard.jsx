@@ -25,6 +25,11 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
         "relative overflow-hidden transition-all duration-300 hover:shadow-lg",
         isSelected && "ring-2 ring-primary shadow-lg"
       )}>
+        {!hideMatchScore && option.matchScore && (
+          <div className={cn("absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full border", getMatchColor(option.matchScore))}>
+            {option.matchScore}% Match
+          </div>
+        )}
 
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
