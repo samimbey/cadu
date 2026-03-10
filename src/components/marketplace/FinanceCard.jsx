@@ -25,12 +25,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
         "relative overflow-hidden transition-all duration-300 hover:shadow-lg",
         isSelected && "ring-2 ring-primary shadow-lg"
       )}>
-        {option.featured && (
-          <div className="absolute top-0 right-0 bg-gradient-to-l from-primary to-primary/80 text-primary-foreground px-4 py-1 text-xs font-semibold rounded-bl-lg">
-            Featured
-          </div>
-        )}
-        
+
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
