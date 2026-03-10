@@ -21,8 +21,8 @@ const faqs = [
     a: "Yes. CareCredit, Cherry, and Alphaeon all offer 0% promotional APR plans for 6–24 months at participating providers. Cherry offers true 0% with no deferred interest.",
   },
   {
-    q: "How fast can I get approved?",
-    a: "Most lenders offer instant decisions — many within 30 seconds. Funding or card activation is typically immediate or same-day.",
+    q: "How quickly can I get a decision?",
+    a: "Most lenders provide decisions within minutes — many within 30 seconds. Funding or card activation timelines vary by lender.",
   },
 ];
 
