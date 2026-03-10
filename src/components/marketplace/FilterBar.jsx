@@ -23,7 +23,7 @@ export default function FilterBar({ filters, onFilterChange, onReset }) {
             <SelectItem value="rating">Highest Rated</SelectItem>
             <SelectItem value="amount">Highest Loan Amount</SelectItem>
             <SelectItem value="funding">Fastest Funding</SelectItem>
-            <SelectItem value="approval">Highest Approval Rate</SelectItem>
+            <SelectItem value="approval">Broadest Eligibility</SelectItem>
           </SelectContent>
         </Select>
       </div>

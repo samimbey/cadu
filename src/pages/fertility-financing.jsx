@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Are fertility loans available for bad credit?",
-    a: "Some options are available for fair credit. Prosper and LendingClub consider multiple factors beyond credit score. For poor credit, a co-signer may improve your options.",
+    a: "Some lenders consider multiple factors beyond credit score. Eligibility and available rates will vary based on your individual profile. A co-signer may expand your options in some cases.",
   },
   {
     q: "Is fertility financing tax deductible?",
@@ -28,7 +28,7 @@ const faqs = [
 
 const benefits = [
   { icon: DollarSign, title: "Up to $50,000", desc: "High-limit loans to cover full IVF cycles" },
-  { icon: Clock, title: "Fast decisions", desc: "Get approved within minutes" },
+  { icon: Clock, title: "Fast decisions", desc: "Many lenders provide decisions within minutes" },
   { icon: Shield, title: "No credit impact", desc: "Compare without a hard inquiry" },
   { icon: Star, title: "Fixed rates", desc: "Predictable monthly payments" },
 ];

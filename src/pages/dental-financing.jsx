@@ -10,7 +10,7 @@ import RelatedPages from "@/components/RelatedPages";
 const faqs = [
   {
     q: "Can I get dental financing with bad credit?",
-    a: "Yes. Several lenders on Cadu approve applicants with fair or poor credit, including AccessOne (no credit check) and Sunbit (90% approval rate). Your options may have higher APRs, but financing is available.",
+    a: "Some lenders on Cadu accept applicants with fair or poor credit, including AccessOne (no credit check required) and Sunbit (soft credit check). Your options and rates will vary based on your individual profile.",
   },
   {
     q: "What dental procedures can be financed?",
@@ -28,7 +28,7 @@ const faqs = [
 
 const benefits = [
   { icon: DollarSign, title: "0% APR options", desc: "Promotional interest-free plans at thousands of dental offices" },
-  { icon: Clock, title: "Instant approval", desc: "Get a decision in seconds, not days" },
+  { icon: Clock, title: "Fast decisions", desc: "Many lenders provide decisions in seconds, not days" },
   { icon: Shield, title: "No credit impact", desc: "Soft credit checks only — comparing won't hurt your score" },
   { icon: Star, title: "Top-rated lenders", desc: "Only vetted, highly-rated dental financing providers" },
 ];
@@ -95,7 +95,7 @@ export default function DentalFinancing() {
             Affordable dental care<br />starts here
           </h1>
           <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
-            Compare dental payment plans and loans from top lenders. Find 0% APR offers, bad-credit options, and instant approvals — all in one place.
+            Compare dental payment plans and loans from top lenders. Find 0% APR offers and flexible options — all in one place.
           </p>
           <Link to={createPageUrl("Onboarding") + "?procedure=dental"}>
             <Button className="px-10 py-6 text-base rounded-lg">

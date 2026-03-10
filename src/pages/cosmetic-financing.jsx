@@ -10,7 +10,7 @@ import RelatedPages from "@/components/RelatedPages";
 const faqs = [
   {
     q: "Can I finance cosmetic surgery with bad credit?",
-    a: "Yes. Options like Sunbit and AccessOne have high approval rates and minimal credit requirements. PatientFi and Cherry also offer soft credit checks with competitive rates for fair credit.",
+    a: "Some lenders, such as Sunbit and AccessOne, have minimal credit requirements or no credit check. PatientFi and Cherry also offer soft credit checks. Eligibility and rates vary by lender and individual profile.",
   },
   {
     q: "What cosmetic procedures can be financed?",
@@ -28,7 +28,7 @@ const faqs = [
 
 const benefits = [
   { icon: DollarSign, title: "Up to $65,000", desc: "High-limit financing for major cosmetic procedures" },
-  { icon: Clock, title: "Instant decisions", desc: "Apply and get approved in minutes" },
+  { icon: Clock, title: "Fast decisions", desc: "Many lenders provide decisions in minutes" },
   { icon: Shield, title: "Soft check only", desc: "Compare without affecting your credit score" },
   { icon: Star, title: "Top lenders", desc: "CareCredit, Alphaeon, Cherry & more" },
 ];
@@ -95,7 +95,7 @@ export default function CosmeticFinancing() {
             Finance your cosmetic<br />procedure today
           </h1>
           <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
-            Compare payment plans and personal loans for cosmetic surgery. Flexible terms, high approval rates, and 0% APR offers from the top lenders.
+            Compare payment plans and personal loans for cosmetic surgery. Flexible terms and 0% APR offers from top lenders.
           </p>
           <Link to={createPageUrl("Onboarding") + "?procedure=cosmetic"}>
             <Button className="px-10 py-6 text-base rounded-lg">
