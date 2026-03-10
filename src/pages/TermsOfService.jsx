@@ -49,9 +49,13 @@ export default function TermsOfService() {
               <li>A financial institution</li>
               <li>A loan broker</li>
               <li>An agent of any lender</li>
+              <li>A financial advisor</li>
             </ul>
             <p className="text-muted-foreground leading-relaxed">
               We do not originate loans, make credit decisions, or process loan applications.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong>Cadu does not provide financial advice.</strong> Nothing on this Site constitutes financial, legal, tax, or investment advice. All content is for general informational purposes only. You should consult a qualified, licensed financial advisor before making any financial decision.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               When you submit information through the Site, you are requesting to be matched with independent third-party lenders or financial service providers ("Network Partners"). Any financial product or service is offered solely by those third parties.

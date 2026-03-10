@@ -553,7 +553,7 @@ export default function Marketplace() {
       {/* Disclaimer */}
       <div className="max-w-6xl mx-auto px-6 pb-8">
         <p className="text-xs text-muted-foreground leading-relaxed border-t border-border pt-6">
-          <strong>Disclaimer:</strong> The financing options, rates, terms, and lender information displayed on this page are approximate and for informational purposes only. Rates, loan amounts, credit requirements, and promotional offers are subject to change without notice and may vary based on your individual creditworthiness, state of residence, and other factors. Cadu does not guarantee the accuracy or completeness of this information. Always verify current terms directly with the lender before applying. Cadu is not a lender and does not make credit decisions.
+          <strong>Disclaimer:</strong> The financing options, rates, terms, and lender information displayed on this page are approximate and for informational purposes only. Rates, loan amounts, credit requirements, and promotional offers are subject to change without notice and may vary based on your individual creditworthiness, state of residence, and other factors. Cadu does not guarantee the accuracy or completeness of this information. Always verify current terms directly with the lender before applying. Cadu is not a lender and does not make credit decisions. <strong>Cadu does not provide financial advice.</strong> The information on this site is provided for general informational purposes only and should not be relied upon as financial, legal, or tax advice. Please consult a licensed financial advisor before making any financial decision.
         </p>
       </div>
 
