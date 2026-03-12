@@ -113,7 +113,6 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
             Terms may change. Please verify details with the lender before applying.
           </p>
 
-          <p className="text-[10px] text-emerald-600 mb-2">✓ Checking options won't affect your credit.</p>
           <div className="flex gap-2">
             <Button 
               variant="outline" 
@@ -126,8 +125,11 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
             >
               {isComparing ? "Selected" : "Compare"}
             </Button>
+            <div className="flex-1 flex flex-col gap-1">
+              <p className="text-[10px] text-emerald-600 text-center">✓ Viewing options won't affect your credit.</p>
             <Button 
-              size="sm" 
+              size="sm"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
               onClick={() => {
                 base44.analytics.track({ eventName: "apply_now_clicked", properties: { lender: option.name, lender_id: option.id } });
                 base44.entities.Click.create({ lender_name: option.name, lender_id: option.id, apply_url: option.applyUrl });
