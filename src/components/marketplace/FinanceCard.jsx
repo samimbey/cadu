@@ -86,7 +86,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger className="flex items-center gap-1 text-left">
-                    <p className="font-bold text-foreground">{option.promoOffer || "N/A"}</p>
+                    <p className="font-bold text-foreground text-left">{option.promoOffer || "N/A"}</p>
                     {option.promoOffer && <Info className="w-3 h-3 text-muted-foreground" />}
                   </TooltipTrigger>
                   <TooltipContent>
