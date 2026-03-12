@@ -25,12 +25,6 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
         "relative overflow-hidden transition-all duration-300 hover:shadow-lg",
         isSelected && "ring-2 ring-primary shadow-lg"
       )}>
-        {!hideMatchScore && option.matchScore && (
-          <div className={cn("absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full border", getMatchColor(option.matchScore))}>
-            {option.matchScore}% Match
-          </div>
-        )}
-
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
@@ -40,7 +34,14 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
                 </span>
               </div>
               <div>
-                <h3 className="font-bold text-lg text-foreground">{option.name}</h3>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="font-bold text-lg text-foreground">{option.name}</h3>
+                  {!hideMatchScore && option.matchScore && (
+                    <span className={cn("text-xs font-semibold px-2.5 py-1 rounded-full border", getMatchColor(option.matchScore))}>
+                      {option.matchScore}% Match
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-center gap-1 mt-0.5">
                   {[...Array(5)].map((_, i) => (
                     <Star 
@@ -104,6 +105,10 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
               ))}
             </div>
           </div>
+
+          <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+            Information may change and is not guaranteed. Verify details with the lender before applying.
+          </p>
 
           <div className="flex gap-2">
             <Button 
