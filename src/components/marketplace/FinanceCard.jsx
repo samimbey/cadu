@@ -113,6 +113,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
             Information may change and is not guaranteed. Verify details with the lender before applying.
           </p>
 
+          <p className="text-[10px] text-emerald-600 mb-2">✓ Checking options won't affect your credit.</p>
           <div className="flex gap-2">
             <Button 
               variant="outline" 
@@ -134,7 +135,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
               }}
               className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              See My Options
+              See Offer
               <ExternalLink className="w-4 h-4 ml-1" />
             </Button>
           </div>
