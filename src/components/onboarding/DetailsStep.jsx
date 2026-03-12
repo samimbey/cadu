@@ -100,12 +100,12 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
       <div className="bg-gradient-to-br from-secondary/10 to-primary/10 rounded-xl p-4 border border-secondary/20">
         <p className="text-sm text-muted-foreground">
           <span className="font-semibold text-foreground">🔒 Your information is secure.</span>{" "}
-          We don't share your details with lenders until you choose to apply.
+          Your details may be shared with trusted financial providers only to help present financing options.
         </p>
       </div>
 
       <p className="text-xs text-muted-foreground leading-relaxed">
-        By clicking "Get My Financing Options," you agree that Cadu may share the information you provided with financial service providers who may contact you regarding financing options. Consent is not required to obtain credit.
+        By clicking "Find My Options," you agree that Cadu may share the information you provided with financial service providers who may contact you regarding financing options. Consent is not required to obtain credit.
       </p>
 
       <div className="flex gap-3">
