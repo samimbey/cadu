@@ -101,7 +101,7 @@ export default function GeneralSurgeryFinancing() {
             Don't let cost delay necessary surgery. Compare medical loans and payment plans from top lenders — and get covered quickly.
           </p>
           <Link to={createPageUrl("Onboarding")}>
-            <Button size="lg" className="px-10 py-6 text-base">Find My Options</Button>
+            <Button size="lg" className="px-10 py-6 text-base">See My Financing Options</Button>
           </Link>
         </motion.div>
 

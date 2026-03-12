@@ -99,7 +99,7 @@ export default function CosmeticFinancing() {
           </p>
           <Link to={createPageUrl("Onboarding") + "?procedure=cosmetic"}>
             <Button className="px-10 py-6 text-base rounded-lg">
-              Find My Financing Options <ArrowRight className="w-4 h-4 ml-2" />
+              See My Financing Options <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
         </motion.section>
