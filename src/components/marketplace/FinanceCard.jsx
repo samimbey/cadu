@@ -106,7 +106,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
             </div>
           </div>
 
-          <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+          <p className="text-[10px] text-muted-foreground mb-4 leading-relaxed">
             Information may change and is not guaranteed. Verify details with the lender before applying.
           </p>
 
