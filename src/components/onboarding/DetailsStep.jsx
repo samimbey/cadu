@@ -104,6 +104,10 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
         </p>
       </div>
 
+      <p className="text-xs text-muted-foreground leading-relaxed">
+        By clicking "Get My Financing Options," you agree that Cadu may share the information you provided with financial service providers who may contact you regarding financing options. Consent is not required to obtain credit.
+      </p>
+
       <div className="flex gap-3">
         <Button 
           variant="outline"
