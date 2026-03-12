@@ -21,7 +21,7 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
   };
 
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const canComplete = data.employment_status && data.annual_income && isValidEmail(data.email || "");
+  const canComplete = data.employment_status && isValidEmail(data.email || "");
 
   return (
     <motion.div
@@ -92,7 +92,7 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
             />
           </div>
           <p className="text-xs text-muted-foreground">
-            This won't affect your credit score. We use this to show relevant options.
+            Optional. This won't affect your credit score. We use this to show relevant options.
           </p>
         </div>
       </div>
