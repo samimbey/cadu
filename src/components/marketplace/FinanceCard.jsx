@@ -134,7 +134,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
               }}
               className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              Apply Now
+              See My Options
               <ExternalLink className="w-4 h-4 ml-1" />
             </Button>
           </div>
