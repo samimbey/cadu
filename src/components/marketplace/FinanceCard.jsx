@@ -8,11 +8,11 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { base44 } from "@/api/base44Client";
 
 export default function FinanceCard({ option, index, isSelected, onSelect, onCompare, isComparing, hideMatchScore }) {
-  const getMatchColor = (score) => {
-    if (score >= 90) return "bg-emerald-100 text-emerald-700 border-emerald-200";
-    if (score >= 75) return "bg-blue-100 text-blue-700 border-blue-200";
-    if (score >= 60) return "bg-amber-100 text-amber-700 border-amber-200";
-    return "bg-slate-100 text-slate-700 border-slate-200";
+  const getMatchLabel = (score) => {
+    if (score >= 90) return { label: "Highly Compatible", color: "bg-emerald-100 text-emerald-700 border-emerald-200" };
+    if (score >= 75) return { label: "Strong Approval Odds", color: "bg-blue-100 text-blue-700 border-blue-200" };
+    if (score >= 60) return { label: "Likely Match", color: "bg-amber-100 text-amber-700 border-amber-200" };
+    return { label: "Possible Match", color: "bg-slate-100 text-slate-700 border-slate-200" };
   };
 
   return (
@@ -25,11 +25,14 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
         "relative overflow-hidden transition-all duration-300 hover:shadow-lg",
         isSelected && "ring-2 ring-primary shadow-lg"
       )}>
-        {!hideMatchScore && option.matchScore && (
-          <div className={cn("absolute top-3 right-3 text-[10px] font-semibold px-2 py-0.5 rounded-full border", getMatchColor(option.matchScore))}>
-            {option.matchScore}% Match
-          </div>
-        )}
+        {!hideMatchScore && option.matchScore && (() => {
+          const { label, color } = getMatchLabel(option.matchScore);
+          return (
+            <div className={cn("absolute top-3 right-3 text-[10px] font-semibold px-2 py-0.5 rounded-full border", color)}>
+              {label}
+            </div>
+          );
+        })()}
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
