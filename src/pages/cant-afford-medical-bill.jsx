@@ -201,7 +201,7 @@ export default function CantAffordMedicalBill() {
         </motion.section>
 
         <p className="text-xs text-muted-foreground mt-12 pb-8 leading-relaxed">
-          Cadu is a comparison platform and does not provide loans directly. We may receive compensation from partner lenders when users apply through our site. All financing terms are provided by the lender. This page is for informational purposes only and does not constitute financial or legal advice.
+          Cadu operates an informational marketplace and is not a lender, creditor, or financial advisor. Cadu does not originate loans or make credit decisions. If you choose to submit information, it may be shared with independent third-party financial service providers who may contact you. Cadu may receive compensation from providers when users click links or obtain financing. All credit decisions are made solely by the applicable provider. Displayed rates and terms are approximate and subject to change. Consent to communications is not required to obtain financing.
         </p>
 
         <RelatedPages currentPage="cant-afford-medical-bill" />

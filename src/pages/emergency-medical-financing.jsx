@@ -175,7 +175,7 @@ export default function EmergencyMedicalFinancing() {
         <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="py-8 border-t border-border">
           <div className="flex gap-3 p-4 bg-muted rounded-xl text-sm text-muted-foreground">
             <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-            <p>Cadu is a comparison marketplace, not a lender. We connect you with financing options but do not provide financial or legal advice. Always review loan terms carefully before committing.</p>
+            <p>Cadu operates an informational marketplace and is not a lender, creditor, or financial advisor. Cadu does not originate loans or make credit decisions. If you choose to submit information, it may be shared with independent third-party financial service providers who may contact you. Cadu may receive compensation from providers when users click links or obtain financing. All credit decisions are made solely by the applicable provider. Displayed rates and terms are approximate and subject to change. Consent to communications is not required to obtain financing.</p>
           </div>
         </motion.section>
 
