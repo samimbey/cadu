@@ -131,14 +131,14 @@ export default function DetailsStep({ data, onComplete, onBack, onChange, isLoad
           ) : (
             <>
               <Search className="mr-2 w-5 h-5" />
-              Find My Options
+              See My Financing Options
             </>
           )}
         </Button>
       </div>
 
       <p className="text-xs text-muted-foreground leading-relaxed">
-        By clicking "Find My Options," you agree that Cadu may share the information you provided with financial service providers who may contact you regarding financing options. Consent is not required to obtain credit.
+        By clicking "See My Financing Options," you agree that Cadu may share the information you provided with independent third-party financial service providers who may contact you regarding financing options. Cadu is not a lender and does not make credit decisions. Cadu may receive compensation from providers. Consent is not required to obtain credit or any other product or service.
       </p>
     </motion.div>
   );
