@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ExternalLink, Star, Check, Info } from "lucide-react";
+import { ExternalLink, Star, Check, Info, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { base44 } from "@/api/base44Client";
@@ -46,20 +47,21 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
                 </div>
                 <div className="flex items-center gap-1 mt-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
+                    <Star 
+                      key={i} 
                       className={cn(
                         "w-3.5 h-3.5",
-                        i < Math.floor(option.rating)
-                          ? "text-amber-400 fill-amber-400"
+                        i < Math.floor(option.rating) 
+                          ? "text-amber-400 fill-amber-400" 
                           : "text-slate-200"
-                      )}
+                      )} 
                     />
                   ))}
                   <span className="text-xs text-muted-foreground ml-1">({option.reviews.toLocaleString()})</span>
                 </div>
               </div>
             </div>
+
           </div>
 
           <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
@@ -111,10 +113,11 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
             Terms may change. Please verify details with the lender before applying.
           </p>
 
-          <div className="flex gap-2 items-end">
-            <Button
-              variant="outline"
-              size="sm"
+          <p className="text-[10px] text-emerald-600 mb-2">✓ Checking options won't affect your credit.</p>
+          <div className="flex gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
               onClick={() => onCompare(option)}
               className={cn(
                 "flex-1",
@@ -123,21 +126,18 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
             >
               {isComparing ? "Selected" : "Compare"}
             </Button>
-            <div className="flex-1 flex flex-col gap-1">
-              <p className="text-[10px] text-emerald-600 text-center">✓ Viewing options won't affect your credit.</p>
-              <Button
-                size="sm"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                onClick={() => {
-                  base44.analytics.track({ eventName: "apply_now_clicked", properties: { lender: option.name, lender_id: option.id } });
-                  base44.entities.Click.create({ lender_name: option.name, lender_id: option.id, apply_url: option.applyUrl });
-                  window.open(option.applyUrl, '_blank');
-                }}
-              >
-                View Offer
-                <ExternalLink className="w-4 h-4 ml-1" />
-              </Button>
-            </div>
+            <Button 
+              size="sm" 
+              onClick={() => {
+                base44.analytics.track({ eventName: "apply_now_clicked", properties: { lender: option.name, lender_id: option.id } });
+                base44.entities.Click.create({ lender_name: option.name, lender_id: option.id, apply_url: option.applyUrl });
+                window.open(option.applyUrl, '_blank');
+              }}
+              className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              View Offer
+              <ExternalLink className="w-4 h-4 ml-1" />
+            </Button>
           </div>
         </CardContent>
       </Card>
