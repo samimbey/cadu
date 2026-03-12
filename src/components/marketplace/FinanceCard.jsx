@@ -135,7 +135,6 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
                 base44.entities.Click.create({ lender_name: option.name, lender_id: option.id, apply_url: option.applyUrl });
                 window.open(option.applyUrl, '_blank');
               }}
-              className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               View Offer
               <ExternalLink className="w-4 h-4 ml-1" />
