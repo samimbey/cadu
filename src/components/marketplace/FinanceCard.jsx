@@ -140,6 +140,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
               View Offer
               <ExternalLink className="w-4 h-4 ml-1" />
             </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
