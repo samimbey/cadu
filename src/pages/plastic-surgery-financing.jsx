@@ -24,10 +24,6 @@ const faqs = [
     q: "Is 0% APR available for plastic surgery?",
     a: "Yes. CareCredit and Alphaeon Credit both offer 0% promotional APR plans for 6–24 months at participating plastic surgery practices.",
   },
-  {
-    q: "Will applying hurt my credit score?",
-    a: "Comparing options on Cadu uses a soft credit check with no impact on your score. A hard inquiry only happens when you formally apply directly with a lender.",
-  },
 ];
 
 const benefits = [
