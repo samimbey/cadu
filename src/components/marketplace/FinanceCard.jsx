@@ -99,7 +99,7 @@ export default function FinanceCard({ option, index, isSelected, onSelect, onCom
 
           <div className="space-y-2 mb-4">
             <p className="text-xs font-medium text-muted-foreground">Key Features:</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-start">
               {option.features.slice(0, 3).map((feature, i) => (
                 <span key={i} className="inline-flex items-center gap-1 text-xs bg-muted px-2 py-1 rounded-full text-left">
                   <Check className="w-3 h-3 text-secondary" />
