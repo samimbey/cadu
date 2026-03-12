@@ -142,7 +142,7 @@ export default function CosmeticFinancing() {
           </div>
         </motion.section>
 
-        <p className="text-xs text-muted-foreground py-8 border-t border-border">Cadu is a comparison platform that helps you explore financing options. We do not issue loans directly and do not provide financial advice. All information is for general informational purposes only. Please consult a licensed financial advisor before making any financial decision.</p>
+        <p className="text-xs text-muted-foreground py-8 border-t border-border">Cadu operates an informational marketplace and is not a lender, creditor, or financial advisor. Cadu does not originate loans or make credit decisions. If you choose to submit information, it may be shared with independent third-party financial service providers who may contact you. Cadu may receive compensation from providers when users click links or obtain financing. All credit decisions are made solely by the applicable provider. Displayed rates and terms are approximate and subject to change. Consent to communications is not required to obtain financing.</p>
         <RelatedPages currentPage="cosmetic-financing" />
       </main>
     </div>
