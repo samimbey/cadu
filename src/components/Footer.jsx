@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
+import { Linkedin } from "lucide-react";
 
 
 export default function Footer() {
