@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto flex flex-wrap gap-4 items-center justify-between text-xs text-muted-foreground">
         <div className="flex items-center gap-2">
           <p>© 2026 Cadu, LLC · Healthcare Finance Marketplace</p>
-          <a href="https://www.linkedin.com/company/cadunow/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+          <a href="https://www.linkedin.com/company/cadunow/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-6 h-6 rounded border border-border hover:border-foreground hover:text-foreground transition-colors">
             <Linkedin className="w-3.5 h-3.5" />
           </a>
         </div>
