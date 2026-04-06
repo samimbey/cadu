@@ -91,8 +91,27 @@ function PostDetail({ post, onBack }) {
         )}
         {post.author && <span>By {post.author}</span>}
       </div>
-      <div className="prose prose-slate max-w-none">
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+      <div className="blog-content">
+        <ReactMarkdown
+          components={{
+            h1: ({ children }) => <h1 className="text-4xl font-semibold text-foreground mt-10 mb-4" style={{ fontFamily: "Georgia, serif" }}>{children}</h1>,
+            h2: ({ children }) => <h2 className="text-2xl font-semibold text-foreground mt-10 mb-3 pb-2 border-b border-border" style={{ fontFamily: "Georgia, serif" }}>{children}</h2>,
+            h3: ({ children }) => <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">{children}</h3>,
+            h4: ({ children }) => <h4 className="text-lg font-semibold text-foreground mt-6 mb-2">{children}</h4>,
+            p: ({ children }) => <p className="text-base text-foreground leading-relaxed mb-5">{children}</p>,
+            ul: ({ children }) => <ul className="list-disc pl-6 mb-5 space-y-2 text-foreground">{children}</ul>,
+            ol: ({ children }) => <ol className="list-decimal pl-6 mb-5 space-y-2 text-foreground">{children}</ol>,
+            li: ({ children }) => <li className="text-base leading-relaxed">{children}</li>,
+            strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+            a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/80">{children}</a>,
+            blockquote: ({ children }) => <blockquote className="border-l-4 border-primary pl-5 my-6 text-muted-foreground italic">{children}</blockquote>,
+            hr: () => <hr className="my-8 border-border" />,
+            img: ({ src, alt }) => src && !src.includes('/screenshots/') ? <img src={src} alt={alt} className="rounded-xl my-6 w-full object-cover" /> : null,
+            code: ({ children }) => <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>,
+          }}
+        >
+          {post.content}
+        </ReactMarkdown>
       </div>
     </div>
   );
