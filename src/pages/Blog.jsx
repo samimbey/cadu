@@ -98,7 +98,24 @@ function PostDetail({ post, onBack }) {
             h2: ({ children }) => <h2 className="text-2xl font-semibold text-foreground mt-10 mb-3 pb-2 border-b border-border" style={{ fontFamily: "Georgia, serif" }}>{children}</h2>,
             h3: ({ children }) => <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">{children}</h3>,
             h4: ({ children }) => <h4 className="text-lg font-semibold text-foreground mt-6 mb-2">{children}</h4>,
-            p: ({ children }) => <p className="text-base text-foreground leading-relaxed mb-5">{children}</p>,
+            p: ({ children }) => {
+              const text = typeof children === 'string' ? children : (Array.isArray(children) ? children.join('') : '');
+              const match = text.match(/^\{\{VIDEO:([^}]+)\}\}$/);
+              if (match) {
+                return (
+                  <div className="my-8 rounded-xl overflow-hidden" style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                    <iframe
+                      src={`https://drive.google.com/file/d/${match[1]}/preview`}
+                      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                      allow="autoplay"
+                      allowFullScreen
+                      frameBorder="0"
+                    />
+                  </div>
+                );
+              }
+              return <p className="text-base text-foreground leading-relaxed mb-5">{children}</p>;
+            },
             ul: ({ children }) => <ul className="list-disc pl-6 mb-5 space-y-2 text-foreground">{children}</ul>,
             ol: ({ children }) => <ol className="list-decimal pl-6 mb-5 space-y-2 text-foreground">{children}</ol>,
             li: ({ children }) => <li className="text-base leading-relaxed">{children}</li>,
