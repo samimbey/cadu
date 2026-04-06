@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { base44 } from "@/api/base44Client";
 import NavMenu from "@/components/marketplace/NavMenu";
@@ -120,6 +120,7 @@ function PostDetail({ post, onBack }) {
 export default function Blog() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedPost, setSelectedPost] = useState(null);
 
   useEffect(() => {
@@ -128,6 +129,24 @@ export default function Blog() {
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    const slug = searchParams.get("post");
+    if (slug && posts.length > 0) {
+      const found = posts.find((p) => p.slug === slug);
+      if (found) setSelectedPost(found);
+    } else if (!slug) {
+      setSelectedPost(null);
+    }
+  }, [searchParams, posts]);
+
+  const handleSelectPost = (post) => {
+    setSearchParams({ post: post.slug || post.id });
+  };
+
+  const handleBack = () => {
+    setSearchParams({});
+  };
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
@@ -147,7 +166,7 @@ export default function Blog() {
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-8 py-16">
         {selectedPost ? (
-          <PostDetail post={selectedPost} onBack={() => setSelectedPost(null)} />
+          <PostDetail post={selectedPost} onBack={handleBack} />
         ) : (
           <>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
@@ -172,7 +191,7 @@ export default function Blog() {
             ) : (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {posts.map((post) => (
-                  <PostCard key={post.id} post={post} onClick={setSelectedPost} />
+                  <PostCard key={post.id} post={post} onClick={handleSelectPost} />
                 ))}
               </div>
             )}
