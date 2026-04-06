@@ -141,10 +141,12 @@ export default function Blog() {
   }, [searchParams, posts]);
 
   const handleSelectPost = (post) => {
+    setSelectedPost(post);
     setSearchParams({ post: post.slug || post.id });
   };
 
   const handleBack = () => {
+    setSelectedPost(null);
     setSearchParams({});
   };
 
