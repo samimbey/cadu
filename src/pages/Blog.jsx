@@ -91,6 +91,16 @@ function PostDetail({ post, onBack }) {
         )}
         {post.author && <span>By {post.author}</span>}
       </div>
+      {post.video_url && (
+        <div className="my-8">
+          <video
+            src={post.video_url}
+            controls
+            className="w-full rounded-xl"
+            style={{ maxHeight: "480px" }}
+          />
+        </div>
+      )}
       <div className="blog-content">
         <ReactMarkdown
           components={{

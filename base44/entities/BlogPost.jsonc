@@ -35,6 +35,11 @@
       "type": "string",
       "description": "URL of cover image"
     },
+    "video_url": {
+      "type": "string",
+      "description": "URL of an MP4 video to embed in the post",
+      "format": "file"
+    },
     "published": {
       "type": "boolean",
       "default": false,
