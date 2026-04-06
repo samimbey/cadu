@@ -143,6 +143,22 @@ export default function DentalFinancing() {
         </motion.section>
 
         <p className="text-xs text-muted-foreground py-8 border-t border-border">Cadu operates an informational marketplace and is not a lender, creditor, or financial advisor. Cadu does not originate loans or make credit decisions. If you choose to submit information, it may be shared with independent third-party financial service providers who may contact you. Cadu may receive compensation from providers when users click links or obtain financing. All credit decisions are made solely by the applicable provider. Displayed rates and terms are approximate and subject to change. Consent to communications is not required to obtain financing.</p>
+
+        {/* Featured blog post */}
+        <div className="py-8 border-t border-border">
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">From the blog</p>
+          <Link
+            to="/Blog?post=clearchoice-dental-implants-cost-2026-financing-guide"
+            className="flex items-center justify-between p-5 border border-border rounded-xl hover:border-primary hover:bg-secondary transition-colors group"
+          >
+            <div>
+              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Clear Choice Dental Implants Cost 2026: A Complete Financing Guide</p>
+              <p className="text-xs text-muted-foreground mt-1">Discover the real costs of ClearChoice dental implants and learn how to secure the best monthly payment plan.</p>
+            </div>
+            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 ml-4" />
+          </Link>
+        </div>
+
         <RelatedPages currentPage="dental-financing" />
       </main>
     </div>
