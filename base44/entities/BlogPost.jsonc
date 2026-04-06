@@ -1,0 +1,60 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Blog post title"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug (e.g. how-to-finance-dental-care)"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Short summary shown on listing page"
+    },
+    "content": {
+      "type": "string",
+      "description": "Full blog post content (markdown supported)"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "dental",
+        "cosmetic",
+        "vision",
+        "fertility",
+        "general",
+        "tips",
+        "news"
+      ],
+      "description": "Post category"
+    },
+    "cover_image_url": {
+      "type": "string",
+      "description": "URL of cover image"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the post is publicly visible"
+    },
+    "published_date": {
+      "type": "string",
+      "description": "Publication date (ISO string)"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author name"
+    },
+    "meta_description": {
+      "type": "string",
+      "description": "SEO meta description"
+    }
+  },
+  "required": [
+    "title",
+    "content"
+  ]
+}
