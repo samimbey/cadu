@@ -106,7 +106,7 @@ function PostDetail({ post, onBack }) {
             a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/80">{children}</a>,
             blockquote: ({ children }) => <blockquote className="border-l-4 border-primary pl-5 my-6 text-muted-foreground italic">{children}</blockquote>,
             hr: () => <hr className="my-8 border-border" />,
-            img: ({ src, alt }) => src && !src.includes('/screenshots/') ? <img src={src} alt={alt} className="rounded-xl my-6 mx-auto block max-w-lg w-full" style={{ imageRendering: 'crisp-edges' }} /> : null,
+            img: ({ src, alt }) => src && !src.includes('/screenshots/') ? <img src={src} alt={alt} className="rounded-xl my-6 mx-auto block" style={{ maxWidth: '100%', width: 'auto', height: 'auto' }} /> : null,
             code: ({ children }) => <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>,
           }}
         >
