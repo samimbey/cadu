@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { base44 } from "@/api/base44Client";
 import NavMenu from "@/components/marketplace/NavMenu";
 
@@ -93,6 +94,7 @@ function PostDetail({ post, onBack }) {
       </div>
       <div className="blog-content">
         <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
           components={{
             h1: ({ children }) => <h1 className="text-4xl font-semibold text-foreground mt-10 mb-4" style={{ fontFamily: "Georgia, serif" }}>{children}</h1>,
             h2: ({ children }) => <h2 className="text-2xl font-semibold text-foreground mt-10 mb-3 pb-2 border-b border-border" style={{ fontFamily: "Georgia, serif" }}>{children}</h2>,
@@ -123,6 +125,12 @@ function PostDetail({ post, onBack }) {
             a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/80">{children}</a>,
             blockquote: ({ children }) => <blockquote className="border-l-4 border-primary pl-5 my-6 text-muted-foreground italic">{children}</blockquote>,
             hr: () => <hr className="my-8 border-border" />,
+            table: ({ children }) => <div className="overflow-x-auto my-6"><table className="w-full border-collapse text-sm">{children}</table></div>,
+            thead: ({ children }) => <thead className="bg-muted">{children}</thead>,
+            tbody: ({ children }) => <tbody>{children}</tbody>,
+            tr: ({ children }) => <tr className="border-b border-border">{children}</tr>,
+            th: ({ children }) => <th className="text-left px-4 py-2 font-semibold text-foreground">{children}</th>,
+            td: ({ children }) => <td className="px-4 py-2 text-foreground">{children}</td>,
             img: ({ src, alt }) => src && !src.includes('/screenshots/') ? <img src={src} alt={alt} className="rounded-xl my-6 mx-auto block" style={{ maxWidth: '100%', width: 'auto', height: 'auto' }} /> : null,
             code: ({ children }) => <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>,
           }}
