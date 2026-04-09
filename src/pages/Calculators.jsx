@@ -40,7 +40,7 @@ export default function Calculators() {
   const ActiveComponent = tabs.find((t) => t.id === activeTab)?.component;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Helmet>
         <title>Healthcare Finance Calculators — Cadu</title>
         <meta name="description" content="Use free healthcare finance calculators to estimate monthly payments, check affordability, and compare APR impact before applying for a medical loan." />
@@ -84,7 +84,7 @@ export default function Calculators() {
                 className={`p-4 rounded-xl border-2 text-left transition-all ${
                   isActive
                     ? "border-primary bg-primary text-primary-foreground shadow-md"
-                    : "border-border hover:border-primary/40 bg-background text-foreground active:opacity-70"
+                    : "border-border hover:border-primary/40 bg-white text-foreground"
                 }`}
               >
                 <Icon className={`w-5 h-5 mb-2 ${isActive ? "text-primary-foreground" : "text-primary"}`} />
@@ -105,7 +105,7 @@ export default function Calculators() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2 }}
-            className="bg-card border border-border rounded-2xl p-6 sm:p-10 shadow-sm"
+            className="bg-white border border-border rounded-2xl p-6 sm:p-10 shadow-sm"
           >
             {ActiveComponent && <ActiveComponent />}
           </motion.div>

@@ -124,7 +124,7 @@ export default function Onboarding() {
       </div>
 
       {/* Right Panel — form */}
-      <div className="flex-1 flex flex-col min-h-screen bg-background">
+      <div className="flex-1 flex flex-col min-h-screen bg-white">
         {/* Mobile header */}
         <header className="lg:hidden py-6 px-4 flex justify-center">
           <Link to={createPageUrl("Home")} className="text-2xl font-light tracking-tight text-primary hover:opacity-70 transition-opacity" style={{ fontFamily: "Georgia, serif" }}>
