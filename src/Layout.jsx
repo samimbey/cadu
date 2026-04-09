@@ -37,7 +37,7 @@ export default function Layout({ children, currentPageName }) {
             </motion.div>
           </AnimatePresence>
         </div>
-        <Footer />
+        <div className="hidden md:block"><Footer /></div>
         <MobileNav />
       </div>
     </HelmetProvider>

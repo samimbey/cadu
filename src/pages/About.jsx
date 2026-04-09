@@ -34,7 +34,7 @@ const stats = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Helmet>
         <title>About Cadu — Healthcare Finance Marketplace</title>
         <meta name="description" content="Learn about Cadu's mission to make healthcare affordable. We help patients compare medical financing options so you can focus on getting better, not worrying about bills." />

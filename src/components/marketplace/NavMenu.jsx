@@ -50,7 +50,7 @@ export default function NavMenu({ isMarketplace = false }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="p-2 rounded-md hover:bg-secondary transition-colors"
+        className="p-2 rounded-md hover:bg-secondary transition-colors active:opacity-70"
         aria-label="Open menu"
       >
         <Menu className="w-5 h-5 text-foreground" />

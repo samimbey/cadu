@@ -8,7 +8,7 @@ import NavMenu from "@/components/marketplace/NavMenu";
 
 export default function Home() {
   return (
-    <div className="bg-white flex flex-col">
+    <div className="bg-background flex flex-col">
       <Helmet>
         <meta name="google-site-verification" content="jwqga7txdvW8UANkw0P-VpZJA7tBfBMuYWOhBG13fiI" />
         <title>Cadu — Healthcare Finance Marketplace</title>

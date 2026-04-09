@@ -188,7 +188,7 @@ export default function Blog() {
   };
 
   return (
-    <div className="bg-white min-h-screen flex flex-col">
+    <div className="bg-background min-h-screen flex flex-col">
       <PullToRefreshIndicator isRefreshing={isRefreshing} pullProgress={pullProgress} />
       <Helmet>
         <title>Blog — Cadu Healthcare Finance</title>

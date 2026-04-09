@@ -15,11 +15,21 @@ export default function Settings() {
 
   const handleDelete = async () => {
     setDeleting(true);
+    try {
+      // Delete user's associated data before logging out
+      const user = await base44.auth.me();
+      if (user?.email) {
+        const profiles = await base44.entities.UserProfile.filter({ email: user.email });
+        await Promise.all(profiles.map(p => base44.entities.UserProfile.delete(p.id)));
+      }
+    } catch (_) {
+      // Best-effort cleanup
+    }
     await base44.auth.logout("/");
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Helmet>
         <title>Settings — Cadu</title>
       </Helmet>

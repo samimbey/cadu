@@ -414,7 +414,7 @@ export default function Marketplace() {
         <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ddfc1277ab7410d96d61c/cc2dd15c6_ChatGPTImageFeb24202602_23_35PM.png" />
       </Helmet>
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-white border-b border-border">
+      <header className="sticky top-0 z-10 bg-background border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
