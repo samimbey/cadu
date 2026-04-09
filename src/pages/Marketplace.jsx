@@ -1,4 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import usePullToRefresh from "@/hooks/usePullToRefresh";
+import PullToRefreshIndicator from "@/components/PullToRefreshIndicator";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
@@ -264,6 +266,14 @@ export default function Marketplace() {
   const [compareList, setCompareList] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
   const [dismissBanner, setDismissBanner] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleRefresh = useCallback(async () => {
+    setRefreshKey(k => k + 1);
+    await new Promise(r => setTimeout(r, 600));
+  }, []);
+
+  const { isPulling, pullProgress, isRefreshing } = usePullToRefresh(handleRefresh);
 
   // Check if user has completed onboarding
   const { data: userProfile } = useQuery({
@@ -388,6 +398,7 @@ export default function Marketplace() {
 
   return (
     <div className="min-h-screen bg-background">
+      <PullToRefreshIndicator isRefreshing={isRefreshing} pullProgress={pullProgress} />
       <Helmet>
         <title>Healthcare Financing Options — Cadu Marketplace</title>
         <meta name="description" content="Browse and compare personalized healthcare financing options. Find medical loans, payment plans, and 0% APR offers matched to your credit score and procedure." />

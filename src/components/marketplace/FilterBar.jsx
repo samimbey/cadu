@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import MobileSelect from "@/components/MobileSelect";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -9,23 +9,25 @@ import { useState } from "react";
 export default function FilterBar({ filters, onFilterChange, onReset }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const sortOptions = [
+    { value: "match", label: "Best Match" },
+    { value: "apr", label: "Lowest APR" },
+    { value: "rating", label: "Highest Rated" },
+    { value: "amount", label: "Highest Loan Amount" },
+    { value: "funding", label: "Fastest Funding" },
+    { value: "approval", label: "Broadest Eligibility" },
+  ];
+
   const FilterContent = () => (
     <div className="space-y-6">
       <div className="space-y-3">
         <Label className="text-sm font-medium">Sort By</Label>
-        <Select value={filters.sortBy} onValueChange={(value) => onFilterChange("sortBy", value)}>
-          <SelectTrigger>
-            <SelectValue placeholder="Select sort option" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="match">Best Match</SelectItem>
-            <SelectItem value="apr">Lowest APR</SelectItem>
-            <SelectItem value="rating">Highest Rated</SelectItem>
-            <SelectItem value="amount">Highest Loan Amount</SelectItem>
-            <SelectItem value="funding">Fastest Funding</SelectItem>
-            <SelectItem value="approval">Broadest Eligibility</SelectItem>
-          </SelectContent>
-        </Select>
+        <MobileSelect
+          value={filters.sortBy}
+          onValueChange={(value) => onFilterChange("sortBy", value)}
+          placeholder="Select sort option"
+          options={sortOptions}
+        />
       </div>
 
       <div className="space-y-3">
@@ -70,19 +72,13 @@ export default function FilterBar({ filters, onFilterChange, onReset }) {
     <>
       {/* Desktop Filters */}
       <div className="hidden md:flex items-center gap-4 bg-card rounded-xl p-4 border">
-        <Select value={filters.sortBy} onValueChange={(value) => onFilterChange("sortBy", value)}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="match">Best Match</SelectItem>
-            <SelectItem value="apr">Lowest APR</SelectItem>
-            <SelectItem value="rating">Highest Rated</SelectItem>
-            <SelectItem value="amount">Highest Loan Amount</SelectItem>
-            <SelectItem value="funding">Fastest Funding</SelectItem>
-            <SelectItem value="approval">Broadest Eligibility</SelectItem>
-          </SelectContent>
-        </Select>
+        <MobileSelect
+          value={filters.sortBy}
+          onValueChange={(value) => onFilterChange("sortBy", value)}
+          placeholder="Sort by"
+          options={sortOptions}
+          triggerClassName="w-[180px]"
+        />
 
         <div className="flex items-center gap-2">
           <Label className="text-sm whitespace-nowrap">Min Match:</Label>

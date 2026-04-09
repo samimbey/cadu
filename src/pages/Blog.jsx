@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import usePullToRefresh from "@/hooks/usePullToRefresh";
+import PullToRefreshIndicator from "@/components/PullToRefreshIndicator";
 import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
@@ -148,12 +150,22 @@ export default function Blog() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedPost, setSelectedPost] = useState(null);
 
-  useEffect(() => {
-    base44.entities.BlogPost.filter({ published: true }, "-published_date", 50).then((data) => {
-      setPosts(data);
-      setLoading(false);
-    });
+  const fetchPosts = useCallback(async () => {
+    const data = await base44.entities.BlogPost.filter({ published: true }, "-published_date", 50);
+    setPosts(data);
   }, []);
+
+  const handleRefresh = useCallback(async () => {
+    setLoading(true);
+    await fetchPosts();
+    setLoading(false);
+  }, [fetchPosts]);
+
+  const { pullProgress, isRefreshing } = usePullToRefresh(handleRefresh);
+
+  useEffect(() => {
+    fetchPosts().then(() => setLoading(false));
+  }, [fetchPosts]);
 
   useEffect(() => {
     const slug = searchParams.get("post");
@@ -177,6 +189,7 @@ export default function Blog() {
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
+      <PullToRefreshIndicator isRefreshing={isRefreshing} pullProgress={pullProgress} />
       <Helmet>
         <title>Blog — Cadu Healthcare Finance</title>
         <meta name="description" content="Tips, guides, and news about healthcare financing, medical loans, and managing the cost of care." />

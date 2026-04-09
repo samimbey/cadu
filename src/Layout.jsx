@@ -2,6 +2,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import MobileNav from "@/components/MobileNav";
+import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import LegacyRedirect from "@/components/LegacyRedirect";
@@ -21,6 +22,9 @@ export default function Layout({ children, currentPageName }) {
         }}
       >
         <div className="flex-1 pb-16 md:pb-0">
+          <div className="md:hidden px-4 pt-2">
+            <BackButton />
+          </div>
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
