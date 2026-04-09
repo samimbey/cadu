@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { pagesConfig } from './pages.config'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import Blog from './pages/Blog';
 import Settings from './pages/Settings';
@@ -11,7 +11,32 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
-const MainPage = mainPageKey ? Pages[mainPageKey] : <></>;
+const MainPage = mainPageKey ? Pages[mainPageKey] : <></>;  
+
+const TAB_PATHS = ["/", "/Marketplace", "/Calculators", "/Blog"];
+
+const TAB_DEFS = [
+  { path: "/", name: mainPageKey, Page: MainPage },
+  { path: "/Marketplace", name: "Marketplace", Page: Pages["Marketplace"] },
+  { path: "/Calculators", name: "Calculators", Page: Pages["Calculators"] },
+  { path: "/Blog", name: "Blog", Page: Blog },
+];
+
+function PersistentTabs() {
+  const { pathname } = useLocation();
+  return (
+    <>
+      {TAB_DEFS.map(({ path, name, Page }) => {
+        const active = pathname === path || (path !== "/" && pathname.startsWith(path));
+        return (
+          <div key={path} style={{ display: active ? "block" : "none" }}>
+            <LayoutWrapper currentPageName={name}><Page /></LayoutWrapper>
+          </div>
+        );
+      })}
+    </>
+  );
+}
 
 const LayoutWrapper = ({ children, currentPageName }) => Layout ?
   <Layout currentPageName={currentPageName}>{children}</Layout>
@@ -19,6 +44,8 @@ const LayoutWrapper = ({ children, currentPageName }) => Layout ?
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+  const { pathname } = useLocation();
+  const isTabPath = TAB_PATHS.some(p => p === pathname || (p !== "/" && pathname.startsWith(p)));
 
   // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
@@ -42,27 +69,25 @@ const AuthenticatedApp = () => {
 
   // Render the main app
   return (
-    <Routes>
-      <Route path="/" element={
-        <LayoutWrapper currentPageName={mainPageKey}>
-          <MainPage />
-        </LayoutWrapper>
-      } />
-      {Object.entries(Pages).map(([path, Page]) => (
-        <Route
-          key={path}
-          path={`/${path}`}
-          element={
-            <LayoutWrapper currentPageName={path}>
-              <Page />
-            </LayoutWrapper>
-          }
-        />
-      ))}
-      <Route path="/Blog" element={<LayoutWrapper currentPageName="Blog"><Blog /></LayoutWrapper>} />
-      <Route path="/Settings" element={<LayoutWrapper currentPageName="Settings"><Settings /></LayoutWrapper>} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+    <>
+      <PersistentTabs />
+      {!isTabPath && (
+        <Routes>
+          {Object.entries(Pages)
+            .filter(([path]) => !["Marketplace", "Calculators"].includes(path))
+            .map(([path, Page]) => (
+              <Route
+                key={path}
+                path={`/${path}`}
+                element={<LayoutWrapper currentPageName={path}><Page /></LayoutWrapper>}
+              />
+            ))}
+          <Route path="/Blog" element={<LayoutWrapper currentPageName="Blog"><Blog /></LayoutWrapper>} />
+          <Route path="/Settings" element={<LayoutWrapper currentPageName="Settings"><Settings /></LayoutWrapper>} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      )}
+    </>
   );
 };
 
