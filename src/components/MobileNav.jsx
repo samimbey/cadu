@@ -23,7 +23,6 @@ export default function MobileNav() {
           <Link
             key={label}
             to={to}
-            replace
             className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 select-none text-xs transition-colors ${
               active ? "text-primary" : "text-muted-foreground"
             }`}
