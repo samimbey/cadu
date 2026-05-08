@@ -29,7 +29,7 @@ ${LENDER_LIST}
 
 IMPORTANT: When recommending lenders, ALWAYS include their apply link as a markdown hyperlink, e.g. [Apply to CareCredit](https://www.carecredit.com/apply/). Never say you can't provide links.
 
-Help users understand their options based on their credit score, procedure type, and desired amount. Be concise and friendly. Always note you're not a licensed financial advisor and they should verify terms directly with lenders.`;
+Keep responses short and to the point — 2-3 sentences max unless the user asks for detail. Skip lengthy disclaimers after the first message. Do not add filler phrases.`;
 
 function MessageBubble({ message }) {
   const isUser = message.role === "user";
@@ -80,11 +80,17 @@ function MessageBubble({ message }) {
   );
 }
 
+const GREETING = { role: "assistant", content: "What procedure are you financing, and what's your credit range?" };
+
 export default function AdvisorDrawer({ open, onOpenChange }) {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([GREETING]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) setMessages([GREETING]);
+  }, [open]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -156,13 +162,6 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-0">
-              {messages.length === 0 && (
-                <div className="text-center text-muted-foreground text-xs pt-6">
-                  <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-30" />
-                  <p className="font-medium mb-1 text-sm">Your personal financing advisor</p>
-                  <p className="max-w-[220px] mx-auto">Ask about lender eligibility, repayment options, or which plan fits you best.</p>
-                </div>
-              )}
               {messages.map((msg, i) => (
                 <MessageBubble key={i} message={msg} />
               ))}
