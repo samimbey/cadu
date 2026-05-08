@@ -144,6 +144,9 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-2 text-center">Enter to send · Shift+Enter for new line</p>
+          <p className="text-xs text-muted-foreground/70 mt-2 text-center leading-relaxed">
+            Cadu is not a licensed financial advisor. Suggestions are informational only, based on the details you provide, and do not constitute financial or credit advice. Always verify terms directly with lenders.
+          </p>
         </div>
       </DrawerContent>
     </Drawer>
