@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { base44 } from "@/api/base44Client";
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Sparkles, Send, Loader2, Bot } from "lucide-react";
+import { Sparkles, Send, Loader2, Bot, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { AnimatePresence, motion } from "framer-motion";
 
 function MessageBubble({ message }) {
   const isUser = message.role === "user";
@@ -87,75 +87,102 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
   };
 
   return (
-    <Drawer open={open} onOpenChange={onOpenChange}>
-      <DrawerContent className="h-[85vh] flex flex-col">
-        <DrawerHeader className="border-b border-border pb-4 flex-shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-blue-600" />
-            </div>
-            <div className="text-left">
-              <DrawerTitle className="text-base font-medium">Financing Advisor</DrawerTitle>
-              <p className="text-xs text-muted-foreground">Ask anything about your financing options</p>
-            </div>
-          </div>
-        </DrawerHeader>
+    <AnimatePresence>
+      {open && (
+        <>
+          {/* Backdrop (mobile only) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/20 z-40 md:hidden"
+            onClick={() => onOpenChange(false)}
+          />
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 min-h-0">
-          {initializing && (
-            <div className="flex items-center justify-center pt-8">
-              <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
-            </div>
-          )}
-          {!initializing && messages.length === 0 && (
-            <div className="text-center text-muted-foreground text-sm pt-8">
-              <Sparkles className="w-7 h-7 mx-auto mb-3 opacity-30" />
-              <p className="font-medium mb-1">Your personal financing advisor</p>
-              <p className="text-xs max-w-xs mx-auto">Ask about lender eligibility, repayment options, your specific situation, or which option is right for you.</p>
-            </div>
-          )}
-          {messages.map((msg, i) => (
-            <MessageBubble key={i} message={msg} />
-          ))}
-          {awaitingReply && (
-            <div className="flex gap-3">
-              <div className="h-7 w-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Loader2 className="h-4 w-4 text-primary animate-spin" />
+          {/* Floating panel */}
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.97 }}
+            transition={{ duration: 0.18 }}
+            className="fixed bottom-20 right-4 md:bottom-20 md:right-6 z-50 w-[calc(100vw-2rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-border flex flex-col"
+            style={{ height: "460px" }}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-border flex-shrink-0">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium leading-none">Financing Advisor</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Ask anything about your options</p>
+                </div>
               </div>
-              <div className="bg-secondary rounded-2xl px-4 py-2.5 text-sm text-muted-foreground">Thinking…</div>
+              <button
+                onClick={() => onOpenChange(false)}
+                className="p-1 rounded-md hover:bg-secondary transition-colors"
+              >
+                <X className="w-4 h-4 text-muted-foreground" />
+              </button>
             </div>
-          )}
-          <div ref={messagesEndRef} />
-        </div>
 
-        {/* Input */}
-        <div className="px-4 py-4 border-t border-border flex-shrink-0">
-          <div className="flex gap-2">
-            <Textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ask about your options…"
-              className="min-h-[44px] max-h-28 resize-none text-sm"
-              rows={1}
-              disabled={initializing}
-            />
-            <Button
-              onClick={sendMessage}
-              disabled={!input.trim() || awaitingReply || initializing}
-              size="icon"
-              className="h-11 w-11 flex-shrink-0"
-            >
-              <Send className="w-4 h-4" />
-            </Button>
-          </div>
-          <p className="text-xs text-muted-foreground mt-2 text-center">Enter to send · Shift+Enter for new line</p>
-          <p className="text-xs text-muted-foreground/70 mt-2 text-center leading-relaxed">
-            Cadu is not a licensed financial advisor. Suggestions are informational only, based on the details you provide, and do not constitute financial or credit advice. Always verify terms directly with lenders.
-          </p>
-        </div>
-      </DrawerContent>
-    </Drawer>
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-0">
+              {initializing && (
+                <div className="flex items-center justify-center pt-6">
+                  <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                </div>
+              )}
+              {!initializing && messages.length === 0 && (
+                <div className="text-center text-muted-foreground text-xs pt-6">
+                  <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-30" />
+                  <p className="font-medium mb-1 text-sm">Your personal financing advisor</p>
+                  <p className="max-w-[220px] mx-auto">Ask about lender eligibility, repayment options, or which plan fits you best.</p>
+                </div>
+              )}
+              {messages.map((msg, i) => (
+                <MessageBubble key={i} message={msg} />
+              ))}
+              {awaitingReply && (
+                <div className="flex gap-2">
+                  <div className="h-6 w-6 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Loader2 className="h-3 w-3 text-primary animate-spin" />
+                  </div>
+                  <div className="bg-secondary rounded-2xl px-3 py-2 text-xs text-muted-foreground">Thinking…</div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input */}
+            <div className="px-3 py-3 border-t border-border flex-shrink-0">
+              <div className="flex gap-2">
+                <Textarea
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ask about your options…"
+                  className="min-h-[38px] max-h-24 resize-none text-sm"
+                  rows={1}
+                  disabled={initializing}
+                />
+                <Button
+                  onClick={sendMessage}
+                  disabled={!input.trim() || awaitingReply || initializing}
+                  size="icon"
+                  className="h-10 w-10 flex-shrink-0"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                </Button>
+              </div>
+              <p className="text-[10px] text-muted-foreground/60 mt-1.5 leading-relaxed text-center">
+                Not financial advice. Verify terms directly with lenders.
+              </p>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 }
