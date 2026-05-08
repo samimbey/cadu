@@ -49,7 +49,7 @@ Be concise and use simple language. Format with clear sections.`,
       <div>
         <h2 className="text-xl font-semibold text-foreground mb-1">Explain My Bill</h2>
         <p className="text-sm text-muted-foreground">
-          Upload a photo of your medical bill and we'll break it down in plain English.
+          Upload a photo of your medical bill and we'll break down every charge in simple, clear language.
         </p>
       </div>
 
