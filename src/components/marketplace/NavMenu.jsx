@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, LayoutGrid, Home, Info, Lock, Settings, ChevronDown, ChevronUp, Mail, BookOpen } from "lucide-react";
+import { Menu, X, LayoutGrid, Home, Info, Lock, Settings, ChevronDown, ChevronUp, Mail, BookOpen, Calculator } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const marketplaceNavItems = [
@@ -10,6 +10,7 @@ const marketplaceNavItems = [
   { label: "Blog", page: "Blog", icon: BookOpen },
   { label: "About Us", page: "About", icon: Info },
   { label: "Contact Us", page: "ContactUs", icon: Mail },
+  { label: "Financial Calculators", page: "Calculators", icon: Calculator },
   { label: "Update Preferences", page: "Onboarding", icon: Settings },
 ];
 
@@ -19,6 +20,7 @@ const defaultNavItems = [
   { label: "Blog", page: "Blog", icon: BookOpen },
   { label: "About Us", page: "About", icon: Info },
   { label: "Contact Us", page: "ContactUs", icon: Mail },
+  { label: "Financial Calculators", page: "Calculators", icon: Calculator },
   { label: "Get Started", page: "Onboarding", icon: Settings },
 ];
 
