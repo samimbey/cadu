@@ -6,25 +6,45 @@ import { Sparkles, Send, Loader2, Bot, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { AnimatePresence, motion } from "framer-motion";
 
-const SYSTEM_PROMPT = `You are Cadu's friendly Financing Advisor — a knowledgeable guide helping users find the best healthcare financing options. 
+const LENDERS = [
+  { id: "carecredit", name: "CareCredit", applyUrl: "https://www.carecredit.com/apply/", info: "0%–26.99% APR, $200–$25,000+, good credit, 6–60 mo, wide provider network" },
+  { id: "prosper", name: "Prosper Healthcare Lending", applyUrl: "https://www.prosper.com/healthcare", info: "6.99%–35.99% APR, $2,000–$50,000, fair credit, 24–60 mo, fixed rates" },
+  { id: "lendingclub", name: "LendingClub", applyUrl: "https://www.lendingclub.com/patient-solutions", info: "8.98%–35.99% APR, $1,000–$40,000, fair credit, 36–60 mo" },
+  { id: "alphaeon", name: "Alphaeon Credit", applyUrl: "https://goalphaeon.com/", info: "0%–29.99% APR, $250+, good credit, elective/cosmetic focus" },
+  { id: "greensky", name: "GreenSky", applyUrl: "https://www.greensky.com/", info: "0%–26.99% APR, $500–$65,000, good credit, up to 144 mo" },
+  { id: "accessone", name: "AccessOne", applyUrl: "https://accessonepay.com/patients/", info: "0% APR always, $25–$25,000, no credit check required" },
+  { id: "scratchpay", name: "Scratchpay", applyUrl: "https://scratchpay.com/", info: "0%–24.99% APR, $200–$10,000, fair credit, quick process" },
+  { id: "sunbit", name: "Sunbit", applyUrl: "https://sunbit.com/", info: "0%–35.99% APR, $60–$10,000, broad eligibility, soft credit check" },
+  { id: "cherry", name: "Cherry", applyUrl: "https://withcherry.com/consumers", info: "0%–29.99% APR, $200–$50,000, fair credit, true 0% APR, no hard credit check" },
+  { id: "payzen", name: "PayZen", applyUrl: "https://payzen.com/patient-financing/", info: "0% interest, any amount, AI-powered personalized plans" },
+  { id: "patientfi", name: "PatientFi", applyUrl: "https://search.patientfi.com/", info: "6.99%–32.99% APR, $200–$40,000, good credit, soft credit check" },
+];
 
-You know about these lenders on the Cadu marketplace:
-- CareCredit: 0%–26.99% APR, $200–$25,000+, good credit, 6–60 mo terms, wide provider network
-- Prosper Healthcare Lending: 6.99%–35.99% APR, $2,000–$50,000, fair credit, 24–60 mo
-- LendingClub: 8.98%–35.99% APR, $1,000–$40,000, fair credit, 36–60 mo
-- Alphaeon Credit: 0%–29.99% APR, $250+, good credit, elective/cosmetic focus
-- GreenSky: 0%–26.99% APR, $500–$65,000, good credit, up to 144 mo
-- AccessOne: 0% APR always, $25–$25,000, no credit check required
-- Scratchpay: 0%–24.99% APR, $200–$10,000, fair credit, quick process
-- Sunbit: 0%–35.99% APR, $60–$10,000, broad eligibility, soft credit check
-- Cherry: 0%–29.99% APR, $200–$50,000, fair credit, true 0% APR, no hard credit check
-- PayZen: 0% interest, any amount, AI-powered personalized plans
-- PatientFi: 6.99%–32.99% APR, $200–$40,000, good credit, soft credit check
+const LENDER_LIST = LENDERS.map(l => `- ${l.name} (apply: ${l.applyUrl}): ${l.info}`).join("\n");
+
+const SYSTEM_PROMPT = `You are Cadu's friendly Financing Advisor — a knowledgeable guide helping users find the best healthcare financing options.
+
+You know about these lenders on the Cadu marketplace (always include the apply link when recommending a lender):
+${LENDER_LIST}
+
+IMPORTANT: When recommending lenders, ALWAYS include their apply link as a markdown hyperlink, e.g. [Apply to CareCredit](https://www.carecredit.com/apply/). Never say you can't provide links.
 
 Help users understand their options based on their credit score, procedure type, and desired amount. Be concise and friendly. Always note you're not a licensed financial advisor and they should verify terms directly with lenders.`;
 
 function MessageBubble({ message }) {
   const isUser = message.role === "user";
+
+  const handleLinkClick = (href) => {
+    const lender = LENDERS.find(l => l.applyUrl === href || href.startsWith(new URL(l.applyUrl).origin));
+    if (lender) {
+      base44.entities.Click.create({
+        lender_name: lender.name,
+        lender_id: lender.id,
+        apply_url: href,
+      }).catch(() => {});
+    }
+  };
+
   return (
     <div className={`flex gap-2 ${isUser ? "justify-end" : "justify-start"}`}>
       {!isUser && (
@@ -36,7 +56,22 @@ function MessageBubble({ message }) {
         {isUser ? (
           <p className="leading-relaxed">{message.content}</p>
         ) : (
-          <ReactMarkdown className="prose prose-sm max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+          <ReactMarkdown
+            className="prose prose-sm max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+            components={{
+              a: ({ href, children }) => (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleLinkClick(href)}
+                  className="text-primary underline"
+                >
+                  {children}
+                </a>
+              ),
+            }}
+          >
             {message.content}
           </ReactMarkdown>
         )}
