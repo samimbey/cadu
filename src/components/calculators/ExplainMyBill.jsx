@@ -1,8 +1,7 @@
 import { useState, useRef } from "react";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
-import { Upload, Camera, Loader2, AlertTriangle, FileImage, X } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+import { Upload, Camera, Loader2, AlertTriangle, FileImage, X, Receipt, BookOpen, ShieldCheck, Search, ArrowRight } from "lucide-react";
 
 export default function ExplainMyBill() {
   const [image, setImage] = useState(null); // { file, previewUrl }
@@ -29,16 +28,26 @@ export default function ExplainMyBill() {
     const { file_url } = await base44.integrations.Core.UploadFile({ file: image.file });
 
     const result = await base44.integrations.Core.InvokeLLM({
-      prompt: `You are a medical billing specialist helping a patient understand their medical bill. 
-Analyze the attached medical bill image and provide a clear, plain-English explanation covering:
-1. What each charge/line item means
-2. Common abbreviations decoded
-3. What the patient likely owes vs. what insurance covers (if visible)
-4. Any charges that look unusual or worth questioning
-5. Suggested next steps
+      prompt: `You are a medical billing specialist helping a patient understand their medical bill.
+Analyze the attached medical bill image and return a JSON object with exactly these keys:
+- "charges": array of objects with "name" (string) and "explanation" (string) for each line item/charge
+- "abbreviations": array of objects with "term" (string) and "meaning" (string) for any abbreviations or codes found (empty array if none)
+- "owed": string summarizing what the patient likely owes vs. what insurance may cover (2-3 sentences)
+- "flagged": array of strings listing any charges that look unusual or worth questioning (empty array if none)
+- "next_steps": array of strings with 2-4 actionable next steps for the patient
 
-Be concise and use simple language. Format with clear sections.`,
+Be concise and use simple language a non-expert can understand.`,
       file_urls: [file_url],
+      response_json_schema: {
+        type: "object",
+        properties: {
+          charges: { type: "array", items: { type: "object", properties: { name: { type: "string" }, explanation: { type: "string" } } } },
+          abbreviations: { type: "array", items: { type: "object", properties: { term: { type: "string" }, meaning: { type: "string" } } } },
+          owed: { type: "string" },
+          flagged: { type: "array", items: { type: "string" } },
+          next_steps: { type: "array", items: { type: "string" } },
+        }
+      }
     });
 
     setExplanation(result);
@@ -125,19 +134,91 @@ Be concise and use simple language. Format with clear sections.`,
 
       {/* Explanation */}
       {explanation && (
-        <div className="space-y-3">
-          <div className="p-5 bg-secondary rounded-xl border border-border">
-            <h3 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wide">Bill Explanation</h3>
-            <ReactMarkdown
-              className="text-sm text-foreground leading-relaxed prose prose-sm max-w-none
-                prose-headings:font-semibold prose-headings:text-foreground prose-headings:mt-4 prose-headings:mb-2
-                prose-strong:font-semibold prose-strong:text-foreground
-                prose-ul:pl-4 prose-ul:space-y-1 prose-li:marker:text-muted-foreground
-                prose-p:mb-2"
-            >
-              {explanation}
-            </ReactMarkdown>
-          </div>
+        <div className="space-y-4">
+
+          {/* Charges */}
+          {explanation.charges?.length > 0 && (
+            <div className="rounded-xl border border-border overflow-hidden">
+              <div className="flex items-center gap-2 px-4 py-3 bg-primary/5 border-b border-border">
+                <Receipt className="w-4 h-4 text-primary" />
+                <h3 className="font-semibold text-foreground text-sm">Charges Breakdown</h3>
+              </div>
+              <div className="divide-y divide-border">
+                {explanation.charges.map((c, i) => (
+                  <div key={i} className="px-4 py-3">
+                    <p className="font-medium text-sm text-foreground">{c.name}</p>
+                    <p className="text-sm text-muted-foreground mt-0.5">{c.explanation}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* What You Owe */}
+          {explanation.owed && (
+            <div className="rounded-xl border border-blue-100 bg-blue-50 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <ShieldCheck className="w-4 h-4 text-blue-600" />
+                <h3 className="font-semibold text-sm text-blue-900">What You May Owe</h3>
+              </div>
+              <p className="text-sm text-blue-800">{explanation.owed}</p>
+            </div>
+          )}
+
+          {/* Abbreviations */}
+          {explanation.abbreviations?.length > 0 && (
+            <div className="rounded-xl border border-border overflow-hidden">
+              <div className="flex items-center gap-2 px-4 py-3 bg-primary/5 border-b border-border">
+                <BookOpen className="w-4 h-4 text-primary" />
+                <h3 className="font-semibold text-foreground text-sm">Terms & Abbreviations</h3>
+              </div>
+              <div className="divide-y divide-border">
+                {explanation.abbreviations.map((a, i) => (
+                  <div key={i} className="px-4 py-3 flex gap-3">
+                    <span className="font-mono font-semibold text-xs bg-secondary px-2 py-1 rounded text-foreground h-fit mt-0.5 flex-shrink-0">{a.term}</span>
+                    <p className="text-sm text-muted-foreground">{a.meaning}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Flagged Charges */}
+          {explanation.flagged?.length > 0 && (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Search className="w-4 h-4 text-amber-600" />
+                <h3 className="font-semibold text-sm text-amber-900">Worth Questioning</h3>
+              </div>
+              <ul className="space-y-1.5">
+                {explanation.flagged.map((f, i) => (
+                  <li key={i} className="text-sm text-amber-800 flex gap-2">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Next Steps */}
+          {explanation.next_steps?.length > 0 && (
+            <div className="rounded-xl border border-border overflow-hidden">
+              <div className="flex items-center gap-2 px-4 py-3 bg-primary/5 border-b border-border">
+                <ArrowRight className="w-4 h-4 text-primary" />
+                <h3 className="font-semibold text-foreground text-sm">Suggested Next Steps</h3>
+              </div>
+              <div className="divide-y divide-border">
+                {explanation.next_steps.map((s, i) => (
+                  <div key={i} className="px-4 py-3 flex gap-3 items-start">
+                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-semibold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                    <p className="text-sm text-foreground">{s}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <Button variant="outline" size="sm" onClick={clearImage}>
             Upload a Different Bill
           </Button>
