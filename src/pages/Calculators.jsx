@@ -111,6 +111,19 @@ export default function Calculators() {
           </motion.div>
         </AnimatePresence>
 
+        {/* Explain My Bill link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mt-6 text-sm text-muted-foreground"
+        >
+          Have a bill you don't understand?{" "}
+          <Link to={createPageUrl("ExplainMyBill")} className="text-primary hover:underline font-medium">
+            Explain My Bill →
+          </Link>
+        </motion.div>
+
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }}

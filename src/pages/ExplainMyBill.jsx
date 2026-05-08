@@ -25,6 +25,12 @@ export default function ExplainMyBillPage() {
 
       <main className="max-w-2xl mx-auto px-6 py-12">
         <ExplainMyBill />
+        <div className="mt-8 pt-6 border-t border-border text-sm text-muted-foreground">
+          Want to estimate payments or compare rates?{" "}
+          <Link to={createPageUrl("Calculators")} className="text-primary hover:underline font-medium">
+            Try our Financial Calculators →
+          </Link>
+        </div>
       </main>
     </div>
   );
