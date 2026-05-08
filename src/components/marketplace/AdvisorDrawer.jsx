@@ -34,6 +34,7 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
   const [input, setInput] = useState("");
   const [awaitingReply, setAwaitingReply] = useState(false);
   const [initializing, setInitializing] = useState(false);
+  const [needsLogin, setNeedsLogin] = useState(false);
   const messagesEndRef = useRef(null);
   const unsubRef = useRef(null);
   const convRef = useRef(null);
@@ -53,21 +54,25 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
 
   const initConversation = async () => {
     setInitializing(true);
-    const conv = await base44.agents.createConversation({
-      agent_name: "financing_advisor",
-      metadata: { name: `Advisor Chat — ${new Date().toLocaleDateString()}` },
-    });
-    setConversation(conv);
-    convRef.current = conv;
-    unsubRef.current = base44.agents.subscribeToConversation(conv.id, (data) => {
-      const msgs = data.messages || [];
-      setMessages(msgs);
-      // Hide thinking indicator once an assistant message arrives
-      const lastMsg = msgs[msgs.length - 1];
-      if (lastMsg && lastMsg.role !== "user") {
-        setAwaitingReply(false);
-      }
-    });
+    try {
+      const conv = await base44.agents.createConversation({
+        agent_name: "financing_advisor",
+        metadata: { name: `Advisor Chat — ${new Date().toLocaleDateString()}` },
+      });
+      setConversation(conv);
+      convRef.current = conv;
+      unsubRef.current = base44.agents.subscribeToConversation(conv.id, (data) => {
+        const msgs = data.messages || [];
+        setMessages(msgs);
+        const lastMsg = msgs[msgs.length - 1];
+        if (lastMsg && lastMsg.role !== "user") {
+          setAwaitingReply(false);
+        }
+      });
+    } catch (err) {
+      console.error("Advisor init error:", err);
+      setNeedsLogin(true);
+    }
     setInitializing(false);
   };
 
@@ -134,7 +139,20 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
                   <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
                 </div>
               )}
-              {!initializing && messages.length === 0 && (
+              {needsLogin && (
+                <div className="text-center pt-6 px-4">
+                  <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-30" />
+                  <p className="text-sm font-medium mb-1">Sign in to chat</p>
+                  <p className="text-xs text-muted-foreground mb-4">You need a free account to use the Financing Advisor.</p>
+                  <button
+                    onClick={() => base44.auth.redirectToLogin()}
+                    className="px-4 py-2 bg-primary text-primary-foreground text-sm rounded-lg hover:bg-primary/90 transition-colors"
+                  >
+                    Sign in / Sign up
+                  </button>
+                </div>
+              )}
+              {!initializing && !needsLogin && messages.length === 0 && (
                 <div className="text-center text-muted-foreground text-xs pt-6">
                   <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-30" />
                   <p className="font-medium mb-1 text-sm">Your personal financing advisor</p>
@@ -165,11 +183,11 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
                   placeholder="Ask about your options…"
                   className="min-h-[38px] max-h-24 resize-none text-sm"
                   rows={1}
-                  disabled={initializing}
+                  disabled={initializing || needsLogin}
                 />
                 <Button
                   onClick={sendMessage}
-                  disabled={!input.trim() || awaitingReply || initializing}
+                  disabled={!input.trim() || awaitingReply || initializing || needsLogin}
                   size="icon"
                   className="h-10 w-10 flex-shrink-0"
                 >
