@@ -105,8 +105,8 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            className="fixed bottom-20 right-4 md:bottom-20 md:right-6 z-50 w-[calc(100vw-2rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-border flex flex-col"
-            style={{ height: "460px" }}
+            className="fixed bottom-24 right-4 md:bottom-24 md:right-6 z-[200] w-80 bg-white rounded-2xl shadow-2xl border border-border flex flex-col"
+            style={{ height: "440px" }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border flex-shrink-0">
