@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { createPageUrl } from "@/utils";
-import { Bot, Sparkles, HeadphonesIcon, PenLine, Send, Loader2, Plus, ChevronRight } from "lucide-react";
+import { Bot, Sparkles, HeadphonesIcon, PenLine, Send, Loader2, ChevronRight, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import NavMenu from "@/components/marketplace/NavMenu";
@@ -165,8 +165,28 @@ function AgentChat({ agent, onBack }) {
 
 export default function AdminAgents() {
   const [activeAgent, setActiveAgent] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    base44.auth.me().then((user) => {
+      if (user?.role !== "admin") {
+        navigate(createPageUrl("Home"));
+      } else {
+        setIsAdmin(true);
+      }
+    }).catch(() => navigate(createPageUrl("Home")));
+  }, []);
 
   const agent = AGENTS.find((a) => a.key === activeAgent);
+
+  if (isAdmin === null) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
