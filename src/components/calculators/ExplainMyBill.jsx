@@ -30,7 +30,7 @@ export default function ExplainMyBill() {
     const result = await base44.integrations.Core.InvokeLLM({
       prompt: `You are a medical billing specialist helping a patient understand their medical bill.
 Analyze the attached medical bill image and return a JSON object with exactly these keys:
-- "charges": array of objects with "name" (string) and "explanation" (string) for each line item/charge
+- "charges": array of objects with "name" (string), "amount" (string, the dollar amount shown on the bill if visible, otherwise empty string), and "explanation" (string) for each line item/charge
 - "abbreviations": array of objects with "term" (string) and "meaning" (string) for any abbreviations or codes found (empty array if none)
 - "owed": string summarizing what the patient likely owes vs. what insurance may cover (2-3 sentences)
 - "flagged": array of strings listing any charges that look unusual or worth questioning (empty array if none)
@@ -41,7 +41,7 @@ Be concise and use simple language a non-expert can understand.`,
       response_json_schema: {
         type: "object",
         properties: {
-          charges: { type: "array", items: { type: "object", properties: { name: { type: "string" }, explanation: { type: "string" } } } },
+          charges: { type: "array", items: { type: "object", properties: { name: { type: "string" }, amount: { type: "string" }, explanation: { type: "string" } } } },
           abbreviations: { type: "array", items: { type: "object", properties: { term: { type: "string" }, meaning: { type: "string" } } } },
           owed: { type: "string" },
           flagged: { type: "array", items: { type: "string" } },
@@ -145,9 +145,14 @@ Be concise and use simple language a non-expert can understand.`,
               </div>
               <div className="divide-y divide-border">
                 {explanation.charges.map((c, i) => (
-                  <div key={i} className="px-4 py-3">
-                    <p className="font-medium text-sm text-foreground">{c.name}</p>
-                    <p className="text-sm text-muted-foreground mt-0.5">{c.explanation}</p>
+                  <div key={i} className="px-4 py-3 flex gap-3 justify-between">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-sm text-foreground">{c.name}</p>
+                      <p className="text-sm text-muted-foreground mt-0.5">{c.explanation}</p>
+                    </div>
+                    {c.amount && (
+                      <span className="font-semibold text-sm text-foreground flex-shrink-0 mt-0.5">{c.amount}</span>
+                    )}
                   </div>
                 ))}
               </div>
