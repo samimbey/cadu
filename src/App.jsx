@@ -7,6 +7,7 @@ import PageNotFound from './lib/PageNotFound';
 import Blog from './pages/Blog';
 import Settings from './pages/Settings';
 import AdminAgents from './pages/AdminAgents';
+import ExplainMyBill from './pages/ExplainMyBill';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -63,6 +64,7 @@ const AuthenticatedApp = () => {
       <Route path="/Blog" element={<LayoutWrapper currentPageName="Blog"><Blog /></LayoutWrapper>} />
       <Route path="/Settings" element={<LayoutWrapper currentPageName="Settings"><Settings /></LayoutWrapper>} />
       <Route path="/AdminAgents" element={<LayoutWrapper currentPageName="AdminAgents"><AdminAgents /></LayoutWrapper>} />
+      <Route path="/ExplainMyBill" element={<LayoutWrapper currentPageName="ExplainMyBill"><ExplainMyBill /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
