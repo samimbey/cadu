@@ -80,16 +80,14 @@ function MessageBubble({ message }) {
   );
 }
 
-const GREETING = { role: "assistant", content: "What procedure are you financing, and what's your credit range?" };
-
 export default function AdvisorDrawer({ open, onOpenChange }) {
-  const [messages, setMessages] = useState([GREETING]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    if (!open) setMessages([GREETING]);
+    if (!open) setMessages([]);
   }, [open]);
 
   useEffect(() => {
@@ -162,7 +160,13 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-0">
-              {messages.map((msg, i) => (
+              {messages.length === 0 && (
+                <div className="text-center text-muted-foreground text-xs pt-6">
+                  <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-30" />
+                  <p className="max-w-[220px] mx-auto">Ask about lender eligibility, repayment options, or which plan fits you best.</p>
+                </div>
+              )}
+{messages.map((msg, i) => (
                 <MessageBubble key={i} message={msg} />
               ))}
               {loading && (
