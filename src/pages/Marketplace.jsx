@@ -6,7 +6,7 @@ import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Settings, RefreshCw, Scale, X } from "lucide-react";
+import { RefreshCw, Scale, X, Sparkles } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 
@@ -15,6 +15,7 @@ import FinanceCard from "@/components/marketplace/FinanceCard";
 import ComparisonModal from "@/components/marketplace/ComparisonModal";
 import FilterBar from "@/components/marketplace/FilterBar";
 import NavMenu from "@/components/marketplace/NavMenu";
+import AdvisorDrawer from "@/components/marketplace/AdvisorDrawer";
 
 // Healthcare finance options data
 const financeOptions = [
@@ -265,6 +266,7 @@ export default function Marketplace() {
 
   const [compareList, setCompareList] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
+  const [showAdvisor, setShowAdvisor] = useState(false);
   const [dismissBanner, setDismissBanner] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -574,6 +576,19 @@ export default function Marketplace() {
         onClose={() => setShowComparison(false)}
         options={compareList}
       />
+
+      {/* Advisor FAB — only for onboarded users */}
+      {isOnboarded && (
+        <button
+          onClick={() => setShowAdvisor(true)}
+          className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full shadow-lg hover:bg-primary/90 transition-all"
+        >
+          <Sparkles className="w-4 h-4" />
+          <span className="text-sm font-medium">Ask Advisor</span>
+        </button>
+      )}
+
+      <AdvisorDrawer open={showAdvisor} onOpenChange={setShowAdvisor} />
     </div>
   );
 }
