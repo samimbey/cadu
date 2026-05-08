@@ -74,7 +74,7 @@ Be concise and use simple language. Format with clear sections.`,
               <Upload className="w-4 h-4 mr-2" />
               Choose File
             </Button>
-            <Button variant="outline" onClick={() => cameraInputRef.current?.click()}>
+            <Button variant="outline" className="md:hidden" onClick={() => cameraInputRef.current?.click()}>
               <Camera className="w-4 h-4 mr-2" />
               Take Photo
             </Button>
