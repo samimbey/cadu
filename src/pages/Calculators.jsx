@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calculator, DollarSign, TrendingUp, BarChart2, ArrowRight } from "lucide-react";
+import { Calculator, DollarSign, TrendingUp, BarChart2, ArrowRight, FileSearch } from "lucide-react";
 import NavMenu from "@/components/marketplace/NavMenu";
 import { Helmet } from "react-helmet-async";
 
 import LoanPaymentCalc from "@/components/calculators/LoanPaymentCalc";
 import AffordabilityCalc from "@/components/calculators/AffordabilityCalc";
 import APRImpactCalc from "@/components/calculators/APRImpactCalc";
+import ExplainMyBill from "@/components/calculators/ExplainMyBill";
 
 const tabs = [
   {
@@ -31,6 +32,13 @@ const tabs = [
     icon: BarChart2,
     description: "Compare total cost by rate",
     component: APRImpactCalc,
+  },
+  {
+    id: "bill",
+    label: "Explain My Bill",
+    icon: FileSearch,
+    description: "Decode your medical bill",
+    component: ExplainMyBill,
   },
 ];
 
@@ -73,7 +81,7 @@ export default function Calculators() {
         </motion.div>
 
         {/* Tab Selector */}
-        <div className="grid grid-cols-3 gap-3 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
