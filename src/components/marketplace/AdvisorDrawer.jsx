@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,16 +6,33 @@ import { Sparkles, Send, Loader2, Bot, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { AnimatePresence, motion } from "framer-motion";
 
+const SYSTEM_PROMPT = `You are Cadu's friendly Financing Advisor — a knowledgeable guide helping users find the best healthcare financing options. 
+
+You know about these lenders on the Cadu marketplace:
+- CareCredit: 0%–26.99% APR, $200–$25,000+, good credit, 6–60 mo terms, wide provider network
+- Prosper Healthcare Lending: 6.99%–35.99% APR, $2,000–$50,000, fair credit, 24–60 mo
+- LendingClub: 8.98%–35.99% APR, $1,000–$40,000, fair credit, 36–60 mo
+- Alphaeon Credit: 0%–29.99% APR, $250+, good credit, elective/cosmetic focus
+- GreenSky: 0%–26.99% APR, $500–$65,000, good credit, up to 144 mo
+- AccessOne: 0% APR always, $25–$25,000, no credit check required
+- Scratchpay: 0%–24.99% APR, $200–$10,000, fair credit, quick process
+- Sunbit: 0%–35.99% APR, $60–$10,000, broad eligibility, soft credit check
+- Cherry: 0%–29.99% APR, $200–$50,000, fair credit, true 0% APR, no hard credit check
+- PayZen: 0% interest, any amount, AI-powered personalized plans
+- PatientFi: 6.99%–32.99% APR, $200–$40,000, good credit, soft credit check
+
+Help users understand their options based on their credit score, procedure type, and desired amount. Be concise and friendly. Always note you're not a licensed financial advisor and they should verify terms directly with lenders.`;
+
 function MessageBubble({ message }) {
   const isUser = message.role === "user";
   return (
-    <div className={`flex gap-3 ${isUser ? "justify-end" : "justify-start"}`}>
+    <div className={`flex gap-2 ${isUser ? "justify-end" : "justify-start"}`}>
       {!isUser && (
-        <div className="h-7 w-7 rounded-lg bg-primary/10 flex items-center justify-center mt-0.5 flex-shrink-0">
-          <Bot className="h-4 w-4 text-primary" />
+        <div className="h-6 w-6 rounded-lg bg-primary/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+          <Bot className="h-3.5 w-3.5 text-primary" />
         </div>
       )}
-      <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${isUser ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground"}`}>
+      <div className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${isUser ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground"}`}>
         {isUser ? (
           <p className="leading-relaxed">{message.content}</p>
         ) : (
@@ -29,59 +46,31 @@ function MessageBubble({ message }) {
 }
 
 export default function AdvisorDrawer({ open, onOpenChange }) {
-  const [conversation, setConversation] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [awaitingReply, setAwaitingReply] = useState(false);
-  const [initializing, setInitializing] = useState(false);
-  const [needsLogin, setNeedsLogin] = useState(false);
+  const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
-  const unsubRef = useRef(null);
-  const convRef = useRef(null);
-
-  useEffect(() => {
-    if (open && !conversation) {
-      initConversation();
-    }
-    return () => {
-      if (unsubRef.current) unsubRef.current();
-    };
-  }, [open]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const initConversation = async () => {
-    setInitializing(true);
-    try {
-      const conv = await base44.agents.createConversation({
-        agent_name: "financing_advisor",
-        metadata: { name: `Advisor Chat — ${new Date().toLocaleDateString()}` },
-      });
-      setConversation(conv);
-      convRef.current = conv;
-      unsubRef.current = base44.agents.subscribeToConversation(conv.id, (data) => {
-        const msgs = data.messages || [];
-        setMessages(msgs);
-        const lastMsg = msgs[msgs.length - 1];
-        if (lastMsg && lastMsg.role !== "user") {
-          setAwaitingReply(false);
-        }
-      });
-    } catch (err) {
-      console.error("Advisor init error:", err);
-      setNeedsLogin(true);
-    }
-    setInitializing(false);
-  };
+  }, [messages, loading]);
 
   const sendMessage = async () => {
-    if (!input.trim() || !conversation || awaitingReply) return;
+    if (!input.trim() || loading) return;
     const text = input.trim();
     setInput("");
-    setAwaitingReply(true);
-    await base44.agents.addMessage(conversation, { role: "user", content: text });
+
+    const newMessages = [...messages, { role: "user", content: text }];
+    setMessages(newMessages);
+    setLoading(true);
+
+    // Build conversation history for context
+    const history = newMessages.map(m => `${m.role === "user" ? "User" : "Advisor"}: ${m.content}`).join("\n");
+    const prompt = `${SYSTEM_PROMPT}\n\nConversation so far:\n${history}\n\nAdvisor:`;
+
+    const reply = await base44.integrations.Core.InvokeLLM({ prompt });
+    setMessages(prev => [...prev, { role: "assistant", content: reply }]);
+    setLoading(false);
   };
 
   const handleKeyDown = (e) => {
@@ -95,7 +84,6 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop (mobile only) */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -104,7 +92,6 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
             onClick={() => onOpenChange(false)}
           />
 
-          {/* Floating panel */}
           <motion.div
             initial={{ opacity: 0, y: 16, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -134,25 +121,7 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-0">
-              {initializing && (
-                <div className="flex items-center justify-center pt-6">
-                  <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
-                </div>
-              )}
-              {needsLogin && (
-                <div className="text-center pt-6 px-4">
-                  <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-30" />
-                  <p className="text-sm font-medium mb-1">Sign in to chat</p>
-                  <p className="text-xs text-muted-foreground mb-4">You need a free account to use the Financing Advisor.</p>
-                  <button
-                    onClick={() => base44.auth.redirectToLogin()}
-                    className="px-4 py-2 bg-primary text-primary-foreground text-sm rounded-lg hover:bg-primary/90 transition-colors"
-                  >
-                    Sign in / Sign up
-                  </button>
-                </div>
-              )}
-              {!initializing && !needsLogin && messages.length === 0 && (
+              {messages.length === 0 && (
                 <div className="text-center text-muted-foreground text-xs pt-6">
                   <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-30" />
                   <p className="font-medium mb-1 text-sm">Your personal financing advisor</p>
@@ -162,7 +131,7 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
               {messages.map((msg, i) => (
                 <MessageBubble key={i} message={msg} />
               ))}
-              {awaitingReply && (
+              {loading && (
                 <div className="flex gap-2">
                   <div className="h-6 w-6 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Loader2 className="h-3 w-3 text-primary animate-spin" />
@@ -183,18 +152,17 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
                   placeholder="Ask about your options…"
                   className="min-h-[38px] max-h-24 resize-none text-sm"
                   rows={1}
-                  disabled={initializing || needsLogin}
                 />
                 <Button
                   onClick={sendMessage}
-                  disabled={!input.trim() || awaitingReply || initializing || needsLogin}
+                  disabled={!input.trim() || loading}
                   size="icon"
                   className="h-10 w-10 flex-shrink-0"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </Button>
               </div>
-              <p className="text-[10px] text-muted-foreground/60 mt-1.5 leading-relaxed text-center">
+              <p className="text-[10px] text-muted-foreground/60 mt-1.5 text-center">
                 Not financial advice. Verify terms directly with lenders.
               </p>
             </div>
