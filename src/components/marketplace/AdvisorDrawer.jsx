@@ -29,7 +29,7 @@ ${LENDER_LIST}
 
 IMPORTANT: When recommending lenders, ALWAYS include their apply link as a markdown hyperlink, e.g. [Apply to CareCredit](https://www.carecredit.com/apply/). Never say you can't provide links.
 
-Keep responses short and to the point — 2-3 sentences max unless the user asks for detail. Skip lengthy disclaimers after the first message. Do not add filler phrases.`;
+Be extremely brief — 1-2 sentences max per response. No disclaimers, no filler, no long intros. Ask one clarifying question at a time. Only give detail if explicitly asked.`;
 
 function MessageBubble({ message }) {
   const isUser = message.role === "user";
