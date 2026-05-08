@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Upload, Camera, Loader2, AlertTriangle, FileImage, X } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 export default function ExplainMyBill() {
   const [image, setImage] = useState(null); // { file, previewUrl }
@@ -97,7 +98,7 @@ Be concise and use simple language. Format with clear sections.`,
         </div>
       ) : (
         <div className="space-y-4">
-          <div className="relative inline-block">
+          <div className="relative">
             <img
               src={image.previewUrl}
               alt="Uploaded bill"
@@ -111,7 +112,7 @@ Be concise and use simple language. Format with clear sections.`,
             </button>
           </div>
           {!explanation && (
-            <Button onClick={analyze} disabled={loading} className="w-full sm:w-auto">
+            <Button onClick={analyze} disabled={loading} className="w-full">
               {loading ? (
                 <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Analyzing…</>
               ) : (
@@ -126,8 +127,16 @@ Be concise and use simple language. Format with clear sections.`,
       {explanation && (
         <div className="space-y-3">
           <div className="p-5 bg-secondary rounded-xl border border-border">
-            <h3 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">Bill Explanation</h3>
-            <div className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">{explanation}</div>
+            <h3 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wide">Bill Explanation</h3>
+            <ReactMarkdown
+              className="text-sm text-foreground leading-relaxed prose prose-sm max-w-none
+                prose-headings:font-semibold prose-headings:text-foreground prose-headings:mt-4 prose-headings:mb-2
+                prose-strong:font-semibold prose-strong:text-foreground
+                prose-ul:pl-4 prose-ul:space-y-1 prose-li:marker:text-muted-foreground
+                prose-p:mb-2"
+            >
+              {explanation}
+            </ReactMarkdown>
           </div>
           <Button variant="outline" size="sm" onClick={clearImage}>
             Upload a Different Bill
