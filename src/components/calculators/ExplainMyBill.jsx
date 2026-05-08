@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
-import { Upload, Camera, Loader2, AlertTriangle, FileImage, X, Receipt, BookOpen, ShieldCheck, Search, ArrowRight } from "lucide-react";
+import { Upload, Camera, Loader2, AlertTriangle, FileImage, X, Receipt, BookOpen, ShieldCheck, Search, ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "@/utils";
 
 export default function ExplainMyBill() {
   const [image, setImage] = useState(null); // { file, previewUrl }
@@ -223,6 +225,22 @@ Be concise and use simple language a non-expert can understand.`,
               </div>
             </div>
           )}
+
+          {/* Cadu CTA */}
+          <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <Sparkles className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-sm text-foreground">Need help covering this bill?</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Compare healthcare financing options matched to your profile — no credit impact.</p>
+              </div>
+            </div>
+            <Link to={createPageUrl("Onboarding")} className="flex-shrink-0">
+              <Button size="sm" className="whitespace-nowrap">
+                Find My Options <ArrowRight className="w-3.5 h-3.5 ml-1" />
+              </Button>
+            </Link>
+          </div>
 
           <Button variant="outline" size="sm" onClick={clearImage}>
             Upload a Different Bill
