@@ -32,10 +32,11 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
   const [conversation, setConversation] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [sending, setSending] = useState(false);
+  const [awaitingReply, setAwaitingReply] = useState(false);
   const [initializing, setInitializing] = useState(false);
   const messagesEndRef = useRef(null);
   const unsubRef = useRef(null);
+  const convRef = useRef(null);
 
   useEffect(() => {
     if (open && !conversation) {
@@ -57,19 +58,25 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
       metadata: { name: `Advisor Chat — ${new Date().toLocaleDateString()}` },
     });
     setConversation(conv);
+    convRef.current = conv;
     unsubRef.current = base44.agents.subscribeToConversation(conv.id, (data) => {
-      setMessages(data.messages || []);
+      const msgs = data.messages || [];
+      setMessages(msgs);
+      // Hide thinking indicator once an assistant message arrives
+      const lastMsg = msgs[msgs.length - 1];
+      if (lastMsg && lastMsg.role !== "user") {
+        setAwaitingReply(false);
+      }
     });
     setInitializing(false);
   };
 
   const sendMessage = async () => {
-    if (!input.trim() || !conversation || sending) return;
+    if (!input.trim() || !conversation || awaitingReply) return;
     const text = input.trim();
     setInput("");
-    setSending(true);
+    setAwaitingReply(true);
     await base44.agents.addMessage(conversation, { role: "user", content: text });
-    setSending(false);
   };
 
   const handleKeyDown = (e) => {
@@ -111,7 +118,7 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
           {messages.map((msg, i) => (
             <MessageBubble key={i} message={msg} />
           ))}
-          {sending && (
+          {awaitingReply && (
             <div className="flex gap-3">
               <div className="h-7 w-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <Loader2 className="h-4 w-4 text-primary animate-spin" />
@@ -136,7 +143,7 @@ export default function AdvisorDrawer({ open, onOpenChange }) {
             />
             <Button
               onClick={sendMessage}
-              disabled={!input.trim() || sending || initializing}
+              disabled={!input.trim() || awaitingReply || initializing}
               size="icon"
               className="h-11 w-11 flex-shrink-0"
             >
