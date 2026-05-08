@@ -577,16 +577,14 @@ export default function Marketplace() {
         options={compareList}
       />
 
-      {/* Advisor FAB — only for onboarded users */}
-      {isOnboarded && (
-        <button
-          onClick={() => setShowAdvisor(true)}
-          className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full shadow-lg hover:bg-primary/90 transition-all"
-        >
-          <Sparkles className="w-4 h-4" />
-          <span className="text-sm font-medium">Ask Advisor</span>
-        </button>
-      )}
+      {/* Advisor FAB — visible to all users */}
+      <button
+        onClick={() => setShowAdvisor(true)}
+        className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full shadow-lg hover:bg-primary/90 transition-all"
+      >
+        <Sparkles className="w-4 h-4" />
+        <span className="text-sm font-medium">Ask Advisor</span>
+      </button>
 
       <AdvisorDrawer open={showAdvisor} onOpenChange={setShowAdvisor} />
     </div>
