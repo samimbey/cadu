@@ -277,15 +277,22 @@ export default function Marketplace() {
 
   const { isPulling, pullProgress, isRefreshing } = usePullToRefresh(handleRefresh);
 
-  // Check if user has completed onboarding
+  // Check if user has completed onboarding (optional — fails gracefully for public users)
   const { data: userProfile } = useQuery({
     queryKey: ['userProfile'],
     queryFn: async () => {
-      const user = await base44.auth.me();
-      if (!user?.email) return null;
-      const profiles = await base44.entities.UserProfile.filter({ email: user.email });
-      return profiles[0] || null;
+      try {
+        const isAuthed = await base44.auth.isAuthenticated();
+        if (!isAuthed) return null;
+        const user = await base44.auth.me();
+        if (!user?.email) return null;
+        const profiles = await base44.entities.UserProfile.filter({ email: user.email });
+        return profiles[0] || null;
+      } catch {
+        return null;
+      }
     },
+    retry: false,
   });
 
   const isOnboarded = userProfile?.onboarding_completed;
