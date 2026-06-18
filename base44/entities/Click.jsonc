@@ -1,0 +1,22 @@
+{
+  "name": "Click",
+  "type": "object",
+  "properties": {
+    "lender_name": {
+      "type": "string",
+      "description": "Name of the lender clicked"
+    },
+    "lender_id": {
+      "type": "string",
+      "description": "ID of the lender clicked"
+    },
+    "apply_url": {
+      "type": "string",
+      "description": "URL the user was sent to"
+    }
+  },
+  "required": [
+    "lender_name",
+    "lender_id"
+  ]
+}

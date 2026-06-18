@@ -1,0 +1,73 @@
+{
+  "name": "UserProfile",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "User's email address"
+    },
+    "desired_amount": {
+      "type": "number",
+      "description": "Desired loan/financing amount"
+    },
+    "credit_score_range": {
+      "type": "string",
+      "enum": [
+        "excellent",
+        "good",
+        "fair",
+        "poor",
+        "unknown"
+      ],
+      "description": "User's credit score range"
+    },
+    "procedure_type": {
+      "type": "string",
+      "enum": [
+        "dental",
+        "cosmetic",
+        "vision",
+        "fertility",
+        "bariatric",
+        "cardiology",
+        "hearing",
+        "general_medical",
+        "other"
+      ],
+      "description": "Type of healthcare procedure"
+    },
+    "employment_status": {
+      "type": "string",
+      "enum": [
+        "employed_full_time",
+        "employed_part_time",
+        "self_employed",
+        "retired",
+        "student",
+        "unemployed"
+      ],
+      "description": "User's employment status"
+    },
+    "annual_income": {
+      "type": "number",
+      "description": "Approximate annual income"
+    },
+    "onboarding_completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user has completed onboarding"
+    },
+    "saved_options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of saved finance options"
+    }
+  },
+  "required": [
+    "desired_amount",
+    "credit_score_range",
+    "procedure_type"
+  ]
+}

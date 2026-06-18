@@ -65,8 +65,16 @@ function PostDetail({ post, onBack }) {
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
       <Helmet>
-        <title>{post.title} — Cadu Blog</title>
-        <meta name="description" content={post.meta_description || post.excerpt || ""} />
+        <title>{post.title} | Cadu</title>
+        <meta name="description" content={post.meta_description || (post.excerpt ? post.excerpt.slice(0, 155) : "")} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt || post.meta_description || ""} />
+        <meta property="og:url" content={typeof window !== "undefined" ? window.location.href : ""} />
+        <meta property="og:type" content="article" />
+        {post.cover_image_url && <meta property="og:image" content={post.cover_image_url} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt || post.meta_description || ""} />
       </Helmet>
       <button
         onClick={onBack}

@@ -1,0 +1,47 @@
+{
+  "name": "ContactSubmission",
+  "type": "object",
+  "properties": {
+    "inquiry_type": {
+      "type": "string",
+      "enum": [
+        "partnership",
+        "support"
+      ],
+      "description": "Type of inquiry"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "First name"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Last name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Work email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "job_title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message from the submitter"
+    }
+  },
+  "required": [
+    "inquiry_type",
+    "first_name",
+    "email"
+  ]
+}
