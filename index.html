@@ -34,7 +34,7 @@
         // Synchronous XHR so meta is set before page renders (works for crawlers that run JS)
         try {
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'https://api.base44.com/api/apps/699ddfc1277ab7410d96d61c/functions/blogMeta', false);
+          xhr.open('POST', 'https://cadunow.com/functions/blogMeta', false);
           xhr.setRequestHeader('Content-Type', 'application/json');
           xhr.setRequestHeader('Accept', 'application/json');
           xhr.send(JSON.stringify({ slug: slug }));
