@@ -5,7 +5,52 @@
     <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/manifest.json" />
-    <title>Base44 APP</title>
+    <title>Cadu — Healthcare Financing Marketplace</title>
+    <!-- BEGIN blog-post-meta: injected before React for crawler visibility -->
+    <script>
+      (function() {
+        // UPDATE THIS MAP whenever a new blog post is published
+        var posts = {
+          "lasik-cost-2026-financing-options-worth-it": {
+            title: "LASIK Cost in 2026: What You'll Pay, Financing Options, and Whether It's Worth It",
+            description: "Learn how much LASIK costs in 2026, what affects pricing, financing options, and how patients compare ways to pay."
+          },
+          "cosmetic-surgery-costs-2026-financing-guide": {
+            title: "Cosmetic Surgery Costs in 2026: A Complete Financing Guide",
+            description: "Procedures like rhinoplasty, breast augmentation, or liposuction can range from a few thousand to over $20,000 — and insurance rarely covers any of it. Here's what drives the cost and how people actually pay."
+          },
+          "clear-choice-dental-implants-cost-2026": {
+            title: "Clear Choice Dental Implants Cost 2026: A Complete Financing Guide",
+            description: "Learn the real cost of Clear Choice dental implants in 2026, what affects pricing, and how patients finance full-arch dental restoration."
+          }
+        };
+
+        var params = new URLSearchParams(window.location.search);
+        var slug = params.get("post");
+        var post = slug && posts[slug];
+
+        if (post) {
+          var url = window.location.href;
+          document.title = post.title + " | Cadu";
+
+          function setMeta(attr, key, val) {
+            var el = document.querySelector('meta[' + attr + '="' + key + '"]');
+            if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+            el.setAttribute('content', val);
+          }
+
+          setMeta('name', 'description', post.description);
+          setMeta('property', 'og:title', post.title);
+          setMeta('property', 'og:description', post.description);
+          setMeta('property', 'og:url', url);
+          setMeta('property', 'og:type', 'article');
+          setMeta('name', 'twitter:title', post.title);
+          setMeta('name', 'twitter:description', post.description);
+          setMeta('name', 'twitter:card', 'summary_large_image');
+        }
+      })();
+    </script>
+    <!-- END blog-post-meta -->
   </head>
   <body>
     <div id="root"></div>
