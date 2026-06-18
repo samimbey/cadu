@@ -9,45 +9,40 @@
     <!-- BEGIN blog-post-meta: injected before React for crawler visibility -->
     <script>
       (function() {
-        // UPDATE THIS MAP whenever a new blog post is published
-        var posts = {
-          "lasik-cost-2026-financing-options-worth-it": {
-            title: "LASIK Cost in 2026: What You'll Pay, Financing Options, and Whether It's Worth It",
-            description: "Learn how much LASIK costs in 2026, what affects pricing, financing options, and how patients compare ways to pay."
-          },
-          "cosmetic-surgery-costs-2026-financing-guide": {
-            title: "Cosmetic Surgery Costs in 2026: A Complete Financing Guide",
-            description: "Procedures like rhinoplasty, breast augmentation, or liposuction can range from a few thousand to over $20,000 — and insurance rarely covers any of it. Here's what drives the cost and how people actually pay."
-          },
-          "clear-choice-dental-implants-cost-2026": {
-            title: "Clear Choice Dental Implants Cost 2026: A Complete Financing Guide",
-            description: "Learn the real cost of Clear Choice dental implants in 2026, what affects pricing, and how patients finance full-arch dental restoration."
-          }
-        };
-
         var params = new URLSearchParams(window.location.search);
         var slug = params.get("post");
-        var post = slug && posts[slug];
+        if (!slug) return;
 
-        if (post) {
-          var url = window.location.href;
-          document.title = post.title + " | Cadu";
+        function setMeta(attr, key, val) {
+          var el = document.querySelector('meta[' + attr + '="' + key + '"]');
+          if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+          el.setAttribute('content', val);
+        }
 
-          function setMeta(attr, key, val) {
-            var el = document.querySelector('meta[' + attr + '="' + key + '"]');
-            if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
-            el.setAttribute('content', val);
-          }
-
-          setMeta('name', 'description', post.description);
-          setMeta('property', 'og:title', post.title);
-          setMeta('property', 'og:description', post.description);
-          setMeta('property', 'og:url', url);
+        function applyMeta(title, description) {
+          document.title = title + " | Cadu";
+          setMeta('name', 'description', description);
+          setMeta('property', 'og:title', title);
+          setMeta('property', 'og:description', description);
+          setMeta('property', 'og:url', window.location.href);
           setMeta('property', 'og:type', 'article');
-          setMeta('name', 'twitter:title', post.title);
-          setMeta('name', 'twitter:description', post.description);
+          setMeta('name', 'twitter:title', title);
+          setMeta('name', 'twitter:description', description);
           setMeta('name', 'twitter:card', 'summary_large_image');
         }
+
+        // Synchronous XHR so meta is set before page renders (works for crawlers that run JS)
+        try {
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'https://api.base44.com/api/apps/699ddfc1277ab7410d96d61c/functions/blogMeta', false);
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.setRequestHeader('Accept', 'application/json');
+          xhr.send(JSON.stringify({ slug: slug }));
+          if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            if (data.title) applyMeta(data.title, data.description || '');
+          }
+        } catch(e) {}
       })();
     </script>
     <!-- END blog-post-meta -->
