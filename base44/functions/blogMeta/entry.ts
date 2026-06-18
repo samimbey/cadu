@@ -41,11 +41,18 @@ Deno.serve(async (req) => {
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${esc(post.title)}" />
   <meta name="twitter:description" content="${esc(description)}" />
-  <meta http-equiv="refresh" content="0; url=${postUrl}" />
-  <script>window.location.href = "${postUrl}";<\/script>
+  <script>
+    // Only redirect real browsers, not crawlers
+    var ua = navigator.userAgent;
+    if (ua && !ua.match(/linkedinbot|twitterbot|facebookexternalhit|slackbot|bot|crawler/i)) {
+      window.location.href = "${postUrl}";
+    }
+  <\/script>
 </head>
 <body>
-  <a href="${postUrl}">${esc(post.title)}</a>
+  <h1>${esc(post.title)}</h1>
+  <p>${esc(description)}</p>
+  <a href="${postUrl}">Read the full article on Cadu</a>
 </body>
 </html>`;
 
