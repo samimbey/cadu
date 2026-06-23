@@ -37,6 +37,11 @@
     "message": {
       "type": "string",
       "description": "Message from the submitter"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional description of the contact submission"
     }
   },
   "required": [

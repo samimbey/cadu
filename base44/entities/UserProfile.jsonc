@@ -63,6 +63,11 @@
         "type": "string"
       },
       "description": "IDs of saved finance options"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional description of the user profile"
     }
   },
   "required": [
