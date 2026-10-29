@@ -7,17 +7,17 @@ import ReactMarkdown from "react-markdown";
 import { AnimatePresence, motion } from "framer-motion";
 
 const LENDERS = [
-  { id: "carecredit", name: "CareCredit", applyUrl: "https://www.carecredit.com/apply/", info: "0%–26.99% APR, $200–$25,000+, good credit, 6–60 mo, wide provider network" },
-  { id: "prosper", name: "Prosper Healthcare Lending", applyUrl: "https://www.prosper.com/healthcare", info: "6.99%–35.99% APR, $2,000–$50,000, fair credit, 24–60 mo, fixed rates" },
-  { id: "lendingclub", name: "LendingClub", applyUrl: "https://www.lendingclub.com/patient-solutions", info: "8.98%–35.99% APR, $1,000–$40,000, fair credit, 36–60 mo" },
-  { id: "alphaeon", name: "Alphaeon Credit", applyUrl: "https://goalphaeon.com/", info: "0%–29.99% APR, $250+, good credit, elective/cosmetic focus" },
-  { id: "greensky", name: "GreenSky", applyUrl: "https://www.greensky.com/", info: "0%–26.99% APR, $500–$65,000, good credit, up to 144 mo" },
-  { id: "accessone", name: "AccessOne", applyUrl: "https://accessonepay.com/patients/", info: "0% APR always, $25–$25,000, no credit check required" },
-  { id: "scratchpay", name: "Scratchpay", applyUrl: "https://scratchpay.com/", info: "0%–24.99% APR, $200–$10,000, fair credit, quick process" },
-  { id: "sunbit", name: "Sunbit", applyUrl: "https://sunbit.com/", info: "0%–35.99% APR, $60–$10,000, broad eligibility, soft credit check" },
-  { id: "cherry", name: "Cherry", applyUrl: "https://withcherry.com/consumers", info: "0%–29.99% APR, $200–$50,000, fair credit, true 0% APR, no hard credit check" },
+  { id: "carecredit", name: "CareCredit", applyUrl: "https://www.carecredit.com/apply/", info: "0%–32.99% APR, $200–$25,000, good credit, 6–60 mo, wide provider network" },
+  { id: "prosper", name: "Prosper Healthcare Lending", applyUrl: "https://www.prosper.com/healthcare", info: "8.99%–35.99% APR, $2,000–$50,000, fair credit, 24–72 mo, fixed rates" },
+  { id: "lendingclub", name: "Happen Bank (formerly LendingClub)", applyUrl: "https://www.happen.com/", info: "5.96%–35.99% APR, $1,000–$75,000, fair credit, 24–84 mo" },
+  { id: "alphaeon", name: "Alphaeon Credit", applyUrl: "https://goalphaeon.com/", info: "0%–32.99% APR, $250–$25,000, good credit, elective/cosmetic focus" },
+  { id: "greensky", name: "GreenSky", applyUrl: "https://www.greensky.com/", info: "0%–29.99% APR, $500–$25,000, good credit, up to 144 mo" },
+  { id: "accessone", name: "AccessOne", applyUrl: "https://accessonepay.com/patients/", info: "0% or low-interest plans, no min or max balance, no credit check required" },
+  { id: "scratchpay", name: "Scratchpay", applyUrl: "https://scratchpay.com/", info: "0%–36% APR, $200–$10,000, fair credit, 12–24 mo, quick process" },
+  { id: "sunbit", name: "Sunbit", applyUrl: "https://sunbit.com/", info: "0%–35.99% APR, $50–$20,000, broad eligibility, soft credit check, 3–72 mo" },
+  { id: "cherry", name: "Cherry", applyUrl: "https://withcherry.com/consumers", info: "0%–35.99% APR, $35–$65,000, fair credit, true 0% APR, no hard credit check" },
   { id: "payzen", name: "PayZen", applyUrl: "https://payzen.com/patient-financing/", info: "0% interest, any amount, AI-powered personalized plans" },
-  { id: "patientfi", name: "PatientFi", applyUrl: "https://search.patientfi.com/", info: "6.99%–32.99% APR, $200–$40,000, good credit, soft credit check" },
+  { id: "patientfi", name: "PatientFi", applyUrl: "https://search.patientfi.com/", info: "5.99%–34.99% APR, $200–$60,000, good credit, soft credit check" },
 ];
 
 const LENDER_LIST = LENDERS.map(l => `- ${l.name} (apply: ${l.applyUrl}): ${l.info}`).join("\n");
