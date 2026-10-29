@@ -271,27 +271,6 @@ const financeOptions = [
     matchScore: 84,
     featured: false,
   },
-  {
-    id: "wellsfargo",
-    name: "Wells Fargo Health Advantage",
-    logo: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=100&h=100&fit=crop",
-    description: "A healthcare credit card for dental, vision, hearing, and veterinary care, offered through participating provider offices.",
-    aprRange: "0% - 26.99%",
-    minCredit: "good",
-    loanRange: "No min or max",
-    promoOffer: "0% for 6-18 mo",
-    promoDetails: "No interest if paid in full within the promotional period; longer special-rate plans are also available",
-    rating: 4.0,
-    reviews: 4300,
-    repaymentTerms: "6-60 months",
-    applicationTime: "Minutes",
-    fundingTime: "Instant decision",
-    features: ["Provider-office enrollment", "Promotional financing", "No annual fee", "Special-rate plans"],
-    applyUrl: "https://retailservices.wellsfargo.com/wfha_patient.html",
-    procedures: ["dental", "vision", "hearing", "veterinary"],
-    matchScore: 80,
-    featured: false,
-  },
 ];
 
 export default function Marketplace() {
