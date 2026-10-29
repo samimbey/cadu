@@ -18,6 +18,8 @@ const LENDERS = [
   { id: "cherry", name: "Cherry", applyUrl: "https://withcherry.com/consumers", info: "0%–35.99% APR, $35–$65,000, fair credit, true 0% APR, no hard credit check" },
   { id: "payzen", name: "PayZen", applyUrl: "https://payzen.com/patient-financing/", info: "0% interest, any amount, AI-powered personalized plans" },
   { id: "patientfi", name: "PatientFi", applyUrl: "https://search.patientfi.com/", info: "5.99%–34.99% APR, $200–$60,000, good credit, soft credit check" },
+  { id: "carepayment", name: "CarePayment", applyUrl: "https://www.carepayment.com/for-patients/", info: "0% APR, no min or max balance, no credit check, enroll through a participating hospital's billing office" },
+  { id: "wellsfargo", name: "Wells Fargo Health Advantage", applyUrl: "https://retailservices.wellsfargo.com/wfha_patient.html", info: "0%–26.99% APR, good credit, 6–60 mo, dental/vision/hearing/veterinary, offered through provider offices" },
 ];
 
 const LENDER_LIST = LENDERS.map(l => `- ${l.name} (apply: ${l.applyUrl}): ${l.info}`).join("\n");
